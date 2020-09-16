@@ -49,27 +49,20 @@ class PlayerNamesActivity : AppCompatActivity() {
     }
 
     fun startGamePlayActivity(v : View){
-        val p1 = Player1NamePlainText.text.toString()
-        listOfPlayerNames.add (p1)
-        val p2 = Player2NamePlainText.text.toString()
-        listOfPlayerNames.add (p2)
+        listOfPlayerNames.add (Player1NamePlainText.text.toString())
+        listOfPlayerNames.add (Player2NamePlainText.text.toString())
 
         if (nrOfplayers >= 3) {
-            val p3 = Player3NamePlainText.text.toString()
-            listOfPlayerNames.add(p3)
+            listOfPlayerNames.add(Player3NamePlainText.text.toString())
 
             if(nrOfplayers >= 4){
-                val p4 = Player4NamePlainText.text.toString()
-                listOfPlayerNames.add(p3)
+                listOfPlayerNames.add(Player4NamePlainText.text.toString())
 
                 if(nrOfplayers >= 5){
-                    val p5 = Player5NamePlainText.text.toString()
-                    listOfPlayerNames.add(p3)
+                    listOfPlayerNames.add(Player5NamePlainText.text.toString())
 
                     if(nrOfplayers >= 6){
-                        val p6 = Player6NamePlainText.text.toString()
-                        listOfPlayerNames.add(p3)
-
+                        listOfPlayerNames.add(Player6NamePlainText.text.toString())
                     }
                 }
             }
