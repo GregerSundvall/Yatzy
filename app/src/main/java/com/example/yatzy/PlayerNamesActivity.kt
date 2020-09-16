@@ -3,6 +3,7 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_player_names.*
 
@@ -61,8 +62,9 @@ class PlayerNamesActivity : AppCompatActivity() {
             }
 
         }
+
         val intent = Intent(this, GamePlayActivity::class.java)
-        intent.putStringArrayListExtra("listOfPlayers", listOfPlayerNames)
+        intent.putStringArrayListExtra("listOfPlayerNames", listOfPlayerNames)
         startActivity(intent)
 
     }
