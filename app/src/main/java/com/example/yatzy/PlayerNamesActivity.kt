@@ -20,30 +20,23 @@ class PlayerNamesActivity : AppCompatActivity() {
 
         nrOfplayers = intent.getIntExtra("nrOfPlayers", 2)
 
-        //var player1name :View = findViewById(R.id.Player1NamePlainText)
-        //var player2name :View = findViewById(R.id.Player2NamePlainText)
-        var player3name :View = findViewById(R.id.Player3NamePlainText)
-        var player4name :View = findViewById(R.id.Player4NamePlainText)
-        var player5name :View = findViewById(R.id.Player5NamePlainText)
-        var player6name :View = findViewById(R.id.Player6NamePlainText)
-
         when(nrOfplayers){
-            2 ->    {player3name.visibility = View.GONE
-                    player4name.visibility = View.GONE
-                    player5name.visibility = View.GONE
-                    player6name.visibility = View.GONE
+            2 ->    {Player3NamePlainText.visibility = View.GONE
+                    Player4NamePlainText.visibility = View.GONE
+                    Player5NamePlainText.visibility = View.GONE
+                    Player6NamePlainText.visibility = View.GONE
             }
 
-            3 ->    {player4name.visibility = View.GONE
-                    player5name.visibility = View.GONE
-                    player6name.visibility = View.GONE
+            3 ->    {Player4NamePlainText.visibility = View.GONE
+                    Player5NamePlainText.visibility = View.GONE
+                    Player6NamePlainText.visibility = View.GONE
             }
 
-            4 ->    {player5name.visibility = View.GONE
-                    player6name.visibility = View.GONE
+            4 ->    {Player5NamePlainText.visibility = View.GONE
+                    Player6NamePlainText.visibility = View.GONE
             }
 
-            5 ->    {player6name.visibility = View.GONE
+            5 ->    {Player6NamePlainText.visibility = View.GONE
             }
         }
     }
