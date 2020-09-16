@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageViewRollHand"
+        android:layout_width="323dp"
+        android:layout_height="389dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/roll_dice_flip_crop" />
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="277dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/yatzy_logo" />
+
+    <ImageView
+        android:id="@+id/imageViewHowMany"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRollHand"
+        app:srcCompat="@drawable/hur_manga_spelare" />
+
+    <ImageView
+        android:id="@+id/imageView2p"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="start2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3p"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHowMany"
+        app:srcCompat="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/imageView3p"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="start3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4p"
+        app:layout_constraintStart_toEndOf="@+id/imageView2p"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHowMany"
+        app:srcCompat="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/imageView4p"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="start4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5p"
+        app:layout_constraintStart_toEndOf="@+id/imageView3p"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHowMany"
+        app:srcCompat="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/imageView5p"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="start5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6p"
+        app:layout_constraintStart_toEndOf="@+id/imageView4p"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHowMany"
+        app:srcCompat="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/imageView6p"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="start6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5p"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHowMany"
+        app:srcCompat="@drawable/six" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

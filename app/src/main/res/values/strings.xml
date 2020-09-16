@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Yatzy</string>
+    <string name="HowMany">Hur många spelare?</string>
+    <string name="twoPlayers">2  SPELARE</string>
+    <string name="threePlayers">3  SPELARE</string>
+    <string name="fourPlayers">4  SPELARE</string>
+    <string name="fivePlayers">5  SPELARE</string>
+    <string name="sixPlayers">6  SPELARE</string>
+</resources>
