@@ -5,11 +5,12 @@ import java.util.*
     //var listOfPlayers:MutableList<Player> = mutableListOf()
 //}
 
-class Player (val name : String,
-              val scoreSheet: MutableList<Int> = mutableListOf(),
-              var listOfPlayers: MutableList<Player> = mutableListOf(),
-              val listOfDice : MutableList<Die> = mutableListOf()
-){
+class Player (var name : String,
+              //var scoreSheet: MutableList<Int> = mutableListOf(),
+              //var listOfPlayers: MutableList<Player> = mutableListOf(),
+              //val listOfDice : MutableList<Die> = mutableListOf()
+
+){/*
     fun addDice() {
         for (i in 1..5) {
             listOfDice.add(Die())
@@ -140,5 +141,5 @@ class Player (val name : String,
             }
         }
     }
-
+*/
 }
