@@ -61,7 +61,7 @@ class PlayerNamesActivity : AppCompatActivity() {
             }
 
         }
-        val intent = Intent(this, PrepareActivity::class.java)
+        val intent = Intent(this, GamePlayActivity::class.java)
         intent.putStringArrayListExtra("listOfPlayers", listOfPlayerNames)
         startActivity(intent)
 
