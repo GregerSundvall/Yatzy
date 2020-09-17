@@ -9,4 +9,5 @@
     <string name="name_is_playing">%$s is playing.</string>
     <string name="tap_die_to_reroll">Select dice to re-roll by tapping them.</string>
     <string name="where">Where do you wanna put you points?</string>
+    <string name="reRoll">Re-roll selected dice</string>
 </resources>

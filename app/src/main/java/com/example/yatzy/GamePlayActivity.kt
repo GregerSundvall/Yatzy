@@ -1,5 +1,6 @@
 package com.example.yatzy
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -91,6 +92,13 @@ class GamePlayActivity : AppCompatActivity() {
 
         rollAll()
 
+
+
+    }
+
+    fun selectDie5(view: View){
+        listOfDieImageViews[5].setImageResource(R.drawable.die1selected)
+        listOfDice[5].toBeRolled = true
     }
 
     //Rolls all dice and sets them not to be rolled
@@ -106,7 +114,7 @@ class GamePlayActivity : AppCompatActivity() {
         setDieImage(listOfDice[4], listOfDieImageViews[4])
     }
         //Rolls dice selected for re-roll
-    fun rollSelected(){
+    fun reRoll(){
         for(die in listOfDice){
             if(die.toBeRolled == true){
                 die.roll()

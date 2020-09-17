@@ -10,14 +10,18 @@
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#000000" />
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/reRollButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Re-roll selected dice"
+        android:text="@string/reRoll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectTextView" />
@@ -59,6 +63,7 @@
         android:layout_height="77dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:onClick="selectDie"
         app:layout_constraintBottom_toBottomOf="@+id/die3"
         app:layout_constraintEnd_toStartOf="@+id/die5"
         app:layout_constraintHorizontal_bias="0.5"
@@ -70,7 +75,7 @@
         android:id="@+id/die5"
         android:layout_width="82dp"
         android:layout_height="77dp"
-        android:tint="#CC020202"
+        android:onClick="selectDie5"
         app:layout_constraintBottom_toBottomOf="@+id/die4"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.5"
@@ -93,11 +98,13 @@
         android:id="@+id/whoIsPlayingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/name_is_playing"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
         android:id="@+id/selectTextView"
