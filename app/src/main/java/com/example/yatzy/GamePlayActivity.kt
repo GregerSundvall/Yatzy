@@ -6,14 +6,15 @@ import android.util.Log
 
 class GamePlayActivity : AppCompatActivity() {
 
-
+    val listOfPlayers :MutableList<Player> = mutableListOf<Player>()
+    val listOfDice :MutableList<Die> = mutableListOf<Die>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_play)
 
         var listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
-        val listOfPlayers :MutableList<Player> = mutableListOf<Player>()
+
         if (listOfPlayerNames != null) {
             for(playerName in listOfPlayerNames){
                 //var newPlayer = Player ("$playerName")
@@ -23,7 +24,7 @@ class GamePlayActivity : AppCompatActivity() {
         }
 
         for(player in listOfPlayers){
-            player.scoreSheet.add(Score(1, "Ones"))
+            player.scoreSheet.add(Score(1, "Aces"))
         }
         for(player in listOfPlayers){
             player.scoreSheet.add(Score(2, "Twos"))
@@ -74,11 +75,20 @@ class GamePlayActivity : AppCompatActivity() {
             player.scoreSheet.add(Score(17, "Total"))
         }
 
-
-
-
-
+        for(i in 1..5){
+            listOfDice.add(Die())
+        }
     }
+
+    fun rollAll(){
+        for(die in listOfDice){
+            if(die.toBeRolled == true)
+            die.roll()
+        }
+    }
+
+
+
 
 
 }
