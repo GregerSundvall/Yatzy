@@ -11,22 +11,22 @@ import kotlinx.android.synthetic.main.activity_game_play.*
 
 class GamePlayActivity : AppCompatActivity() {
 
-    val listOfPlayers :MutableList<Player> = mutableListOf<Player>()
-    val listOfDice :MutableList<Die> = mutableListOf<Die>()
-    val listOfDieImageViews : MutableList<ImageView> = mutableListOf<ImageView>()
+    val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
+    val listOfDice: MutableList<Die> = mutableListOf<Die>()
+    val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_play)
 
-            //Adds received list of player names to players list
+        //Adds received list of player names to players list
         var listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
         if (listOfPlayerNames != null) {
             for (playerName in listOfPlayerNames) {
                 listOfPlayers.add(Player("$playerName"))
             }
         }
-            //Sets up a scoresheet for each player
+        //Sets up a scoresheet for each player
         for (player in listOfPlayers) {
             player.scoreSheet.add(Score(1, "Aces"))
         }
@@ -78,7 +78,7 @@ class GamePlayActivity : AppCompatActivity() {
         for (player in listOfPlayers) {
             player.scoreSheet.add(Score(17, "Total"))
         }
-            //Creates and adds a set of dice to list
+        //Creates and adds a set of dice to list
         for (i in 1..5) {
             listOfDice.add(Die())
         }
@@ -93,13 +93,46 @@ class GamePlayActivity : AppCompatActivity() {
         rollAll()
 
 
-
     }
 
-    fun selectDie5(view: View){
-        listOfDieImageViews[5].setImageResource(R.drawable.die1selected)
-        listOfDice[5].toBeRolled = true
+    fun selectDie1(view: View){
+        when(listOfDice[0].toBeRolled) {
+            false -> {when (listOfDice[0].currentValue) {
+                            1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1selected)
+                            2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2selected)
+                            3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3selected)
+                            4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4selected)
+                            5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5selected)
+                            6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6selected)
+                            }
+                            listOfDice [0].toBeRolled = true}
+
+            true -> {when (listOfDice[0].currentValue) {
+                            1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1)
+                            2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2)
+                            3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3)
+                            4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4)
+                            5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5)
+                            6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6)
+                            }
+                            listOfDice [0].toBeRolled = false}
+        }
     }
+
+
+    fun selectDie5(view: View) {
+        when (listOfDice[4].currentValue) {
+            1 ->    listOfDieImageViews[4].setImageResource(R.drawable.die1selected)
+            2 ->    listOfDieImageViews[4].setImageResource(R.drawable.die2selected)
+            3 ->    listOfDieImageViews[4].setImageResource(R.drawable.die3selected)
+            4 ->    listOfDieImageViews[4].setImageResource(R.drawable.die4selected)
+            5 ->    listOfDieImageViews[4].setImageResource(R.drawable.die5selected)
+            6 ->    listOfDieImageViews[4].setImageResource(R.drawable.die6selected)
+        }
+        listOfDice[4].toBeRolled = true
+    }
+
+
 
     //Rolls all dice and sets them not to be rolled
     fun rollAll(){
