@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_game_play.*
 
 class GamePlayActivity : AppCompatActivity() {
@@ -81,7 +82,15 @@ class GamePlayActivity : AppCompatActivity() {
             listOfDice.add(Die())
         }
 
-       turn(listOfPlayers[0])
+        //adds die imageviews to list
+        listOfDieImageViews.add(findViewById(R.id.die1))
+        listOfDieImageViews.add(findViewById(R.id.die2))
+        listOfDieImageViews.add(findViewById(R.id.die3))
+        listOfDieImageViews.add(findViewById(R.id.die4))
+        listOfDieImageViews.add(findViewById(R.id.die5))
+
+        rollAll()
+
     }
 
     //Rolls all dice and sets them not to be rolled
@@ -90,6 +99,11 @@ class GamePlayActivity : AppCompatActivity() {
             die.roll()
             die.toBeRolled = false
         }
+        setDieImage(listOfDice[0], listOfDieImageViews[0])
+        setDieImage(listOfDice[1], listOfDieImageViews[1])
+        setDieImage(listOfDice[2], listOfDieImageViews[2])
+        setDieImage(listOfDice[3], listOfDieImageViews[3])
+        setDieImage(listOfDice[4], listOfDieImageViews[4])
     }
         //Rolls dice selected for re-roll
     fun rollSelected(){
@@ -98,19 +112,14 @@ class GamePlayActivity : AppCompatActivity() {
                 die.roll()
             }
         }
-    }
-
-        //One turn for one person
-    fun turn(player: Player){
-        rollAll()
         setDieImage(listOfDice[0], listOfDieImageViews[0])
         setDieImage(listOfDice[1], listOfDieImageViews[1])
         setDieImage(listOfDice[2], listOfDieImageViews[2])
         setDieImage(listOfDice[3], listOfDieImageViews[3])
         setDieImage(listOfDice[4], listOfDieImageViews[4])
+    }
 
 
-        }
 
         //Sets correct die images according to values
     fun setDieImage(die : Die, dieView: ImageView){
