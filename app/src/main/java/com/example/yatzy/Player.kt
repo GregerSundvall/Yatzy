@@ -6,7 +6,7 @@ import java.util.*
 //}
 
 class Player (var name : String,
-              //var scoreSheet: MutableList<Int> = mutableListOf(),
+              var scoreSheet: MutableList<Score> = mutableListOf(),
               //var listOfPlayers: MutableList<Player> = mutableListOf(),
               //val listOfDice : MutableList<Die> = mutableListOf()
 
