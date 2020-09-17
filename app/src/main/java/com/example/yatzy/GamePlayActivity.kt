@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.activity_game_play.*
 
 class GamePlayActivity : AppCompatActivity() {
 
+    val listOfPlayers :MutableList<Player> = mutableListOf<Player>()
+    val listOfDice :MutableList<Die> = mutableListOf<Die>()
+    val listOfDieImageViews : MutableList<ImageView> = mutableListOf<ImageView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +21,7 @@ class GamePlayActivity : AppCompatActivity() {
         var listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
         if (listOfPlayerNames != null) {
             for (playerName in listOfPlayerNames) {
-                //var newPlayer = Player ("$playerName")
                 listOfPlayers.add(Player("$playerName"))
-                Log.d("!!!", "$listOfPlayers")
             }
         }
             //Sets up a scoresheet for each player
@@ -80,16 +81,8 @@ class GamePlayActivity : AppCompatActivity() {
             listOfDice.add(Die())
         }
 
-            //the game rounds
-        for (round in 1.. 14){
-            for (player in listOfPlayers) {
-            turn()
-            }
-        }
+       turn(listOfPlayers[0])
     }
-    val listOfPlayers :MutableList<Player> = mutableListOf<Player>()
-    val listOfDice :MutableList<Die> = mutableListOf<Die>()
-    val listOfDieImageViews : MutableList<ImageView> = mutableListOf<ImageView>()
 
     //Rolls all dice and sets them not to be rolled
     fun rollAll(){
@@ -108,7 +101,7 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
         //One turn for one person
-    fun turn(){
+    fun turn(player: Player){
         rollAll()
         setDieImage(listOfDice[0], listOfDieImageViews[0])
         setDieImage(listOfDice[1], listOfDieImageViews[1])
