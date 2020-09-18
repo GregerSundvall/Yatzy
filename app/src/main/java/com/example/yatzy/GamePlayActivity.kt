@@ -14,6 +14,7 @@ class GamePlayActivity : AppCompatActivity() {
     val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
     val listOfDice: MutableList<Die> = mutableListOf<Die>()
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
+    lateinit var currentPlayer :Player
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,13 +91,11 @@ class GamePlayActivity : AppCompatActivity() {
         listOfDieImageViews.add(findViewById(R.id.die4))
         listOfDieImageViews.add(findViewById(R.id.die5))
 
+        currentPlayer = listOfPlayers[0]
         rollAll()
 
-
+        Log.d("!!!","${currentPlayer.reRolls}")
     }
-
-
-
 
 
     //Rolls all dice and sets them not to be rolled
@@ -112,11 +111,20 @@ class GamePlayActivity : AppCompatActivity() {
         setDieImage(listOfDice[4], listOfDieImageViews[4])
     }
         //Rolls dice selected for re-roll
-    fun reRoll(){
-        for(die in listOfDice){
-            if(die.toBeRolled == true){
-                die.roll()
+    fun reRoll(view: View){
+            Log.d("!!!", "${listOfDice[0].toBeRolled}")
+        if(currentPlayer!!.reRolls > 0){
+            for(die in listOfDice) {
+                if (die.toBeRolled == true) {
+                    die.currentValue =  (1..6).random()
+                }
             }
+            setDieImage(listOfDice[0], listOfDieImageViews[0])
+            setDieImage(listOfDice[1], listOfDieImageViews[1])
+            setDieImage(listOfDice[2], listOfDieImageViews[2])
+            setDieImage(listOfDice[3], listOfDieImageViews[3])
+            setDieImage(listOfDice[4], listOfDieImageViews[4])
+            currentPlayer.reRolls -= 1
         }
         setDieImage(listOfDice[0], listOfDieImageViews[0])
         setDieImage(listOfDice[1], listOfDieImageViews[1])
