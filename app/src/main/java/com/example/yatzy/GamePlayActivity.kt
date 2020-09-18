@@ -95,42 +95,7 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-    fun selectDie1(view: View){
-        when(listOfDice[0].toBeRolled) {
-            false -> {when (listOfDice[0].currentValue) {
-                            1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1selected)
-                            2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2selected)
-                            3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3selected)
-                            4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4selected)
-                            5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5selected)
-                            6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6selected)
-                            }
-                            listOfDice [0].toBeRolled = true}
 
-            true -> {when (listOfDice[0].currentValue) {
-                            1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1)
-                            2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2)
-                            3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3)
-                            4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4)
-                            5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5)
-                            6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6)
-                            }
-                            listOfDice [0].toBeRolled = false}
-        }
-    }
-
-
-    fun selectDie5(view: View) {
-        when (listOfDice[4].currentValue) {
-            1 ->    listOfDieImageViews[4].setImageResource(R.drawable.die1selected)
-            2 ->    listOfDieImageViews[4].setImageResource(R.drawable.die2selected)
-            3 ->    listOfDieImageViews[4].setImageResource(R.drawable.die3selected)
-            4 ->    listOfDieImageViews[4].setImageResource(R.drawable.die4selected)
-            5 ->    listOfDieImageViews[4].setImageResource(R.drawable.die5selected)
-            6 ->    listOfDieImageViews[4].setImageResource(R.drawable.die6selected)
-        }
-        listOfDice[4].toBeRolled = true
-    }
 
 
 
@@ -171,6 +136,127 @@ class GamePlayActivity : AppCompatActivity() {
             4 -> dieView.setImageResource(R.drawable.die4)
             5 -> dieView.setImageResource(R.drawable.die5)
             6 -> dieView.setImageResource(R.drawable.die6)
+        }
+    }
+
+    fun selectDie1(view: View){
+        when(listOfDice[0].toBeRolled) {
+            false -> {when (listOfDice[0].currentValue) {
+                1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1selected)
+                2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2selected)
+                3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3selected)
+                4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4selected)
+                5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5selected)
+                6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6selected)
+            }
+                listOfDice [0].toBeRolled = true}
+
+            true -> {when (listOfDice[0].currentValue) {
+                1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1)
+                2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2)
+                3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3)
+                4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4)
+                5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5)
+                6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6)
+            }
+                listOfDice [0].toBeRolled = false}
+        }
+    }
+
+    fun selectDie2(view: View){
+        when(listOfDice[1].toBeRolled) {
+            false -> {when (listOfDice[1].currentValue) {
+                1 -> listOfDieImageViews[1].setImageResource(R.drawable.die1selected)
+                2 -> listOfDieImageViews[1].setImageResource(R.drawable.die2selected)
+                3 -> listOfDieImageViews[1].setImageResource(R.drawable.die3selected)
+                4 -> listOfDieImageViews[1].setImageResource(R.drawable.die4selected)
+                5 -> listOfDieImageViews[1].setImageResource(R.drawable.die5selected)
+                6 -> listOfDieImageViews[1].setImageResource(R.drawable.die6selected)
+            }
+                listOfDice [1].toBeRolled = true}
+
+            true -> {when (listOfDice[1].currentValue) {
+                1 -> listOfDieImageViews[1].setImageResource(R.drawable.die1)
+                2 -> listOfDieImageViews[1].setImageResource(R.drawable.die2)
+                3 -> listOfDieImageViews[1].setImageResource(R.drawable.die3)
+                4 -> listOfDieImageViews[1].setImageResource(R.drawable.die4)
+                5 -> listOfDieImageViews[1].setImageResource(R.drawable.die5)
+                6 -> listOfDieImageViews[1].setImageResource(R.drawable.die6)
+            }
+                listOfDice [1].toBeRolled = false}
+        }
+    }
+
+    fun selectDie3(view: View){
+        when(listOfDice[2].toBeRolled) {
+            false -> {when (listOfDice[2].currentValue) {
+                1 -> listOfDieImageViews[2].setImageResource(R.drawable.die1selected)
+                2 -> listOfDieImageViews[2].setImageResource(R.drawable.die2selected)
+                3 -> listOfDieImageViews[2].setImageResource(R.drawable.die3selected)
+                4 -> listOfDieImageViews[2].setImageResource(R.drawable.die4selected)
+                5 -> listOfDieImageViews[2].setImageResource(R.drawable.die5selected)
+                6 -> listOfDieImageViews[2].setImageResource(R.drawable.die6selected)
+            }
+                listOfDice [2].toBeRolled = true}
+
+            true -> {when (listOfDice[2].currentValue) {
+                1 -> listOfDieImageViews[2].setImageResource(R.drawable.die1)
+                2 -> listOfDieImageViews[2].setImageResource(R.drawable.die2)
+                3 -> listOfDieImageViews[2].setImageResource(R.drawable.die3)
+                4 -> listOfDieImageViews[2].setImageResource(R.drawable.die4)
+                5 -> listOfDieImageViews[2].setImageResource(R.drawable.die5)
+                6 -> listOfDieImageViews[2].setImageResource(R.drawable.die6)
+            }
+                listOfDice [2].toBeRolled = false}
+        }
+    }
+
+
+    fun selectDie4(view: View){
+        when(listOfDice[3].toBeRolled) {
+            false -> {when (listOfDice[3].currentValue) {
+                1 -> listOfDieImageViews[3].setImageResource(R.drawable.die1selected)
+                2 -> listOfDieImageViews[3].setImageResource(R.drawable.die2selected)
+                3 -> listOfDieImageViews[3].setImageResource(R.drawable.die3selected)
+                4 -> listOfDieImageViews[3].setImageResource(R.drawable.die4selected)
+                5 -> listOfDieImageViews[3].setImageResource(R.drawable.die5selected)
+                6 -> listOfDieImageViews[3].setImageResource(R.drawable.die6selected)
+            }
+                listOfDice [3].toBeRolled = true}
+
+            true -> {when (listOfDice[3].currentValue) {
+                1 -> listOfDieImageViews[3].setImageResource(R.drawable.die1)
+                2 -> listOfDieImageViews[3].setImageResource(R.drawable.die2)
+                3 -> listOfDieImageViews[3].setImageResource(R.drawable.die3)
+                4 -> listOfDieImageViews[3].setImageResource(R.drawable.die4)
+                5 -> listOfDieImageViews[3].setImageResource(R.drawable.die5)
+                6 -> listOfDieImageViews[3].setImageResource(R.drawable.die6)
+            }
+                listOfDice [3].toBeRolled = false}
+        }
+    }
+
+    fun selectDie5(view: View){
+        when(listOfDice[4].toBeRolled) {
+            false -> {when (listOfDice[4].currentValue) {
+                1 -> listOfDieImageViews[4].setImageResource(R.drawable.die1selected)
+                2 -> listOfDieImageViews[4].setImageResource(R.drawable.die2selected)
+                3 -> listOfDieImageViews[4].setImageResource(R.drawable.die3selected)
+                4 -> listOfDieImageViews[4].setImageResource(R.drawable.die4selected)
+                5 -> listOfDieImageViews[4].setImageResource(R.drawable.die5selected)
+                6 -> listOfDieImageViews[4].setImageResource(R.drawable.die6selected)
+            }
+                listOfDice [4].toBeRolled = true}
+
+            true -> {when (listOfDice[4].currentValue) {
+                1 -> listOfDieImageViews[4].setImageResource(R.drawable.die1)
+                2 -> listOfDieImageViews[4].setImageResource(R.drawable.die2)
+                3 -> listOfDieImageViews[4].setImageResource(R.drawable.die3)
+                4 -> listOfDieImageViews[4].setImageResource(R.drawable.die4)
+                5 -> listOfDieImageViews[4].setImageResource(R.drawable.die5)
+                6 -> listOfDieImageViews[4].setImageResource(R.drawable.die6)
+            }
+                listOfDice [4].toBeRolled = false}
         }
     }
 
