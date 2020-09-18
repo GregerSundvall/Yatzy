@@ -119,11 +119,6 @@ class GamePlayActivity : AppCompatActivity() {
                     die.currentValue =  (1..6).random()
                 }
             }
-            setDieImage(listOfDice[0], listOfDieImageViews[0])
-            setDieImage(listOfDice[1], listOfDieImageViews[1])
-            setDieImage(listOfDice[2], listOfDieImageViews[2])
-            setDieImage(listOfDice[3], listOfDieImageViews[3])
-            setDieImage(listOfDice[4], listOfDieImageViews[4])
             currentPlayer.reRolls -= 1
         }
         setDieImage(listOfDice[0], listOfDieImageViews[0])
