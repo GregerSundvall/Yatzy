@@ -7,8 +7,7 @@ import java.util.*
 
 class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
-              //var listOfPlayers: MutableList<Player> = mutableListOf(),
-              //val listOfDice : MutableList<Die> = mutableListOf()
+              var reRolls : Int = 2
 
 ){/*
     fun addDice() {
