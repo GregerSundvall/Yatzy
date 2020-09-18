@@ -121,6 +121,9 @@ class GamePlayActivity : AppCompatActivity() {
             }
             currentPlayer.reRolls -= 1
         }
+        for(die in listOfDice){
+            die.toBeRolled == false
+        }
         setDieImage(listOfDice[0], listOfDieImageViews[0])
         setDieImage(listOfDice[1], listOfDieImageViews[1])
         setDieImage(listOfDice[2], listOfDieImageViews[2])
