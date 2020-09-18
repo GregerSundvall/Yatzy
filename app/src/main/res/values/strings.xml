@@ -7,7 +7,8 @@
     <string name="fivePlayers">5  SPELARE</string>
     <string name="sixPlayers">6  SPELARE</string>
     <string name="name_is_playing">%$s is playing.</string>
-    <string name="tap_die_to_reroll">Select dice for re-roll by tapping them.</string>
-    <string name="where">Where do you want to register your dice?</string>
-    <string name="reRoll">Re-roll selected dice</string>
+    <string name="tap_die_to_reroll">Select dice for re-roll by tapping them!</string>
+    <string name="where">Select wehere you want your points saved below</string>
+    <string name="reRoll">Re-roll</string>
+    <string name="save">Save</string>
 </resources>
