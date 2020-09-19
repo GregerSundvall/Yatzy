@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_game_play.*
 
@@ -17,6 +18,7 @@ class GamePlayActivity : AppCompatActivity() {
     var nrOfPlayers : Int = 0
     var roundNumber : Int = 0
     lateinit var currentPlayer :Player
+    lateinit var nameTextView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +95,7 @@ class GamePlayActivity : AppCompatActivity() {
         listOfDieImageViews.add(findViewById(R.id.die4))
         listOfDieImageViews.add(findViewById(R.id.die5))
 
-
+        nameTextView = findViewById(R.id.whoIsPlayingTextView)
 
         currentPlayer = listOfPlayers[0]
         startRound()
@@ -101,14 +103,15 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
     fun startRound(){
-        nextPlayer()
         ++ roundNumber
+        nameTextView.text = getString(R.string.name_is_playing, currentPlayer.name)
         rollAll()
     }
 
     fun saveAndContinue(){
         //add functionality to check and save points here!
         if(roundNumber < 14){
+            nextPlayer()
             startRound()
         }else{
             //start scoreBoard activity
