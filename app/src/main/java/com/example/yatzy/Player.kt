@@ -7,22 +7,29 @@ import java.util.*
 
 class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
-              var reRolls : Int = 2
+              var reRolls : Int = 2,
+              var listOfDice: MutableList<Die> = mutableListOf(),
+              var warning: Int = 0
 
-){/*
+){
 
     fun setOnes() {
         //Ettor
+        var warning = 0
+        var ones = 0
         for (die in listOfDice) {
             if (die.currentValue == 1) {
-                scoreSheet[1] += 1
+                ones += 1
             }
         }
-        if(scoreSheet[1].toString().toInt() < 1){
-            //return Detta ger inga poäng, vill du stryka denna ruta? Typ..
+        if(ones == 0){
+            //Detta ger inga poäng, vill du stryka denna ruta? Typ..
             //Stryka = nolla poängen i den rutan?
+            warning = 1
         }
+        scoreSheet[0].points = ones
     }
+    /*
     fun setOnePair(){
         val listOfPairs :MutableList<Int> = mutableListOf()
         if(listOfDice[0].currentValue == listOfDice[1].currentValue){

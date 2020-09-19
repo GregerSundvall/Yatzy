@@ -5,4 +5,7 @@ class Score (   var nr:Int,
                 var points : Int? = null
 ){
 
+
+
+
 }

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_game_play.*
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
-    val listOfDice: MutableList<Die> = mutableListOf<Die>()
+    //val listOfDice: MutableList<Die> = mutableListOf<Die>()
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var nrOfPlayers : Int = 0
     var roundNumber : Int = 0
@@ -83,11 +83,12 @@ class GamePlayActivity : AppCompatActivity() {
         for (player in listOfPlayers) {
             player.scoreSheet.add(Score(17, "Total"))
         }
-        //Creates and adds a set of dice to list
-        for (i in 1..5) {
-            listOfDice.add(Die())
+        //Creates and adds a set of dice for each player
+        for(player in listOfPlayers) {
+            for (i in 1..5) {
+                player.listOfDice.add(Die())
+            }
         }
-
         //adds die imageviews to list
         listOfDieImageViews.add(findViewById(R.id.die1))
         listOfDieImageViews.add(findViewById(R.id.die2))
@@ -109,6 +110,8 @@ class GamePlayActivity : AppCompatActivity() {
 
     fun savePoints(view: View){
         //add functionality to check and save points here!
+
+
         nextPlayer()
         newRoundOrScoreboard()
     }
@@ -132,7 +135,7 @@ class GamePlayActivity : AppCompatActivity() {
 
     //Rolls all dice and sets them not to be rolled
     fun rollAll(){
-        for(die in listOfDice){
+        for(die in currentPlayer.listOfDice){
             die.currentValue =  (1..6).random()
             die.toBeRolled = false
 
@@ -142,7 +145,7 @@ class GamePlayActivity : AppCompatActivity() {
         //Rolls dice selected for re-roll
     fun reRoll(view: View){
         if(currentPlayer!!.reRolls > 0){
-            for(die in listOfDice) {
+            for(die in currentPlayer.listOfDice) {
                 if (die.toBeRolled == true) {
                     die.currentValue =  (1..6).random()
                     die.toBeRolled = false
@@ -168,16 +171,16 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
     fun setDiceImages(){
-        setDieImage(listOfDice[0], listOfDieImageViews[0])
-        setDieImage(listOfDice[1], listOfDieImageViews[1])
-        setDieImage(listOfDice[2], listOfDieImageViews[2])
-        setDieImage(listOfDice[3], listOfDieImageViews[3])
-        setDieImage(listOfDice[4], listOfDieImageViews[4])
+        setDieImage(currentPlayer.listOfDice[0], listOfDieImageViews[0])
+        setDieImage(currentPlayer.listOfDice[1], listOfDieImageViews[1])
+        setDieImage(currentPlayer.listOfDice[2], listOfDieImageViews[2])
+        setDieImage(currentPlayer.listOfDice[3], listOfDieImageViews[3])
+        setDieImage(currentPlayer.listOfDice[4], listOfDieImageViews[4])
     }
 
     fun selectDie1(view: View){
-        when(listOfDice[0].toBeRolled) {
-            false -> {when (listOfDice[0].currentValue) {
+        when(currentPlayer.listOfDice[0].toBeRolled) {
+            false -> {when (currentPlayer.listOfDice[0].currentValue) {
                 1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1selected)
                 2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2selected)
                 3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3selected)
@@ -185,9 +188,9 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5selected)
                 6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6selected)
             }
-                listOfDice [0].toBeRolled = true}
+                currentPlayer.listOfDice [0].toBeRolled = true}
 
-            true -> {when (listOfDice[0].currentValue) {
+            true -> {when (currentPlayer.listOfDice[0].currentValue) {
                 1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1)
                 2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2)
                 3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3)
@@ -195,13 +198,13 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5)
                 6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6)
             }
-                listOfDice [0].toBeRolled = false}
+                currentPlayer.listOfDice [0].toBeRolled = false}
         }
     }
 
     fun selectDie2(view: View){
-        when(listOfDice[1].toBeRolled) {
-            false -> {when (listOfDice[1].currentValue) {
+        when(currentPlayer.listOfDice[1].toBeRolled) {
+            false -> {when (currentPlayer.listOfDice[1].currentValue) {
                 1 -> listOfDieImageViews[1].setImageResource(R.drawable.die1selected)
                 2 -> listOfDieImageViews[1].setImageResource(R.drawable.die2selected)
                 3 -> listOfDieImageViews[1].setImageResource(R.drawable.die3selected)
@@ -209,9 +212,9 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[1].setImageResource(R.drawable.die5selected)
                 6 -> listOfDieImageViews[1].setImageResource(R.drawable.die6selected)
             }
-                listOfDice [1].toBeRolled = true}
+                currentPlayer.listOfDice [1].toBeRolled = true}
 
-            true -> {when (listOfDice[1].currentValue) {
+            true -> {when (currentPlayer.listOfDice[1].currentValue) {
                 1 -> listOfDieImageViews[1].setImageResource(R.drawable.die1)
                 2 -> listOfDieImageViews[1].setImageResource(R.drawable.die2)
                 3 -> listOfDieImageViews[1].setImageResource(R.drawable.die3)
@@ -219,13 +222,13 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[1].setImageResource(R.drawable.die5)
                 6 -> listOfDieImageViews[1].setImageResource(R.drawable.die6)
             }
-                listOfDice [1].toBeRolled = false}
+                currentPlayer.listOfDice [1].toBeRolled = false}
         }
     }
 
     fun selectDie3(view: View){
-        when(listOfDice[2].toBeRolled) {
-            false -> {when (listOfDice[2].currentValue) {
+        when(currentPlayer.listOfDice[2].toBeRolled) {
+            false -> {when (currentPlayer.listOfDice[2].currentValue) {
                 1 -> listOfDieImageViews[2].setImageResource(R.drawable.die1selected)
                 2 -> listOfDieImageViews[2].setImageResource(R.drawable.die2selected)
                 3 -> listOfDieImageViews[2].setImageResource(R.drawable.die3selected)
@@ -233,9 +236,9 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[2].setImageResource(R.drawable.die5selected)
                 6 -> listOfDieImageViews[2].setImageResource(R.drawable.die6selected)
             }
-                listOfDice [2].toBeRolled = true}
+                currentPlayer.listOfDice [2].toBeRolled = true}
 
-            true -> {when (listOfDice[2].currentValue) {
+            true -> {when (currentPlayer.listOfDice[2].currentValue) {
                 1 -> listOfDieImageViews[2].setImageResource(R.drawable.die1)
                 2 -> listOfDieImageViews[2].setImageResource(R.drawable.die2)
                 3 -> listOfDieImageViews[2].setImageResource(R.drawable.die3)
@@ -243,14 +246,14 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[2].setImageResource(R.drawable.die5)
                 6 -> listOfDieImageViews[2].setImageResource(R.drawable.die6)
             }
-                listOfDice [2].toBeRolled = false}
+                currentPlayer.listOfDice [2].toBeRolled = false}
         }
     }
 
 
     fun selectDie4(view: View){
-        when(listOfDice[3].toBeRolled) {
-            false -> {when (listOfDice[3].currentValue) {
+        when(currentPlayer.listOfDice[3].toBeRolled) {
+            false -> {when (currentPlayer.listOfDice[3].currentValue) {
                 1 -> listOfDieImageViews[3].setImageResource(R.drawable.die1selected)
                 2 -> listOfDieImageViews[3].setImageResource(R.drawable.die2selected)
                 3 -> listOfDieImageViews[3].setImageResource(R.drawable.die3selected)
@@ -258,9 +261,9 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[3].setImageResource(R.drawable.die5selected)
                 6 -> listOfDieImageViews[3].setImageResource(R.drawable.die6selected)
             }
-                listOfDice [3].toBeRolled = true}
+                currentPlayer.listOfDice [3].toBeRolled = true}
 
-            true -> {when (listOfDice[3].currentValue) {
+            true -> {when (currentPlayer.listOfDice[3].currentValue) {
                 1 -> listOfDieImageViews[3].setImageResource(R.drawable.die1)
                 2 -> listOfDieImageViews[3].setImageResource(R.drawable.die2)
                 3 -> listOfDieImageViews[3].setImageResource(R.drawable.die3)
@@ -268,13 +271,13 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[3].setImageResource(R.drawable.die5)
                 6 -> listOfDieImageViews[3].setImageResource(R.drawable.die6)
             }
-                listOfDice [3].toBeRolled = false}
+                currentPlayer.listOfDice [3].toBeRolled = false}
         }
     }
 
     fun selectDie5(view: View){
-        when(listOfDice[4].toBeRolled) {
-            false -> {when (listOfDice[4].currentValue) {
+        when(currentPlayer.listOfDice[4].toBeRolled) {
+            false -> {when (currentPlayer.listOfDice[4].currentValue) {
                 1 -> listOfDieImageViews[4].setImageResource(R.drawable.die1selected)
                 2 -> listOfDieImageViews[4].setImageResource(R.drawable.die2selected)
                 3 -> listOfDieImageViews[4].setImageResource(R.drawable.die3selected)
@@ -282,9 +285,9 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[4].setImageResource(R.drawable.die5selected)
                 6 -> listOfDieImageViews[4].setImageResource(R.drawable.die6selected)
             }
-                listOfDice [4].toBeRolled = true}
+                currentPlayer.listOfDice [4].toBeRolled = true}
 
-            true -> {when (listOfDice[4].currentValue) {
+            true -> {when (currentPlayer.listOfDice[4].currentValue) {
                 1 -> listOfDieImageViews[4].setImageResource(R.drawable.die1)
                 2 -> listOfDieImageViews[4].setImageResource(R.drawable.die2)
                 3 -> listOfDieImageViews[4].setImageResource(R.drawable.die3)
@@ -292,7 +295,7 @@ class GamePlayActivity : AppCompatActivity() {
                 5 -> listOfDieImageViews[4].setImageResource(R.drawable.die5)
                 6 -> listOfDieImageViews[4].setImageResource(R.drawable.die6)
             }
-                listOfDice [4].toBeRolled = false}
+                currentPlayer.listOfDice [4].toBeRolled = false}
         }
     }
 
