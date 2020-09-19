@@ -1,5 +1,6 @@
 package com.example.yatzy
 
+import android.util.Log
 import java.util.*
 //object Settings{
     //var listOfPlayers:MutableList<Player> = mutableListOf()
@@ -22,12 +23,22 @@ class Player (var name : String,
                 ones += 1
             }
         }
-        if(ones == 0){
-            //Detta ger inga poäng, vill du stryka denna ruta? Typ..
-            //Stryka = nolla poängen i den rutan?
-            warning = 1
+        if(warning == 0){
+            if(ones == 0){
+                //Toast typ "detta ger ingen poäng, tryck igen för att stryka"
+            }else{
+                //Toast typ "detta ger dig $ones poäng på ettor, tryck igen för att verifiera.
+            }
+
+        }else if (ones == 0){
+            //Toast typ ok, ettor struken
+            scoreSheet[0].points = 0
+        }else{
+            //Toast typ ok, x poäng på ettor
+            scoreSheet[0].points = ones
         }
-        scoreSheet[0].points = ones
+
+
     }
     /*
     fun setOnePair(){
