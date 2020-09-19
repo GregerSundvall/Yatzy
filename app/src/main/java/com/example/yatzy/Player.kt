@@ -10,24 +10,49 @@ class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
               var reRolls : Int = 2,
               var listOfDice: MutableList<Die> = mutableListOf(),
-              var warning: Int = 0
+              var warning: Int = 0,
+              var warningOnes: Int = 0
 
 ){
 
     fun setOnes() {
-        //Ettor
-        var warning = 0
         var ones = 0
+        warningOnes = 1
         for (die in listOfDice) {
             if (die.currentValue == 1) {
                 ones += 1
             }
         }
+        if(warning == 0 && warningOnes == 1)
+
         if(warning == 0){
             if(ones == 0){
                 //Toast typ "detta ger ingen poäng, tryck igen för att stryka"
             }else{
                 //Toast typ "detta ger dig $ones poäng på ettor, tryck igen för att verifiera.
+            }
+        }else if (ones == 0){
+            //Toast typ ok, ettor struken
+            scoreSheet[0].points = 0
+        }else{
+            //Toast typ ok, x poäng på ettor
+            scoreSheet[0].points = ones
+        }
+    }
+
+    fun setTwos() {
+
+        var twos = 0
+        for (die in listOfDice) {
+            if (die.currentValue == 2) {
+                twos += 1
+            }
+        }
+        if(warning == 0){
+            if(twos == 0){
+                //Toast ingen poäng
+            }else{
+                //Toast hur många poäng
             }
 
         }else if (ones == 0){
@@ -37,7 +62,6 @@ class Player (var name : String,
             //Toast typ ok, x poäng på ettor
             scoreSheet[0].points = ones
         }
-
 
     }
     /*
