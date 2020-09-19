@@ -14,6 +14,8 @@ class GamePlayActivity : AppCompatActivity() {
     val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
     val listOfDice: MutableList<Die> = mutableListOf<Die>()
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
+    var nrOfPlayers : Int = 0
+    var roundNumber : Int = 0
     lateinit var currentPlayer :Player
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,44 +93,57 @@ class GamePlayActivity : AppCompatActivity() {
         listOfDieImageViews.add(findViewById(R.id.die4))
         listOfDieImageViews.add(findViewById(R.id.die5))
 
-        currentPlayer = listOfPlayers[0]
-        rollAll()
 
-        Log.d("!!!","${currentPlayer.reRolls}")
+
+        currentPlayer = listOfPlayers[0]
+        startRound()
+
     }
 
+    fun startRound(){
+        nextPlayer()
+        ++ roundNumber
+        rollAll()
+    }
+
+    fun saveAndContinue(){
+        //add functionality to check and save points here!
+        if(roundNumber < 14){
+            startRound()
+        }else{
+            //start scoreBoard activity
+        }
+    }
+
+    fun nextPlayer(){
+        if(currentPlayer == listOfPlayers.last()){
+            currentPlayer = listOfPlayers[0]
+        }else {
+            currentPlayer = listOfPlayers[+1]
+        }
+    }
 
     //Rolls all dice and sets them not to be rolled
     fun rollAll(){
         for(die in listOfDice){
-            die.roll()
+            die.currentValue =  (1..6).random()
             die.toBeRolled = false
+
         }
-        setDieImage(listOfDice[0], listOfDieImageViews[0])
-        setDieImage(listOfDice[1], listOfDieImageViews[1])
-        setDieImage(listOfDice[2], listOfDieImageViews[2])
-        setDieImage(listOfDice[3], listOfDieImageViews[3])
-        setDieImage(listOfDice[4], listOfDieImageViews[4])
+        setDiceImages()
     }
         //Rolls dice selected for re-roll
     fun reRoll(view: View){
-            Log.d("!!!", "${listOfDice[0].toBeRolled}")
         if(currentPlayer!!.reRolls > 0){
             for(die in listOfDice) {
                 if (die.toBeRolled == true) {
                     die.currentValue =  (1..6).random()
+                    die.toBeRolled = false
                 }
             }
             currentPlayer.reRolls -= 1
         }
-        for(die in listOfDice){
-            die.toBeRolled == false
-        }
-        setDieImage(listOfDice[0], listOfDieImageViews[0])
-        setDieImage(listOfDice[1], listOfDieImageViews[1])
-        setDieImage(listOfDice[2], listOfDieImageViews[2])
-        setDieImage(listOfDice[3], listOfDieImageViews[3])
-        setDieImage(listOfDice[4], listOfDieImageViews[4])
+        setDiceImages()
     }
 
 
@@ -143,6 +158,14 @@ class GamePlayActivity : AppCompatActivity() {
             5 -> dieView.setImageResource(R.drawable.die5)
             6 -> dieView.setImageResource(R.drawable.die6)
         }
+    }
+
+    fun setDiceImages(){
+        setDieImage(listOfDice[0], listOfDieImageViews[0])
+        setDieImage(listOfDice[1], listOfDieImageViews[1])
+        setDieImage(listOfDice[2], listOfDieImageViews[2])
+        setDieImage(listOfDice[3], listOfDieImageViews[3])
+        setDieImage(listOfDice[4], listOfDieImageViews[4])
     }
 
     fun selectDie1(view: View){
