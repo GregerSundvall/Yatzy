@@ -10,34 +10,6 @@ class Player (var name : String,
               var reRolls : Int = 2
 
 ){/*
-    fun addDice() {
-        for (i in 1..5) {
-            listOfDice.add(Die())
-        }
-    }
-
-    fun rollAll(){
-        for (die in listOfDice){
-            die.rollDie()
-        }
-    }
-
-    fun setupScoreSheet(){
-        //for(score in 1..18){
-        //    scoreSheet.add(0)
-        //}
-        scoreSheet[6] = scoreSheet[0+1+2+3+4+5]
-
-        if(scoreSheet[6] >= 63){
-            scoreSheet[7] = 50
-        }
-
-        if(scoreSheet[16] > 0) {
-            scoreSheet[16] = 50
-        }
-
-        scoreSheet[17] = scoreSheet[7+8+9+10+11+12+13+14+15+16+17]
-    }
 
     fun setOnes() {
         //Ettor
