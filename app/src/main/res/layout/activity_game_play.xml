@@ -111,7 +111,7 @@
         android:layout_marginTop="5dp"
         android:text="@string/tap_die_to_reroll"
         android:textColor="#FFFFFF"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/reRollButton"
         app:layout_constraintTop_toTopOf="@+id/reRollButton" />
 
@@ -123,7 +123,7 @@
         android:layout_marginBottom="5dp"
         android:text="@string/where"
         android:textColor="#FFFFFF"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toStartOf="@+id/button2" />
 
@@ -132,6 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
+        android:onClick="savePoints"
         android:text="@string/save"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent" />

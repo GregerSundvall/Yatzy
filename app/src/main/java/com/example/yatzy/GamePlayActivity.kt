@@ -95,23 +95,26 @@ class GamePlayActivity : AppCompatActivity() {
         listOfDieImageViews.add(findViewById(R.id.die4))
         listOfDieImageViews.add(findViewById(R.id.die5))
 
+        currentPlayer = listOfPlayers[0]
         nameTextView = findViewById(R.id.whoIsPlayingTextView)
 
-        currentPlayer = listOfPlayers[0]
         startRound()
 
     }
 
     fun startRound(){
-        ++ roundNumber
         nameTextView.text = getString(R.string.name_is_playing, currentPlayer.name)
         rollAll()
     }
 
-    fun saveAndContinue(){
+    fun savePoints(view: View){
         //add functionality to check and save points here!
+        nextPlayer()
+        newRoundOrScoreboard()
+    }
+
+    fun newRoundOrScoreboard(){
         if(roundNumber < 14){
-            nextPlayer()
             startRound()
         }else{
             //start scoreBoard activity
@@ -121,6 +124,7 @@ class GamePlayActivity : AppCompatActivity() {
     fun nextPlayer(){
         if(currentPlayer == listOfPlayers.last()){
             currentPlayer = listOfPlayers[0]
+            roundNumber += 1
         }else {
             currentPlayer = listOfPlayers[+1]
         }
