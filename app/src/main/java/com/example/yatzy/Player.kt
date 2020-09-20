@@ -17,53 +17,66 @@ class Player (var name : String,
 
     fun setOnes() {
         var ones = 0
-        warningOnes = 1
         for (die in listOfDice) {
             if (die.currentValue == 1) {
                 ones += 1
             }
         }
-        if(warning == 0 && warningOnes == 1)
-
-        if(warning == 0){
-            if(ones == 0){
-                //Toast typ "detta ger ingen poäng, tryck igen för att stryka"
-            }else{
-                //Toast typ "detta ger dig $ones poäng på ettor, tryck igen för att verifiera.
-            }
-        }else if (ones == 0){
-            //Toast typ ok, ettor struken
-            scoreSheet[0].points = 0
-        }else{
-            //Toast typ ok, x poäng på ettor
-            scoreSheet[0].points = ones
-        }
+        scoreSheet[0].points = ones
     }
 
     fun setTwos() {
-
         var twos = 0
         for (die in listOfDice) {
             if (die.currentValue == 2) {
-                twos += 1
+                twos += 2
             }
         }
-        if(warning == 0){
-            if(twos == 0){
-                //Toast ingen poäng
-            }else{
-                //Toast hur många poäng
-            }
-
-        }else if (ones == 0){
-            //Toast typ ok, ettor struken
-            scoreSheet[0].points = 0
-        }else{
-            //Toast typ ok, x poäng på ettor
-            scoreSheet[0].points = ones
-        }
-
+        scoreSheet[1].points = twos
     }
+
+    fun setThrees() {
+        var threes = 0
+        for (die in listOfDice) {
+            if (die.currentValue == 3) {
+                threes += 3
+            }
+        }
+        scoreSheet[2].points = threes
+    }
+
+    fun setFours() {
+        var fours = 0
+        for (die in listOfDice) {
+            if (die.currentValue == 4) {
+                fours += 4
+            }
+        }
+        scoreSheet[3].points = fours
+    }
+
+    fun setFives() {
+        var fives = 0
+        for (die in listOfDice) {
+            if (die.currentValue == 5) {
+                fives += 5
+            }
+        }
+        scoreSheet[4].points = fives
+    }
+
+    fun setSixes() {
+        var sixes = 0
+        for (die in listOfDice) {
+            if (die.currentValue == 6) {
+                sixes += 6
+            }
+        }
+        scoreSheet[5].points = sixes
+    }
+
+
+
     /*
     fun setOnePair(){
         val listOfPairs :MutableList<Int> = mutableListOf()
