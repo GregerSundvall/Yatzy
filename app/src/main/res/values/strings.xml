@@ -7,7 +7,7 @@
     <string name="fivePlayers">5  SPELARE</string>
     <string name="sixPlayers">6  SPELARE</string>
     <string name="name_is_playing">%1$s is playing</string>
-    <string name="tap_die_to_reroll">Tap to select dice to re-roll</string>
+    <string name="tap_die_to_reroll">Tap to select dice for re-roll</string>
     <string name="where">Tap to select bracket below</string>
     <string name="reRoll">Re-roll</string>
     <string name="save">Save</string>
