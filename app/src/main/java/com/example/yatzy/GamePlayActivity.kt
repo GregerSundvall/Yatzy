@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_game_play.*
+import kotlinx.android.synthetic.main.activity_scoreboard.*
 
 class GamePlayActivity : AppCompatActivity() {
 
@@ -122,11 +123,31 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
     fun startRound(){
-        findViewById<TextView>(R.id.whoIsPlayingTextView).text = currentPlayer.name
+        var whoIsPlaying = findViewById<TextView>(R.id.whoIsPlayingTextView)
+        whoIsPlaying.text = getString(R.string.whoIsPlaying, currentPlayer.name)
         showHideButtons()
+        showPlayerPoints()
         rollAll()
     }
 
+    fun showPlayerPoints(){
+        findViewById<TextView>(R.id.onesTextView).text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
+        findViewById<TextView>(R.id.twosTextView).text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
+        findViewById<TextView>(R.id.threesTextView).text = getString(R.string.threesPoints, currentPlayer.scoreSheet[2].points.toString())
+        findViewById<TextView>(R.id.foursTextView).text = getString(R.string.foursPoints, currentPlayer.scoreSheet[3].points.toString())
+        findViewById<TextView>(R.id.fivesTextView).text = getString(R.string.fivesPoints, currentPlayer.scoreSheet[4].points.toString())
+        findViewById<TextView>(R.id.sixesTextView).text = getString(R.string.sixesPoints, currentPlayer.scoreSheet[5].points.toString())
+        findViewById<TextView>(R.id.onePairTextView).text = getString(R.string.onePairPoints, currentPlayer.scoreSheet[8].points.toString())
+        findViewById<TextView>(R.id.twoPairsTextView).text = getString(R.string.twoPairsPoints, currentPlayer.scoreSheet[9].points.toString())
+        findViewById<TextView>(R.id.tripsTextView).text = getString(R.string.tripsPoints, currentPlayer.scoreSheet[10].points.toString())
+        findViewById<TextView>(R.id.fourOfAKindTextView).text = getString(R.string.fourOfAKindPoints, currentPlayer.scoreSheet[11].points.toString())
+        findViewById<TextView>(R.id.fullHouseTextView).text = getString(R.string.fullHousePoints, currentPlayer.scoreSheet[12].points.toString())
+        findViewById<TextView>(R.id.smStraightTextView).text = getString(R.string.smStraightPoints, currentPlayer.scoreSheet[13].points.toString())
+        findViewById<TextView>(R.id.lgStraightTextView).text = getString(R.string.lgStraightPoints, currentPlayer.scoreSheet[14].points.toString())
+        findViewById<TextView>(R.id.chanceTextView).text = getString(R.string.chancePoints, currentPlayer.scoreSheet[15].points.toString())
+        findViewById<TextView>(R.id.yatzyTextView).text = getString(R.string.yatzyPoints, currentPlayer.scoreSheet[16].points.toString())
+
+    }
 
     fun showHideButtons(){
         val viewOnes = findViewById<Button>(R.id.buttonOnes)

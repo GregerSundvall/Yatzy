@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/buttonOnePair"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/onePair"
         app:layout_constraintBottom_toTopOf="@+id/buttonFourOfAKind"
         app:layout_constraintStart_toStartOf="parent" />
@@ -27,7 +27,7 @@
     <Button
         android:id="@+id/reRollButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:onClick="reRoll"
@@ -104,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/name_is_playing"
+        android:text="@string/whoIsPlaying"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/save_as"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/buttonTwos"
@@ -137,72 +137,73 @@
     <Button
         android:id="@+id/buttonOnes"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:onClick="saveOnes"
         android:text="@string/ones"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/buttonFours"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonThrees"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/threes"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintBottom_toBottomOf="@+id/twosTextView"
+        app:layout_constraintEnd_toStartOf="@+id/threesTextView"
+        app:layout_constraintTop_toTopOf="@+id/twosTextView" />
 
     <Button
         android:id="@+id/buttonFours"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/fours"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/buttonTrips"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonFives"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/fives"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@+id/foursTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/foursTextView" />
 
     <Button
         android:id="@+id/buttonSixes"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/sixes"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
+        app:layout_constraintBottom_toBottomOf="@+id/fivesTextView"
+        app:layout_constraintEnd_toStartOf="@+id/sixesTextView"
+        app:layout_constraintTop_toTopOf="@+id/fivesTextView" />
 
     <Button
         android:id="@+id/buttonTwos"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/twos"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toBottomOf="@+id/onesTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/onesTextView" />
 
     <Button
         android:id="@+id/buttonTwoPairs"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/twoPairs"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
+        app:layout_constraintBottom_toBottomOf="@+id/onePairTextView"
+        app:layout_constraintEnd_toStartOf="@+id/twoPairsTextView"
+        app:layout_constraintTop_toTopOf="@+id/onePairTextView" />
 
     <Button
         android:id="@+id/buttonTrips"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/trips"
         app:layout_constraintBottom_toTopOf="@+id/buttonOnePair"
         app:layout_constraintStart_toStartOf="parent" />
@@ -210,16 +211,16 @@
     <Button
         android:id="@+id/buttonFullHouse"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/fullHouse"
-        app:layout_constraintBottom_toBottomOf="@+id/textView12"
-        app:layout_constraintEnd_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/textView12" />
+        app:layout_constraintBottom_toBottomOf="@+id/fourOfAKindTextView"
+        app:layout_constraintEnd_toStartOf="@+id/fullHouseTextView"
+        app:layout_constraintTop_toTopOf="@+id/fourOfAKindTextView" />
 
     <Button
         android:id="@+id/buttonSmallStraight"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/SmallStraight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -227,44 +228,45 @@
     <Button
         android:id="@+id/buttonYatzy"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/yatzy"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintBottom_toBottomOf="@+id/chanceTextView"
+        app:layout_constraintEnd_toStartOf="@+id/yatzyTextView"
+        app:layout_constraintTop_toTopOf="@+id/chanceTextView" />
 
     <Button
         android:id="@+id/buttonLargeStraight"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/LargeStraight"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintEnd_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
+        app:layout_constraintBottom_toBottomOf="@+id/smStraightTextView"
+        app:layout_constraintEnd_toStartOf="@+id/lgStraightTextView"
+        app:layout_constraintTop_toTopOf="@+id/smStraightTextView" />
 
     <Button
         android:id="@+id/buttonChance"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/Chance"
-        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintBottom_toBottomOf="@+id/tripsTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/tripsTextView" />
 
     <Button
         android:id="@+id/buttonFourOfAKind"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/FourOfAKind"
         app:layout_constraintBottom_toTopOf="@+id/buttonSmallStraight"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/foursTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/foursPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonFours"
@@ -272,10 +274,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonFours" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/twosTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/twosPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonTwos"
@@ -283,10 +286,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonTwos" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/fivesTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/fivesPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonFives"
@@ -294,10 +298,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonFives" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/sixesTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/sixesPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonSixes"
@@ -305,10 +310,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonSixes" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tripsTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/tripsPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonTrips"
@@ -316,10 +322,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonTrips" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/onePairTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/onePairPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonOnePair"
@@ -327,10 +334,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonOnePair" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/twoPairsTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/twoPairsPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonTwoPairs"
@@ -338,10 +346,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonTwoPairs" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/fullHouseTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/fullHousePoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonFullHouse"
@@ -349,10 +358,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonFullHouse" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/lgStraightTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/lgStraightPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonLargeStraight"
@@ -360,10 +370,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonLargeStraight" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/fourOfAKindTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/fourOfAKindPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonFourOfAKind"
@@ -371,10 +382,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonFourOfAKind" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/smStraightTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/smStraightPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonSmallStraight"
@@ -382,10 +394,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonSmallStraight" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/chanceTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/chancePoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonChance"
@@ -393,10 +406,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonChance" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/yatzyTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/yatzyPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonYatzy"
@@ -404,10 +418,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonYatzy" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/threesTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/threesPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonThrees"
@@ -415,10 +430,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonThrees" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/onesTextView"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="30"
+        android:text="@string/onesPoints"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonOnes"
