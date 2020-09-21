@@ -24,7 +24,7 @@ class Player (var name : String,
             }
         }
         scoreSheet[0].points = ones
-        score += ones
+        scoreSheet[0].visible = false
     }
 
     fun setTwos() {

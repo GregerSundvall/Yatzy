@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -14,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_game_play.*
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
-    //val listOfDice: MutableList<Die> = mutableListOf<Die>()
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var nrOfPlayers : Int = 0
     var roundNumber : Int = 0
@@ -28,10 +28,42 @@ class GamePlayActivity : AppCompatActivity() {
         //Adds received list of player names to players list
         var listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
         if (listOfPlayerNames != null) {
-            for (playerName in listOfPlayerNames) {
-                listOfPlayers.add(Player("$playerName"))
+            for (name in listOfPlayerNames) {
+                listOfPlayers.add(Player(name))
             }
         }
+
+        setupScoresheet()
+        setupDice()
+        setupListOfDieImageViews()
+
+        currentPlayer = listOfPlayers[0]
+
+
+        startRound()
+
+    }
+
+    fun setupListOfDieImageViews(){
+        //adds die imageviews to list
+        listOfDieImageViews.add(findViewById(R.id.die1))
+        listOfDieImageViews.add(findViewById(R.id.die2))
+        listOfDieImageViews.add(findViewById(R.id.die3))
+        listOfDieImageViews.add(findViewById(R.id.die4))
+        listOfDieImageViews.add(findViewById(R.id.die5))
+
+    }
+
+    fun setupDice(){
+        //Creates and adds a set of dice for each player
+        for(player in listOfPlayers) {
+            for (i in 1..5) {
+                player.listOfDice.add(Die())
+            }
+        }
+    }
+
+    fun setupScoresheet(){
         //Sets up a scoresheet for each player
         for (player in listOfPlayers) {
             player.scoreSheet.add(Score(1, "Aces"))
@@ -79,45 +111,95 @@ class GamePlayActivity : AppCompatActivity() {
             player.scoreSheet.add(Score(15, "LG straight"))
         }
         for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(16, "Yahtzee"))
+            player.scoreSheet.add(Score(16, "Chance"))
         }
         for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(17, "Total"))
+            player.scoreSheet.add(Score(17, "Yahtzee"))
         }
-        //Creates and adds a set of dice for each player
-        for(player in listOfPlayers) {
-            for (i in 1..5) {
-                player.listOfDice.add(Die())
-            }
+        for (player in listOfPlayers) {
+            player.scoreSheet.add(Score(18, "Total"))
         }
-        //adds die imageviews to list
-        listOfDieImageViews.add(findViewById(R.id.die1))
-        listOfDieImageViews.add(findViewById(R.id.die2))
-        listOfDieImageViews.add(findViewById(R.id.die3))
-        listOfDieImageViews.add(findViewById(R.id.die4))
-        listOfDieImageViews.add(findViewById(R.id.die5))
-
-        currentPlayer = listOfPlayers[0]
-        nameTextView = findViewById(R.id.whoIsPlayingTextView)
-
-        startRound()
-
     }
 
     fun startRound(){
-        nameTextView.text = getString(R.string.name_is_playing, currentPlayer.name)
+        findViewById<TextView>(R.id.whoIsPlayingTextView).text = currentPlayer.name
+        showHideButtons()
         rollAll()
+    }
+
+
+    fun showHideButtons(){
+        val viewOnes = findViewById<Button>(R.id.buttonOnes)
+        val viewTwos = findViewById<Button>(R.id.buttonTwos)
+        val viewThrees = findViewById<Button>(R.id.buttonThrees)
+        val viewFours = findViewById<Button>(R.id.buttonFours)
+        val viewFives = findViewById<Button>(R.id.buttonFives)
+        val viewSixes = findViewById<Button>(R.id.buttonSixes)
+        val viewOnePair = findViewById<Button>(R.id.buttonOnePair)
+        val viewTwoPairs = findViewById<Button>(R.id.buttonTwoPairs)
+        val viewTrips = findViewById<Button>(R.id.buttonTrips)
+        val viewFourOfAKind = findViewById<Button>(R.id.buttonFourOfAKind)
+        val viewFullHouse = findViewById<Button>(R.id.buttonFullHouse)
+        val viewSmStraight = findViewById<Button>(R.id.buttonSmallStraight)
+        val viewLgStraight = findViewById<Button>(R.id.buttonLargeStraight)
+        val viewChance = findViewById<Button>(R.id.buttonChance)
+        val viewYatzy = findViewById<Button>(R.id.buttonYatzy)
+
+        if(currentPlayer.scoreSheet[0].visible == false) {
+            viewOnes.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[1].visible == false) {
+            viewTwos.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[2].visible == false) {
+            viewThrees.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[3].visible == false) {
+            viewFours.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[4].visible == false) {
+            viewFives.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[5].visible == false) {
+            viewSixes.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[8].visible == false) {
+            viewOnePair.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[9].visible == false) {
+            viewTwoPairs.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[10].visible == false) {
+            viewTrips.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[11].visible == false) {
+            viewFourOfAKind.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[12].visible == false) {
+            viewFullHouse.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[13].visible == false) {
+            viewSmStraight.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[14].visible == false) {
+            viewLgStraight.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[15].visible == false) {
+            viewChance.visibility = View.INVISIBLE
+        }
+        if(currentPlayer.scoreSheet[16].visible == false) {
+            viewYatzy.visibility = View.INVISIBLE
+        }
     }
 
     fun saveOnes(view: View){
         currentPlayer.setOnes()
-        //view.visibility = View.INVISIBLE
         nextPlayer()
         newRoundOrScoreboard()
     }
 
     fun newRoundOrScoreboard(){
-        if(roundNumber < 1){
+        if(roundNumber < 2){
             startRound()
         }else{
             startScoreboardActivity()
