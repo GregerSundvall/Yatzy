@@ -150,71 +150,61 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
     fun showHideButtons(){
-        val viewOnes = findViewById<Button>(R.id.buttonOnes)
-        val viewTwos = findViewById<Button>(R.id.buttonTwos)
-        val viewThrees = findViewById<Button>(R.id.buttonThrees)
-        val viewFours = findViewById<Button>(R.id.buttonFours)
-        val viewFives = findViewById<Button>(R.id.buttonFives)
-        val viewSixes = findViewById<Button>(R.id.buttonSixes)
-        val viewOnePair = findViewById<Button>(R.id.buttonOnePair)
-        val viewTwoPairs = findViewById<Button>(R.id.buttonTwoPairs)
-        val viewTrips = findViewById<Button>(R.id.buttonTrips)
-        val viewFourOfAKind = findViewById<Button>(R.id.buttonFourOfAKind)
-        val viewFullHouse = findViewById<Button>(R.id.buttonFullHouse)
-        val viewSmStraight = findViewById<Button>(R.id.buttonSmallStraight)
-        val viewLgStraight = findViewById<Button>(R.id.buttonLargeStraight)
-        val viewChance = findViewById<Button>(R.id.buttonChance)
-        val viewYatzy = findViewById<Button>(R.id.buttonYatzy)
-
+        //Hides buttons for already used slots
         if(currentPlayer.scoreSheet[0].visible == false) {
-            viewOnes.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[1].visible == false) {
-            viewTwos.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[2].visible == false) {
-            viewThrees.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonThrees).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[3].visible == false) {
-            viewFours.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFours).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[4].visible == false) {
-            viewFives.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFives).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[5].visible == false) {
-            viewSixes.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonSixes).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[8].visible == false) {
-            viewOnePair.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonOnePair).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[9].visible == false) {
-            viewTwoPairs.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonTwoPairs).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[10].visible == false) {
-            viewTrips.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonTrips).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[11].visible == false) {
-            viewFourOfAKind.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[12].visible == false) {
-            viewFullHouse.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFullHouse).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[13].visible == false) {
-            viewSmStraight.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonSmallStraight).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[14].visible == false) {
-            viewLgStraight.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonLargeStraight).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[15].visible == false) {
-            viewChance.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonChance).visibility = View.INVISIBLE
         }
         if(currentPlayer.scoreSheet[16].visible == false) {
-            viewYatzy.visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonYatzy).visibility = View.INVISIBLE
         }
     }
 
     fun saveOnes(view: View){
         currentPlayer.setOnes()
+        nextPlayer()
+        newRoundOrScoreboard()
+    }
+    fun saveTwos(view: View){
+        currentPlayer.setTwos()
         nextPlayer()
         newRoundOrScoreboard()
     }
