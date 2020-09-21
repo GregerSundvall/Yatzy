@@ -23,4 +23,9 @@
     <string name="twoPairs">Two Pairs</string>
     <string name="trips">Trips</string>
     <string name="results">Results</string>
+    <string name="fullHouse">Full house</string>
+    <string name="SmallStraight">Sm straight</string>
+    <string name="LargeStraight">Lg straight</string>
+    <string name="Chance">Chance</string>
+    <string name="FourOfAKind">4 of a kind</string>
 </resources>
