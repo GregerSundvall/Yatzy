@@ -140,6 +140,7 @@
         android:layout_height="wrap_content"
         android:onClick="saveOnes"
         android:text="@string/ones"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/buttonFours"
         app:layout_constraintStart_toStartOf="parent" />
 

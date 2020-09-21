@@ -28,4 +28,8 @@
     <string name="LargeStraight">Lg straight</string>
     <string name="Chance">Chance</string>
     <string name="FourOfAKind">4 of a kind</string>
+    <string name="player1Name">%1$s</string>
+    <string name="player1Score">%1$s</string>
+    <string name="player2Name">%1$s</string>
+    <string name="player2Score">%1$s</string>
 </resources>

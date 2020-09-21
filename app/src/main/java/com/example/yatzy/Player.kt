@@ -11,7 +11,8 @@ class Player (var name : String,
               var reRolls : Int = 2,
               var listOfDice: MutableList<Die> = mutableListOf(),
               var warning: Int = 0,
-              var warningOnes: Int = 0
+              var warningOnes: Int = 0,
+              var score :Int = 0
 
 ){
 
