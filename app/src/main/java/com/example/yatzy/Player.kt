@@ -10,8 +10,8 @@ class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
               var reRolls : Int = 2,
               var listOfDice: MutableList<Die> = mutableListOf(),
-              var warning: Int = 0,
-              var warningOnes: Int = 0,
+              //var warning: Int = 0,
+              //var warningOnes: Int = 0,
               var score :Int = 0
 
 ){
@@ -24,6 +24,7 @@ class Player (var name : String,
             }
         }
         scoreSheet[0].points = ones
+        score += ones
     }
 
     fun setTwos() {

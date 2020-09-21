@@ -125,7 +125,13 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
     fun startScoreboardActivity()   {
+        var scoreboardList :ArrayList<String> = arrayListOf()
+        for(player in listOfPlayers){
+            scoreboardList.add(player.name)
+            scoreboardList.add(player.score.toString())
+        }
         val intent = Intent(this, ScoreboardActivity::class.java)
+        intent.putStringArrayListExtra("scoreboardList", scoreboardList)
         startActivity(intent)
 
     }
