@@ -11,4 +11,16 @@
     <string name="where">Tap to select bracket below</string>
     <string name="reRoll">Re-roll</string>
     <string name="save">Save</string>
+    <string name="save_as">Save as:</string>
+    <string name="ones">Ones</string>
+    <string name="twos">Twos</string>
+    <string name="threes">Threes</string>
+    <string name="fours">Fours</string>
+    <string name="fives">Fives</string>
+    <string name="sixes">Sixes</string>
+    <string name="yatzy">Yatzy</string>
+    <string name="onePair">One pair</string>
+    <string name="twoPairs">Two Pairs</string>
+    <string name="trips">Trips</string>
+    <string name="results">Results</string>
 </resources>

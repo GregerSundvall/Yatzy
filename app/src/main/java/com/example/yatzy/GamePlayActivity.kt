@@ -1,5 +1,6 @@
 package com.example.yatzy
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -108,20 +109,25 @@ class GamePlayActivity : AppCompatActivity() {
         rollAll()
     }
 
-    fun savePoints(view: View){
-        //add functionality to check and save points here!
-
-
+    fun saveOnes(view: View){
+        currentPlayer.setOnes()
+        //view.visibility = View.INVISIBLE
         nextPlayer()
         newRoundOrScoreboard()
     }
 
     fun newRoundOrScoreboard(){
-        if(roundNumber < 14){
+        if(roundNumber < 1){
             startRound()
         }else{
-            //start scoreBoard activity
+            startScoreboardActivity()
         }
+    }
+
+    fun startScoreboardActivity()   {
+        val intent = Intent(this, ScoreboardActivity::class.java)
+        startActivity(intent)
+
     }
 
     fun nextPlayer(){
