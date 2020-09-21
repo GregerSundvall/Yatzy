@@ -10,8 +10,6 @@ class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
               var reRolls : Int = 2,
               var listOfDice: MutableList<Die> = mutableListOf(),
-              //var warning: Int = 0,
-              //var warningOnes: Int = 0,
               var score :Int = 0
 
 ){
@@ -35,6 +33,7 @@ class Player (var name : String,
             }
         }
         scoreSheet[1].points = twos
+        scoreSheet[1].visible = false
     }
 
     fun setThrees() {
@@ -45,6 +44,7 @@ class Player (var name : String,
             }
         }
         scoreSheet[2].points = threes
+        scoreSheet[2].visible = false
     }
 
     fun setFours() {
@@ -55,6 +55,7 @@ class Player (var name : String,
             }
         }
         scoreSheet[3].points = fours
+        scoreSheet[3].visible = false
     }
 
     fun setFives() {
@@ -65,6 +66,7 @@ class Player (var name : String,
             }
         }
         scoreSheet[4].points = fives
+        scoreSheet[4].visible = false
     }
 
     fun setSixes() {
@@ -75,99 +77,89 @@ class Player (var name : String,
             }
         }
         scoreSheet[5].points = sixes
+        scoreSheet[5].visible = false
     }
 
-
-
-    /*
     fun setOnePair(){
-        val listOfPairs :MutableList<Int> = mutableListOf()
-        if(listOfDice[0].currentValue == listOfDice[1].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[1].currentValue)
+        var points = 0
+        val listOfValues : MutableList <Int> = mutableListOf()
+        listOfValues.add(listOfDice[0].currentValue)
+        listOfValues.add(listOfDice[1].currentValue)
+        listOfValues.add(listOfDice[2].currentValue)
+        listOfValues.add(listOfDice[3].currentValue)
+        listOfValues.add(listOfDice[4].currentValue)
+        listOfValues.sortDescending()
+        if(listOfValues[0] == listOfValues[1]){
+            points = listOfValues[0] + listOfValues[1]
+        }else if(listOfValues[1] == listOfValues[2]){
+            points = listOfValues[1] + listOfValues[2]
+        }else if(listOfValues[2] == listOfValues[3]){
+            points = listOfValues[2] + listOfValues[3]
+        }else if(listOfValues[3] == listOfValues[4]){
+            points = listOfValues[3] + listOfValues[4]
         }
-        if(listOfDice[0].currentValue == listOfDice[2].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[2].currentValue)
-        }
-        if(listOfDice[0].currentValue == listOfDice[3].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[3].currentValue)
-        }
-        if(listOfDice[0].currentValue == listOfDice[4].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[4].currentValue)
-        }
-        if(listOfDice[1].currentValue == listOfDice[2].currentValue) {
-            listOfPairs.add (listOfDice[1].currentValue + listOfDice[2].currentValue)
-        }
-        if(listOfDice[1].currentValue == listOfDice[3].currentValue){
-            listOfPairs.add (listOfDice[1].currentValue + listOfDice[3].currentValue)
-        }
-        if(listOfDice[1].currentValue == listOfDice[4].currentValue){
-            listOfPairs.add (listOfDice[1].currentValue + listOfDice[4].currentValue)
-        }
-        if(listOfDice[2].currentValue == listOfDice[3].currentValue) {
-            listOfPairs.add (listOfDice[2].currentValue + listOfDice[3].currentValue)
-        }
-        if(listOfDice[2].currentValue == listOfDice[4].currentValue) {
-            listOfPairs.add (listOfDice[2].currentValue + listOfDice[4].currentValue)
-        }
-        if(listOfDice[3].currentValue == listOfDice[4].currentValue) {
-            listOfPairs.add (listOfDice[3].currentValue + listOfDice[4].currentValue)
-        }
-        listOfPairs.sortDescending()
-        if(listOfPairs[0] == 0){
-         //Detta ger ingen poäng. Stryka?
-            }else {
-            scoreSheet[8] = listOfPairs[0]
-            }
-        }
+        scoreSheet[8].points = points
+        scoreSheet[8].visible = false
+    }
 
     fun setTwoPairs(){
-        val listOfPairs :MutableList<Int> = mutableListOf()
-        if(listOfDice[0].currentValue == listOfDice[1].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[1].currentValue)
-        }
-        if(listOfDice[0].currentValue == listOfDice[2].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[2].currentValue)
-        }
-        if(listOfDice[0].currentValue == listOfDice[3].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[3].currentValue)
-        }
-        if(listOfDice[0].currentValue == listOfDice[4].currentValue){
-            listOfPairs.add (listOfDice[0].currentValue + listOfDice[4].currentValue)
-        }
-        if(listOfDice[1].currentValue == listOfDice[2].currentValue) {
-            listOfPairs.add (listOfDice[1].currentValue + listOfDice[2].currentValue)
-        }
-        if(listOfDice[1].currentValue == listOfDice[3].currentValue){
-            listOfPairs.add (listOfDice[1].currentValue + listOfDice[3].currentValue)
-        }
-        if(listOfDice[1].currentValue == listOfDice[4].currentValue){
-            listOfPairs.add (listOfDice[1].currentValue + listOfDice[4].currentValue)
-        }
-        if(listOfDice[2].currentValue == listOfDice[3].currentValue) {
-            listOfPairs.add (listOfDice[2].currentValue + listOfDice[3].currentValue)
-        }
-        if(listOfDice[2].currentValue == listOfDice[4].currentValue) {
-            listOfPairs.add (listOfDice[2].currentValue + listOfDice[4].currentValue)
-        }
-        if(listOfDice[3].currentValue == listOfDice[4].currentValue) {
-            listOfPairs.add (listOfDice[3].currentValue + listOfDice[4].currentValue)
-        }
-        listOfPairs.sortDescending()
-        if(listOfPairs.size <2){
-            //Detta ger ingen poäng. Stryka?
-        }else {
-            scoreSheet[8] = listOfPairs[0+1]
-
-        }
-    }
-
-    fun trips(){
-        val listOfTrips: MutableList<Int> = mutableListOf()
-        if(listOfDice[0].currentValue == listOfDice[1].currentValue){
-            if(listOfDice[0].currentValue == listOfDice[2].currentValue){
-
+        var points = 0
+        val listOfPairs : MutableList<Int> = mutableListOf()
+        val listOfValues : MutableList <Int> = mutableListOf()
+        listOfValues.add(listOfDice[0].currentValue)
+        listOfValues.add(listOfDice[1].currentValue)
+        listOfValues.add(listOfDice[2].currentValue)
+        listOfValues.add(listOfDice[3].currentValue)
+        listOfValues.add(listOfDice[4].currentValue)
+        listOfValues.sortDescending()
+        if(listOfValues[0] == listOfValues[1]){
+            listOfPairs.add(listOfValues [0] + listOfValues[1])
+            if(listOfValues[2] == listOfValues[3]){
+                listOfPairs.add(listOfValues[2] + listOfValues[3])
+            }else if(listOfValues[3] == listOfValues[4]){
+                listOfPairs.add(listOfValues[3] + listOfValues [4])
+            }
+        }else if(listOfValues[1] == listOfValues[2]){
+            listOfPairs.add(listOfValues[1] + listOfValues[2])
+            if(listOfValues[3] == listOfValues[4]){
+                listOfPairs.add(listOfValues[3] + listOfValues[4])
             }
         }
+        if(listOfPairs.size == 2){
+            points = listOfPairs[0] + listOfPairs[1]
+        }
+        scoreSheet[9].points = points
     }
-*/
+
+    fun setTrips(){
+        var points = 0
+        val listOfValues : MutableList <Int> = mutableListOf()
+        listOfValues.add(listOfDice[0].currentValue)
+        listOfValues.add(listOfDice[1].currentValue)
+        listOfValues.add(listOfDice[2].currentValue)
+        listOfValues.add(listOfDice[3].currentValue)
+        listOfValues.add(listOfDice[4].currentValue)
+        listOfValues.sortDescending()
+        if(listOfValues[0] == listOfValues[1] && listOfValues[0] == listOfValues[2]){
+            points = listOfValues[0] + listOfValues[1] + listOfValues[2]
+        }else if(listOfValues[1] == listOfValues[2] && listOfValues[1] == listOfValues[3]){
+            points = listOfValues[1] + listOfValues[2] + listOfValues[3]
+        }else if(listOfValues[2] == listOfValues[3] && listOfValues[2] == listOfValues[4]){
+            points = listOfValues[2] + listOfValues[3] + listOfValues[4]
+        }
+        scoreSheet[10].points = points
+    }
+
+    fun setFourOfAKind(){
+        var points = 0
+        val listOfValues : MutableList <Int> = mutableListOf()
+        listOfValues.add(listOfDice[0].currentValue)
+        listOfValues.add(listOfDice[1].currentValue)
+        listOfValues.add(listOfDice[2].currentValue)
+        listOfValues.add(listOfDice[3].currentValue)
+        listOfValues.add(listOfDice[4].currentValue)
+        listOfValues.sortDescending()
+    }
+
+
 }
