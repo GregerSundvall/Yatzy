@@ -18,7 +18,7 @@ class GamePlayActivity : AppCompatActivity() {
     val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var nrOfPlayers : Int = 0
-    var roundNumber : Int = 0
+    var currentRound : Int = 0
     lateinit var currentPlayer :Player
     lateinit var nameTextView : TextView
 
@@ -37,14 +37,29 @@ class GamePlayActivity : AppCompatActivity() {
         setupScoresheet()
         setupDice()
         setupListOfDieImageViews()
-
         currentPlayer = listOfPlayers[0]
 
-
-        startRound()
-
+        nextTurn()
     }
 
+    fun nextTurn(){
+        if(currentRound == 14 && currentPlayer == listOfPlayers.last()){
+            startScoreboardActivity()
+        }
+        if(currentPlayer == listOfPlayers.first()){
+            currentRound += 1
+        }
+        if(currentPlayer == listOfPlayers.last()){
+            currentPlayer = listOfPlayers[0]
+        }else{
+            currentPlayer = listOfPlayers[+1]
+        }
+        //var whoIsPlaying = findViewById<TextView>(R.id.whoIsPlayingTextView)
+        findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
+        showHideButtons()
+        showPlayerPoints()
+        rollAll()
+    }
     fun setupListOfDieImageViews(){
         //adds die imageviews to list
         listOfDieImageViews.add(findViewById(R.id.die1))
@@ -122,14 +137,6 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-    fun startRound(){
-        var whoIsPlaying = findViewById<TextView>(R.id.whoIsPlayingTextView)
-        whoIsPlaying.text = getString(R.string.whoIsPlaying, currentPlayer.name)
-        showHideButtons()
-        showPlayerPoints()
-        rollAll()
-    }
-
     fun showPlayerPoints(){
         findViewById<TextView>(R.id.onesTextView).text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
         findViewById<TextView>(R.id.twosTextView).text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
@@ -200,23 +207,31 @@ class GamePlayActivity : AppCompatActivity() {
 
     fun saveOnes(view: View){
         currentPlayer.setOnes()
-        nextPlayer()
-        newRoundOrScoreboard()
+        nextTurn()
     }
     fun saveTwos(view: View){
         currentPlayer.setTwos()
-        nextPlayer()
-        newRoundOrScoreboard()
+        nextTurn()
     }
 
-    fun newRoundOrScoreboard(){
-        if(roundNumber < 2){
-            startRound()
-        }else{
-            startScoreboardActivity()
+    fun saveThrees(view: View){
+        currentPlayer.setThrees()
+        nextTurn()
+    }
+
+    fun sumPoints(){
+        for(player in listOfPlayers){
+            player.scoreSheet[6].points = player.scoreSheet[0].points+player.scoreSheet[1].points+player.scoreSheet[2].points+player.scoreSheet[3].points+player.scoreSheet[4].points+player.scoreSheet[5].points
+        }
+        for(player in listOfPlayers){
+            if(player.scoreSheet[6].points >= 63){
+                player.scoreSheet[7].points = 50
+            }
+        }
+        for(player in listOfPlayers){
+            player.scoreSheet[17].points = player.scoreSheet[6].points+player.scoreSheet[7].points+player.scoreSheet[8].points+player.scoreSheet[9].points+player.scoreSheet[10].points+player.scoreSheet[11].points+player.scoreSheet[12].points+player.scoreSheet[13].points+player.scoreSheet[14].points+player.scoreSheet[15].points+player.scoreSheet[16].points
         }
     }
-
     fun startScoreboardActivity()   {
         var scoreboardList :ArrayList<String> = arrayListOf()
         for(player in listOfPlayers){
@@ -229,14 +244,7 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-    fun nextPlayer(){
-        if(currentPlayer == listOfPlayers.last()){
-            currentPlayer = listOfPlayers[0]
-            roundNumber += 1
-        }else {
-            currentPlayer = listOfPlayers[+1]
-        }
-    }
+
 
     //Rolls all dice and sets them not to be rolled
     fun rollAll(){
