@@ -8,23 +8,24 @@ import kotlinx.android.synthetic.main.activity_scoreboard.*
 
 class ScoreboardActivity : AppCompatActivity() {
 
-    var p1TextView = findViewById<TextView>(R.id.name1TextView)
-    var s1TextView = findViewById<TextView>(R.id.score1TextView)
-    var p2TextView = findViewById<TextView>(R.id.name2TextView)
-    var s2TextView = findViewById<TextView>(R.id.score2TextView)
-    var p3TextView = findViewById<TextView>(R.id.name3TextView)
-    var s3TextView = findViewById<TextView>(R.id.score3TextView)
-    var p4TextView = findViewById<TextView>(R.id.name4TextView)
-    var s4TextView = findViewById<TextView>(R.id.score4TextView)
-    var p5TextView = findViewById<TextView>(R.id.name5TextView)
-    var s5TextView = findViewById<TextView>(R.id.score5TextView)
-    var p6TextView = findViewById<TextView>(R.id.name6TextView)
-    var s6TextView = findViewById<TextView>(R.id.score6TextView)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
+
+        var p1TextView = findViewById<TextView>(R.id.name1TextView)
+        var s1TextView = findViewById<TextView>(R.id.score1TextView)
+        var p2TextView = findViewById<TextView>(R.id.name2TextView)
+        var s2TextView = findViewById<TextView>(R.id.score2TextView)
+        var p3TextView = findViewById<TextView>(R.id.name3TextView)
+        var s3TextView = findViewById<TextView>(R.id.score3TextView)
+        var p4TextView = findViewById<TextView>(R.id.name4TextView)
+        var s4TextView = findViewById<TextView>(R.id.score4TextView)
+        var p5TextView = findViewById<TextView>(R.id.name5TextView)
+        var s5TextView = findViewById<TextView>(R.id.score5TextView)
+        var p6TextView = findViewById<TextView>(R.id.name6TextView)
+        var s6TextView = findViewById<TextView>(R.id.score6TextView)
+
 
         var scoreboardList = intent.getStringArrayListExtra("scoreboardList")
 

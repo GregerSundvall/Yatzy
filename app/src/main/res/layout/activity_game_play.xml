@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".GamePlayActivity">
 
-    <Button
-        android:id="@+id/buttonOnePair"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:text="@string/onePair"
-        app:layout_constraintBottom_toTopOf="@+id/buttonFourOfAKind"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <View
         android:id="@+id/view"
         android:layout_width="wrap_content"
@@ -23,6 +15,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonOnePair"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:onClick="saveOnePair"
+        android:text="@string/onePair"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFourOfAKind"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/reRollButton"
@@ -148,6 +149,7 @@
         android:id="@+id/buttonThrees"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveThrees"
         android:text="@string/threes"
         app:layout_constraintBottom_toBottomOf="@+id/twosTextView"
         app:layout_constraintEnd_toStartOf="@+id/threesTextView"
@@ -157,6 +159,7 @@
         android:id="@+id/buttonFours"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveFours"
         android:text="@string/fours"
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/buttonTrips"
@@ -166,6 +169,7 @@
         android:id="@+id/buttonFives"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveFives"
         android:text="@string/fives"
         app:layout_constraintBottom_toBottomOf="@+id/foursTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,6 +180,7 @@
         android:id="@+id/buttonSixes"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveSixes"
         android:text="@string/sixes"
         app:layout_constraintBottom_toBottomOf="@+id/fivesTextView"
         app:layout_constraintEnd_toStartOf="@+id/sixesTextView"
@@ -196,6 +201,7 @@
         android:id="@+id/buttonTwoPairs"
         android:layout_width="120dp"
         android:layout_height="40dp"
+        android:onClick="saveTwoPairs"
         android:text="@string/twoPairs"
         app:layout_constraintBottom_toBottomOf="@+id/onePairTextView"
         app:layout_constraintEnd_toStartOf="@+id/twoPairsTextView"
@@ -205,6 +211,7 @@
         android:id="@+id/buttonTrips"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveTrips"
         android:text="@string/trips"
         app:layout_constraintBottom_toTopOf="@+id/buttonOnePair"
         app:layout_constraintStart_toStartOf="parent" />
@@ -213,6 +220,7 @@
         android:id="@+id/buttonFullHouse"
         android:layout_width="120dp"
         android:layout_height="40dp"
+        android:onClick="saveFullHouse"
         android:text="@string/fullHouse"
         app:layout_constraintBottom_toBottomOf="@+id/fourOfAKindTextView"
         app:layout_constraintEnd_toStartOf="@+id/fullHouseTextView"
@@ -222,6 +230,7 @@
         android:id="@+id/buttonSmallStraight"
         android:layout_width="120dp"
         android:layout_height="40dp"
+        android:onClick="saveSmStraight"
         android:text="@string/SmallStraight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -230,6 +239,7 @@
         android:id="@+id/buttonYatzy"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveYatzy"
         android:text="@string/yatzy"
         app:layout_constraintBottom_toBottomOf="@+id/chanceTextView"
         app:layout_constraintEnd_toStartOf="@+id/yatzyTextView"
@@ -239,6 +249,7 @@
         android:id="@+id/buttonLargeStraight"
         android:layout_width="120dp"
         android:layout_height="40dp"
+        android:onClick="saveLgStraight"
         android:text="@string/LargeStraight"
         app:layout_constraintBottom_toBottomOf="@+id/smStraightTextView"
         app:layout_constraintEnd_toStartOf="@+id/lgStraightTextView"
@@ -248,6 +259,7 @@
         android:id="@+id/buttonChance"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveChance"
         android:text="@string/Chance"
         app:layout_constraintBottom_toBottomOf="@+id/tripsTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -258,6 +270,7 @@
         android:id="@+id/buttonFourOfAKind"
         android:layout_width="120dp"
         android:layout_height="40dp"
+        android:onClick="saveFourOfAKind"
         android:text="@string/FourOfAKind"
         app:layout_constraintBottom_toTopOf="@+id/buttonSmallStraight"
         app:layout_constraintStart_toStartOf="parent" />

@@ -28,6 +28,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         //Adds received list of player names to players list
         var listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
+        //listOfPlayerNames!!.reverse()
         if (listOfPlayerNames != null) {
             for (name in listOfPlayerNames) {
                 listOfPlayers.add(Player(name))
@@ -37,14 +38,29 @@ class GamePlayActivity : AppCompatActivity() {
         setupScoresheet()
         setupDice()
         setupListOfDieImageViews()
-        currentPlayer = listOfPlayers[0]
+        currentPlayer = listOfPlayers.last()
 
-        nextTurn()
+        newTurn()
     }
 
+    fun newTurn(){
+        if(currentRound == 15 && currentPlayer == listOfPlayers.last()){
+            startScoreboardActivity()
+        }
+        if(currentPlayer == listOfPlayers.last()){
+            currentPlayer = listOfPlayers.first()
+            currentRound += 1
+        }else{
+            currentPlayer = listOfPlayers[+1]
+        }
+        findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
+        showHideButtons()
+        showPlayerPoints()
+        rollAll()
+    }
+/*
     fun nextTurn(){
         if(currentRound == 2 && currentPlayer == listOfPlayers.last()){
-            sumPoints()
             startScoreboardActivity()
         }
         if(currentPlayer == listOfPlayers.first()){
@@ -61,7 +77,7 @@ class GamePlayActivity : AppCompatActivity() {
         showPlayerPoints()
         rollAll()
     }
-
+*/
         //populates list of die images
     fun setupListOfDieImageViews(){
         //adds die imageviews to list
@@ -256,10 +272,11 @@ class GamePlayActivity : AppCompatActivity() {
 
         //starts scoreboard activity and passes along names and scores
     fun startScoreboardActivity()   {
+        sumPoints()
         var scoreboardList :ArrayList<String> = arrayListOf()
         for(player in listOfPlayers){
             scoreboardList.add(player.name)
-            scoreboardList.add(player.scoreSheet[17].toString())
+            scoreboardList.add(player.scoreSheet[17].points.toString())
         }
         val intent = Intent(this, ScoreboardActivity::class.java)
         intent.putStringArrayListExtra("scoreboardList", scoreboardList)
@@ -436,79 +453,76 @@ class GamePlayActivity : AppCompatActivity() {
         //Methods to call points setters
     fun saveOnes(view: View){
         currentPlayer.setOnes()
-        nextTurn()
+        newTurn()
     }
 
     fun saveTwos(view: View){
         currentPlayer.setTwos()
-        nextTurn()
+        newTurn()
     }
 
     fun saveThrees(view: View){
         currentPlayer.setThrees()
-        nextTurn()
+        newTurn()
     }
 
     fun saveFours(view: View){
         currentPlayer.setFours()
-        nextTurn()
+        newTurn()
     }
 
     fun saveFives(view: View){
         currentPlayer.setFives()
-        nextTurn()
+        newTurn()
     }
 
     fun saveSixes(view: View){
         currentPlayer.setSixes()
-        nextTurn()
+        newTurn()
     }
 
     fun saveOnePair(view: View){
         currentPlayer.setOnePair()
-        nextTurn()
+        newTurn()
     }
 
     fun saveTwoPairs(view: View){
         currentPlayer.setTwoPairs()
-        nextTurn()
+        newTurn()
     }
 
     fun saveTrips(view: View){
         currentPlayer.setTrips()
-        nextTurn()
+        newTurn()
     }
 
     fun saveFourOfAKind(view: View){
         currentPlayer.setFourOfAKind()
-        nextTurn()
+        newTurn()
     }
 
     fun saveFullHouse(view: View){
         currentPlayer.setFullHouse()
-        nextTurn()
+        newTurn()
     }
 
     fun saveSmStraight(view: View){
         currentPlayer.setSmStraight()
-        nextTurn()
+        newTurn()
     }
 
     fun saveLgStraight(view: View){
         currentPlayer.setLgStraight()
-        nextTurn()
+        newTurn()
     }
 
     fun saveChance(view: View){
         currentPlayer.setChance()
-        nextTurn()
+        newTurn()
     }
 
     fun saveYatzy(view: View){
         currentPlayer.setYatzy()
-        nextTurn()
+        newTurn()
     }
-
-
-
 }
