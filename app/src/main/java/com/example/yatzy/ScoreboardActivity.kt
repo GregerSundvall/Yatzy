@@ -1,5 +1,6 @@
 package com.example.yatzy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -109,16 +110,10 @@ class ScoreboardActivity : AppCompatActivity() {
         score2TextView.text = getString(R.string.player2Score, p2Score)
 
     }
-/*
-    fun setScoreboard(){
-        val p1name = scor[
-        val p1score :String = listOfPlayers[0].score.toString()
 
-        val p2name = listOfPlayers[1].name
-        val p2score :String = listOfPlayers[1].score.toString()
-
+    fun startAgain(view: View){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
-*/
-
 
 }

@@ -58,26 +58,7 @@ class GamePlayActivity : AppCompatActivity() {
         showPlayerPoints()
         rollAll()
     }
-/*
-    fun nextTurn(){
-        if(currentRound == 2 && currentPlayer == listOfPlayers.last()){
-            startScoreboardActivity()
-        }
-        if(currentPlayer == listOfPlayers.first()){
-            currentRound += 1
-        }
-        if(currentPlayer == listOfPlayers.last()){
-            currentPlayer = listOfPlayers[0]
-        }else{
-            currentPlayer = listOfPlayers[+1]
-        }
-        //var whoIsPlaying = findViewById<TextView>(R.id.whoIsPlayingTextView)
-        findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
-        showHideButtons()
-        showPlayerPoints()
-        rollAll()
-    }
-*/
+
         //populates list of die images
     fun setupListOfDieImageViews(){
         //adds die imageviews to list
