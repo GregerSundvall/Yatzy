@@ -56,6 +56,7 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
         showHideButtons()
         showPlayerPoints()
+        currentPlayer.reRolls = 2
         rollAll()
     }
 
