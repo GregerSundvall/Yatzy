@@ -43,7 +43,8 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
     fun nextTurn(){
-        if(currentRound == 14 && currentPlayer == listOfPlayers.last()){
+        if(currentRound == 2 && currentPlayer == listOfPlayers.last()){
+            sumPoints()
             startScoreboardActivity()
         }
         if(currentPlayer == listOfPlayers.first()){
@@ -60,6 +61,8 @@ class GamePlayActivity : AppCompatActivity() {
         showPlayerPoints()
         rollAll()
     }
+
+        //populates list of die images
     fun setupListOfDieImageViews(){
         //adds die imageviews to list
         listOfDieImageViews.add(findViewById(R.id.die1))
@@ -70,8 +73,8 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
+        //Adds a set of dice for each player
     fun setupDice(){
-        //Creates and adds a set of dice for each player
         for(player in listOfPlayers) {
             for (i in 1..5) {
                 player.listOfDice.add(Die())
@@ -79,8 +82,8 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-    fun setupScoresheet(){
         //Sets up a scoresheet for each player
+    fun setupScoresheet(){
         for (player in listOfPlayers) {
             player.scoreSheet.add(Score(1, "Aces"))
         }
@@ -137,6 +140,7 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
+        //Prints points for used slots on screen
     fun showPlayerPoints(){
         findViewById<TextView>(R.id.onesTextView).text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
         findViewById<TextView>(R.id.twosTextView).text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
@@ -156,69 +160,86 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-    fun showHideButtons(){
         //Hides buttons for already used slots
+    fun showHideButtons(){
         if(currentPlayer.scoreSheet[0].visible == false) {
             findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonOnes).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[1].visible == false) {
             findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonTwos).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[2].visible == false) {
             findViewById<Button>(R.id.buttonThrees).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonThrees).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[3].visible == false) {
             findViewById<Button>(R.id.buttonFours).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonFours).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[4].visible == false) {
             findViewById<Button>(R.id.buttonFives).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonFives).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[5].visible == false) {
             findViewById<Button>(R.id.buttonSixes).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonSixes).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[8].visible == false) {
             findViewById<Button>(R.id.buttonOnePair).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonOnePair).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[9].visible == false) {
             findViewById<Button>(R.id.buttonTwoPairs).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonTwoPairs).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[10].visible == false) {
             findViewById<Button>(R.id.buttonTrips).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonTrips).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[11].visible == false) {
             findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[12].visible == false) {
             findViewById<Button>(R.id.buttonFullHouse).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonFullHouse).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[13].visible == false) {
             findViewById<Button>(R.id.buttonSmallStraight).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonSmallStraight).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[14].visible == false) {
             findViewById<Button>(R.id.buttonLargeStraight).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonLargeStraight).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[15].visible == false) {
             findViewById<Button>(R.id.buttonChance).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonChance).visibility = View.VISIBLE
         }
         if(currentPlayer.scoreSheet[16].visible == false) {
             findViewById<Button>(R.id.buttonYatzy).visibility = View.INVISIBLE
+        }else{
+            findViewById<Button>(R.id.buttonYatzy).visibility = View.VISIBLE
         }
     }
 
-    fun saveOnes(view: View){
-        currentPlayer.setOnes()
-        nextTurn()
-    }
-    fun saveTwos(view: View){
-        currentPlayer.setTwos()
-        nextTurn()
-    }
-
-    fun saveThrees(view: View){
-        currentPlayer.setThrees()
-        nextTurn()
-    }
-
+        //Summarizes every player's bonus and score
     fun sumPoints(){
         for(player in listOfPlayers){
             player.scoreSheet[6].points = player.scoreSheet[0].points+player.scoreSheet[1].points+player.scoreSheet[2].points+player.scoreSheet[3].points+player.scoreSheet[4].points+player.scoreSheet[5].points
@@ -232,11 +253,13 @@ class GamePlayActivity : AppCompatActivity() {
             player.scoreSheet[17].points = player.scoreSheet[6].points+player.scoreSheet[7].points+player.scoreSheet[8].points+player.scoreSheet[9].points+player.scoreSheet[10].points+player.scoreSheet[11].points+player.scoreSheet[12].points+player.scoreSheet[13].points+player.scoreSheet[14].points+player.scoreSheet[15].points+player.scoreSheet[16].points
         }
     }
+
+        //starts scoreboard activity and passes along names and scores
     fun startScoreboardActivity()   {
         var scoreboardList :ArrayList<String> = arrayListOf()
         for(player in listOfPlayers){
             scoreboardList.add(player.name)
-            scoreboardList.add(player.score.toString())
+            scoreboardList.add(player.scoreSheet[17].toString())
         }
         val intent = Intent(this, ScoreboardActivity::class.java)
         intent.putStringArrayListExtra("scoreboardList", scoreboardList)
@@ -244,9 +267,7 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-
-
-    //Rolls all dice and sets them not to be rolled
+        //Rolls all dice and sets them not to be rolled
     fun rollAll(){
         for(die in currentPlayer.listOfDice){
             die.currentValue =  (1..6).random()
@@ -255,6 +276,7 @@ class GamePlayActivity : AppCompatActivity() {
         }
         setDiceImages()
     }
+
         //Rolls dice selected for re-roll
     fun reRoll(view: View){
         if(currentPlayer!!.reRolls > 0){
@@ -269,9 +291,7 @@ class GamePlayActivity : AppCompatActivity() {
         setDiceImages()
     }
 
-
-
-        //Sets correct die images according to values
+        //Sets a correct die image according to value
     fun setDieImage(die : Die, dieView: ImageView){
             when(die.currentValue){
             1 -> dieView.setImageResource(R.drawable.die1)
@@ -283,6 +303,7 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
+        //Uses setDieImage to set the right die images
     fun setDiceImages(){
         setDieImage(currentPlayer.listOfDice[0], listOfDieImageViews[0])
         setDieImage(currentPlayer.listOfDice[1], listOfDieImageViews[1])
@@ -291,6 +312,7 @@ class GamePlayActivity : AppCompatActivity() {
         setDieImage(currentPlayer.listOfDice[4], listOfDieImageViews[4])
     }
 
+        //Sets the selected/red image for selected dice
     fun selectDie1(view: View){
         when(currentPlayer.listOfDice[0].toBeRolled) {
             false -> {when (currentPlayer.listOfDice[0].currentValue) {
@@ -363,7 +385,6 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-
     fun selectDie4(view: View){
         when(currentPlayer.listOfDice[3].toBeRolled) {
             false -> {when (currentPlayer.listOfDice[3].currentValue) {
@@ -410,6 +431,82 @@ class GamePlayActivity : AppCompatActivity() {
             }
                 currentPlayer.listOfDice [4].toBeRolled = false}
         }
+    }
+
+        //Methods to call points setters
+    fun saveOnes(view: View){
+        currentPlayer.setOnes()
+        nextTurn()
+    }
+
+    fun saveTwos(view: View){
+        currentPlayer.setTwos()
+        nextTurn()
+    }
+
+    fun saveThrees(view: View){
+        currentPlayer.setThrees()
+        nextTurn()
+    }
+
+    fun saveFours(view: View){
+        currentPlayer.setFours()
+        nextTurn()
+    }
+
+    fun saveFives(view: View){
+        currentPlayer.setFives()
+        nextTurn()
+    }
+
+    fun saveSixes(view: View){
+        currentPlayer.setSixes()
+        nextTurn()
+    }
+
+    fun saveOnePair(view: View){
+        currentPlayer.setOnePair()
+        nextTurn()
+    }
+
+    fun saveTwoPairs(view: View){
+        currentPlayer.setTwoPairs()
+        nextTurn()
+    }
+
+    fun saveTrips(view: View){
+        currentPlayer.setTrips()
+        nextTurn()
+    }
+
+    fun saveFourOfAKind(view: View){
+        currentPlayer.setFourOfAKind()
+        nextTurn()
+    }
+
+    fun saveFullHouse(view: View){
+        currentPlayer.setFullHouse()
+        nextTurn()
+    }
+
+    fun saveSmStraight(view: View){
+        currentPlayer.setSmStraight()
+        nextTurn()
+    }
+
+    fun saveLgStraight(view: View){
+        currentPlayer.setLgStraight()
+        nextTurn()
+    }
+
+    fun saveChance(view: View){
+        currentPlayer.setChance()
+        nextTurn()
+    }
+
+    fun saveYatzy(view: View){
+        currentPlayer.setYatzy()
+        nextTurn()
     }
 
 

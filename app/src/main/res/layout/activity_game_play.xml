@@ -185,6 +185,7 @@
         android:id="@+id/buttonTwos"
         android:layout_width="80dp"
         android:layout_height="40dp"
+        android:onClick="saveTwos"
         android:text="@string/twos"
         app:layout_constraintBottom_toBottomOf="@+id/onesTextView"
         app:layout_constraintEnd_toEndOf="parent"
