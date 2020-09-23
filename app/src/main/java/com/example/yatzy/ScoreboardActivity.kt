@@ -97,18 +97,6 @@ class ScoreboardActivity : AppCompatActivity() {
                     s6TextView.text = scoreboardList[11]
             }
         }
-
-        val p1Name = scoreboardList!![0]
-        val p1Score = scoreboardList!![1]
-        val p2Name = scoreboardList!![2]
-        val p2Score = scoreboardList!![3]
-
-        name1TextView.text = getString(R.string.player1Name, p1Name)
-        score1TextView.text = getString(R.string.player1Score, p1Score)
-
-        name2TextView.text = getString(R.string.player2Name, p2Name)
-        score2TextView.text = getString(R.string.player2Score, p2Score)
-
     }
 
     fun startAgain(view: View){
