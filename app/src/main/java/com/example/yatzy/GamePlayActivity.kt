@@ -54,11 +54,12 @@ class GamePlayActivity : AppCompatActivity() {
         }else{
             currentPlayer = listOfPlayers[+1]
         }
+
         findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
-        showHideButtons()
-        showPlayerPoints()
-        currentPlayer.reRolls = 2
-        rollAll()
+
+
+        currentPlayer.rolls = 3
+        Log.d("!!!", "pausläget")
     }
 
         //populates list of die images
@@ -159,7 +160,7 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-        //Hides buttons for already used slots
+        //Hides buttons for already used slots and shows everything else.
     fun showHideButtons(){
         if(currentPlayer.scoreSheet[0].visible == false) {
             findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
@@ -236,41 +237,91 @@ class GamePlayActivity : AppCompatActivity() {
         }else{
             findViewById<Button>(R.id.buttonYatzy).visibility = View.VISIBLE
         }
+
+        findViewById<TextView>(R.id.onesTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.twosTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.threesTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.foursTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.fivesTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.sixesTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.onePairTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.twoPairsTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.tripsTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.fourOfAKindTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.fullHouseTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.chanceTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.yatzyTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.smStraightTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.lgStraightTextView).visibility = View.VISIBLE
+
+        findViewById<ImageView>(R.id.die1).visibility =View.VISIBLE
+        findViewById<ImageView>(R.id.die2).visibility =View.VISIBLE
+        findViewById<ImageView>(R.id.die3).visibility =View.VISIBLE
+        findViewById<ImageView>(R.id.die4).visibility =View.VISIBLE
+        findViewById<ImageView>(R.id.die5).visibility =View.VISIBLE
+
+        findViewById<TextView>(R.id.selectTextView).visibility =View.VISIBLE
+        findViewById<TextView>(R.id.desiredTextView).visibility = View.VISIBLE
     }
 
-        //Hides buttons and other stuff
+        //Hides mostly everything. For when waiting for a new player to roll.
     fun hideStuff(){
             findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonTwos).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonThrees).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonThrees).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonThrees).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonFours).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonFours).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFours).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonFives).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonFives).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFives).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonSixes).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonSixes).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonSixes).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonOnePair).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonOnePair).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonOnePair).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonTwoPairs).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonTwoPairs).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonTwoPairs).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonTrips).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonTrips).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonTrips).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonFullHouse).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonFullHouse).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFullHouse).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonSmallStraight).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonSmallStraight).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonSmallStraight).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonLargeStraight).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonLargeStraight).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonLargeStraight).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonChance).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonChance).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonChance).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonYatzy).visibility = View.INVISIBLE
-            findViewById<Button>(R.id.buttonYatzy).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonYatzy).visibility = View.INVISIBLE
 
-    }
+            findViewById<TextView>(R.id.onesTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.twosTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.threesTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.foursTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.fivesTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.sixesTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.onePairTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.twoPairsTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.tripsTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.fourOfAKindTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.fullHouseTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.chanceTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.yatzyTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.smStraightTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.lgStraightTextView).visibility = View.INVISIBLE
+
+            findViewById<ImageView>(R.id.die1).visibility =View.INVISIBLE
+            findViewById<ImageView>(R.id.die2).visibility =View.INVISIBLE
+            findViewById<ImageView>(R.id.die3).visibility =View.INVISIBLE
+            findViewById<ImageView>(R.id.die4).visibility =View.INVISIBLE
+            findViewById<ImageView>(R.id.die5).visibility =View.INVISIBLE
+
+            findViewById<TextView>(R.id.selectTextView).visibility =View.INVISIBLE
+            findViewById<TextView>(R.id.desiredTextView).visibility = View.INVISIBLE
+        }
+
         //Summarizes every player's bonus and score
     fun sumPoints(){
         for(player in listOfPlayers){
@@ -304,28 +355,27 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-        //Rolls all dice and sets them not to be rolled
-    fun rollAll(){
-        for(die in currentPlayer.listOfDice){
-            die.currentValue =  (1..6).random()
-            die.toBeRolled = false
 
+        //Rolls dice and sets correct images
+    fun rollDice(view: View){
+        Log.d("!!!", "testing")
+        if (currentPlayer!!.rolls == 3){
+            for(die in currentPlayer.listOfDice)
+                die.toBeRolled = true
         }
-        setDiceImages()
-    }
-
-        //Rolls dice selected for re-roll
-    fun reRoll(view: View){
-        if(currentPlayer!!.reRolls > 0){
+        if(currentPlayer!!.rolls > 0){
             for(die in currentPlayer.listOfDice) {
                 if (die.toBeRolled == true) {
                     die.currentValue =  (1..6).random()
                     die.toBeRolled = false
                 }
             }
-            currentPlayer.reRolls -= 1
+            currentPlayer.rolls -= 1
         }
+
         setDiceImages()
+        showHideButtons()
+        showPlayerPoints()
     }
 
         //Sets a correct die image according to value

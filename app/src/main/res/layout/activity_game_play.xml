@@ -29,12 +29,11 @@
         android:id="@+id/reRollButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:onClick="reRoll"
-        android:text="@string/reRoll"
+        android:onClick="rollDice"
+        android:text="@string/roll_dice"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/die3" />
+        app:layout_constraintTop_toBottomOf="@+id/selectTextView" />
 
     <ImageView
         android:id="@+id/die1"
@@ -116,16 +115,16 @@
         android:id="@+id/selectTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="@string/tap_die_to_reroll"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/reRollButton"
-        app:layout_constraintTop_toTopOf="@+id/reRollButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/die4" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/desiredTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"

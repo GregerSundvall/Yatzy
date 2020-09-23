@@ -8,7 +8,7 @@ import java.util.*
 
 class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
-              var reRolls : Int = 2,
+              var rolls : Int = 3,
               var listOfDice: MutableList<Die> = mutableListOf(),
               var score :Int = 0
 
