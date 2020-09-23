@@ -11,9 +11,6 @@ class PlayerNamesActivity : AppCompatActivity() {
 
     var nrOfplayers = 0
     val listOfPlayerNames :ArrayList<String> = arrayListOf()
-    //val gSettings = Settings
-    //val listofp = gSettings.listOfPlayers
-    //singleton class
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +63,5 @@ class PlayerNamesActivity : AppCompatActivity() {
         val intent = Intent(this, GamePlayActivity::class.java)
         intent.putStringArrayListExtra("listOfPlayerNames", listOfPlayerNames)
         startActivity(intent)
-
     }
 }

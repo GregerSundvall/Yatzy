@@ -44,6 +44,5 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, PlayerNamesActivity::class.java)
         intent.putExtra("nrOfPlayers", nrOfPlayers)
         startActivity(intent)
-
     }
 }

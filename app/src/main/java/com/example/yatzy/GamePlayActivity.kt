@@ -17,10 +17,8 @@ class GamePlayActivity : AppCompatActivity() {
 
     val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    var nrOfPlayers : Int = 0
     var currentRound : Int = 0
     lateinit var currentPlayer :Player
-    lateinit var nameTextView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +38,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         newTurn()
     }
+
         //Starts next turn
     fun newTurn(){
         hideStuff()
