@@ -44,6 +44,7 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
     fun newTurn(){
+        hideStuff()
         if(currentRound == 15 && currentPlayer == listOfPlayers.last()){
             startScoreboardActivity()
         }
@@ -237,10 +238,44 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
+        //Hides buttons and other stuff
+    fun hideStuff(){
+            findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonTwos).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonThrees).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonThrees).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFours).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFours).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFives).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFives).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonSixes).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonSixes).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonOnePair).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonOnePair).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonTwoPairs).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonTwoPairs).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonTrips).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonTrips).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFourOfAKind).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonFullHouse).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonFullHouse).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonSmallStraight).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonSmallStraight).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonLargeStraight).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonLargeStraight).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonChance).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonChance).visibility = View.VISIBLE
+            findViewById<Button>(R.id.buttonYatzy).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.buttonYatzy).visibility = View.VISIBLE
+
+    }
         //Summarizes every player's bonus and score
     fun sumPoints(){
         for(player in listOfPlayers){
-            player.scoreSheet[6].points = player.scoreSheet[0].points+player.scoreSheet[1].points+player.scoreSheet[2].points+player.scoreSheet[3].points+player.scoreSheet[4].points+player.scoreSheet[5].points
+            player.scoreSheet[6].points = player.scoreSheet[0].points+player.scoreSheet[1].points+
+            player.scoreSheet[2].points+player.scoreSheet[3].points+player.scoreSheet[4].points+player.scoreSheet[5].points
         }
         for(player in listOfPlayers){
             if(player.scoreSheet[6].points >= 63){
@@ -248,7 +283,10 @@ class GamePlayActivity : AppCompatActivity() {
             }
         }
         for(player in listOfPlayers){
-            player.scoreSheet[17].points = player.scoreSheet[6].points+player.scoreSheet[7].points+player.scoreSheet[8].points+player.scoreSheet[9].points+player.scoreSheet[10].points+player.scoreSheet[11].points+player.scoreSheet[12].points+player.scoreSheet[13].points+player.scoreSheet[14].points+player.scoreSheet[15].points+player.scoreSheet[16].points
+            player.scoreSheet[17].points = player.scoreSheet[6].points+player.scoreSheet[7].points+
+            player.scoreSheet[8].points+player.scoreSheet[9].points+player.scoreSheet[10].points+
+            player.scoreSheet[11].points+player.scoreSheet[12].points+player.scoreSheet[13].points+
+            player.scoreSheet[14].points+player.scoreSheet[15].points+player.scoreSheet[16].points
         }
     }
 
