@@ -27,14 +27,12 @@ class GamePlayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game_play)
 
         //Adds received list of player names to players list
-        var listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
-        //listOfPlayerNames!!.reverse()
+        val listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
         if (listOfPlayerNames != null) {
             for (name in listOfPlayerNames) {
                 listOfPlayers.add(Player(name))
             }
         }
-
         setupScoresheet()
         setupDice()
         setupListOfDieImageViews()
@@ -42,7 +40,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         newTurn()
     }
-
+        //Starts next turn
     fun newTurn(){
         hideStuff()
         if(currentRound == 15 && currentPlayer == listOfPlayers.last()){
@@ -56,15 +54,11 @@ class GamePlayActivity : AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
-
-
         currentPlayer.rolls = 3
-        Log.d("!!!", "pausläget")
     }
 
         //populates list of die images
     fun setupListOfDieImageViews(){
-        //adds die imageviews to list
         listOfDieImageViews.add(findViewById(R.id.die1))
         listOfDieImageViews.add(findViewById(R.id.die2))
         listOfDieImageViews.add(findViewById(R.id.die3))
@@ -140,7 +134,7 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Prints points for used slots on screen
+        //Prints points for used slots in textviews on screen
     fun showPlayerPoints(){
         findViewById<TextView>(R.id.onesTextView).text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
         findViewById<TextView>(R.id.twosTextView).text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
@@ -344,7 +338,7 @@ class GamePlayActivity : AppCompatActivity() {
         //starts scoreboard activity and passes along names and scores
     fun startScoreboardActivity()   {
         sumPoints()
-        var scoreboardList :ArrayList<String> = arrayListOf()
+        val scoreboardList :ArrayList<String> = arrayListOf()
         for(player in listOfPlayers){
             scoreboardList.add(player.name)
             scoreboardList.add(player.scoreSheet[17].points.toString())
@@ -358,12 +352,11 @@ class GamePlayActivity : AppCompatActivity() {
 
         //Rolls dice and sets correct images
     fun rollDice(view: View){
-        Log.d("!!!", "testing")
-        if (currentPlayer!!.rolls == 3){
+        if (currentPlayer.rolls == 3){
             for(die in currentPlayer.listOfDice)
                 die.toBeRolled = true
         }
-        if(currentPlayer!!.rolls > 0){
+        if(currentPlayer.rolls > 0){
             for(die in currentPlayer.listOfDice) {
                 if (die.toBeRolled == true) {
                     die.currentValue =  (1..6).random()
@@ -520,7 +513,7 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Methods to call points setters
+        //Methods to call points setters and start next turn
     fun saveOnes(view: View){
         currentPlayer.setOnes()
         newTurn()
