@@ -9,11 +9,19 @@ import kotlinx.android.synthetic.main.activity_scoreboard.*
 
 class ScoreboardActivity : AppCompatActivity() {
 
+    val listOfPlayers = Players.listOfPlayers
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
 
+        showScores()
+    }
+
+        //writes out names and scores on screen
+    fun showScores(){
         val p1TextView = findViewById<TextView>(R.id.name1TextView)
         val s1TextView = findViewById<TextView>(R.id.score1TextView)
         val p2TextView = findViewById<TextView>(R.id.name2TextView)
@@ -27,14 +35,11 @@ class ScoreboardActivity : AppCompatActivity() {
         val p6TextView = findViewById<TextView>(R.id.name6TextView)
         val s6TextView = findViewById<TextView>(R.id.score6TextView)
 
-
-        val scoreboardList = intent.getStringArrayListExtra("scoreboardList")
-
-        when(scoreboardList!!.size){
-            4 -> {  p1TextView.text = scoreboardList[0]
-                    s1TextView.text = scoreboardList[1]
-                    p2TextView.text = scoreboardList[2]
-                    s2TextView.text = scoreboardList[3]
+        when(listOfPlayers.size){
+            2 -> {  p1TextView.text = listOfPlayers[0].name
+                    s1TextView.text = listOfPlayers[0].scoreSheet[17].points.toString()
+                    p2TextView.text = listOfPlayers[1].name
+                    s2TextView.text = listOfPlayers[1].scoreSheet[17].points.toString()
                     p3TextView.visibility = View.INVISIBLE
                     s3TextView.visibility = View.INVISIBLE
                     p4TextView.visibility = View.INVISIBLE
@@ -44,12 +49,12 @@ class ScoreboardActivity : AppCompatActivity() {
                     p6TextView.visibility = View.INVISIBLE
                     s6TextView.visibility = View.INVISIBLE
             }
-            6 -> {  p1TextView.text = scoreboardList[0]
-                    s1TextView.text = scoreboardList[1]
-                    p2TextView.text = scoreboardList[2]
-                    s2TextView.text = scoreboardList[3]
-                    p3TextView.text = scoreboardList[4]
-                    s3TextView.text = scoreboardList[5]
+            3 -> {  p1TextView.text = listOfPlayers[0].name
+                    s1TextView.text = listOfPlayers[0].scoreSheet[17].points.toString()
+                    p2TextView.text = listOfPlayers[1].name
+                    s2TextView.text = listOfPlayers[1].scoreSheet[17].points.toString()
+                    p3TextView.text = listOfPlayers[2].name
+                    s3TextView.text = listOfPlayers[2].scoreSheet[17].points.toString()
                     p4TextView.visibility = View.INVISIBLE
                     s4TextView.visibility = View.INVISIBLE
                     p5TextView.visibility = View.INVISIBLE
@@ -57,49 +62,49 @@ class ScoreboardActivity : AppCompatActivity() {
                     p6TextView.visibility = View.INVISIBLE
                     s6TextView.visibility = View.INVISIBLE
             }
-            8 -> {  p1TextView.text = scoreboardList[0]
-                    s1TextView.text = scoreboardList[1]
-                    p2TextView.text = scoreboardList[2]
-                    s2TextView.text = scoreboardList[3]
-                    p3TextView.text = scoreboardList[4]
-                    s3TextView.text = scoreboardList[5]
-                    p4TextView.text = scoreboardList[6]
-                    s4TextView.text = scoreboardList[7]
+            4 -> {  p1TextView.text = listOfPlayers[0].name
+                    s1TextView.text = listOfPlayers[0].scoreSheet[17].points.toString()
+                    p2TextView.text = listOfPlayers[1].name
+                    s2TextView.text = listOfPlayers[1].scoreSheet[17].points.toString()
+                    p3TextView.text = listOfPlayers[2].name
+                    s3TextView.text = listOfPlayers[2].scoreSheet[17].points.toString()
+                    p4TextView.text = listOfPlayers[3].name
+                    s4TextView.text = listOfPlayers[3].scoreSheet[17].points.toString()
                     p5TextView.visibility = View.INVISIBLE
                     s5TextView.visibility = View.INVISIBLE
                     p6TextView.visibility = View.INVISIBLE
                     s6TextView.visibility = View.INVISIBLE
             }
-            10 -> { p1TextView.text = scoreboardList[0]
-                    s1TextView.text = scoreboardList[1]
-                    p2TextView.text = scoreboardList[2]
-                    s2TextView.text = scoreboardList[3]
-                    p3TextView.text = scoreboardList[4]
-                    s3TextView.text = scoreboardList[5]
-                    p4TextView.text = scoreboardList[6]
-                    s4TextView.text = scoreboardList[7]
-                    p5TextView.text = scoreboardList[8]
-                    s5TextView.text = scoreboardList[9]
+            5 -> { p1TextView.text = listOfPlayers[0].name
+                    s1TextView.text = listOfPlayers[0].scoreSheet[17].points.toString()
+                    p2TextView.text = listOfPlayers[1].name
+                    s2TextView.text = listOfPlayers[1].scoreSheet[17].points.toString()
+                    p3TextView.text = listOfPlayers[2].name
+                    s3TextView.text = listOfPlayers[2].scoreSheet[17].points.toString()
+                    p4TextView.text = listOfPlayers[3].name
+                    s4TextView.text = listOfPlayers[3].scoreSheet[17].points.toString()
+                    p5TextView.text = listOfPlayers[4].name
+                    s5TextView.text = listOfPlayers[4].scoreSheet[17].points.toString()
                     p6TextView.visibility = View.INVISIBLE
                     s6TextView.visibility = View.INVISIBLE
             }
-            12 -> { p1TextView.text = scoreboardList[0]
-                    s1TextView.text = scoreboardList[1]
-                    p2TextView.text = scoreboardList[2]
-                    s2TextView.text = scoreboardList[3]
-                    p3TextView.text = scoreboardList[4]
-                    s3TextView.text = scoreboardList[5]
-                    p4TextView.text = scoreboardList[6]
-                    s4TextView.text = scoreboardList[7]
-                    p5TextView.text = scoreboardList[8]
-                    s5TextView.text = scoreboardList[9]
-                    p6TextView.text = scoreboardList[10]
-                    s6TextView.text = scoreboardList[11]
+            6 -> { p1TextView.text = listOfPlayers[0].name
+                    s1TextView.text = listOfPlayers[0].scoreSheet[17].points.toString()
+                    p2TextView.text = listOfPlayers[1].name
+                    s2TextView.text = listOfPlayers[1].scoreSheet[17].points.toString()
+                    p3TextView.text = listOfPlayers[2].name
+                    s3TextView.text = listOfPlayers[2].scoreSheet[17].points.toString()
+                    p4TextView.text = listOfPlayers[3].name
+                    s4TextView.text = listOfPlayers[3].scoreSheet[17].points.toString()
+                    p5TextView.text = listOfPlayers[4].name
+                    s5TextView.text = listOfPlayers[4].scoreSheet[17].points.toString()
+                    p6TextView.text = listOfPlayers[5].name
+                    s6TextView.text = listOfPlayers[5].scoreSheet[17].points.toString()
             }
         }
     }
 
-    fun startAgain(view: View){
+    fun playAgain(view: View){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }

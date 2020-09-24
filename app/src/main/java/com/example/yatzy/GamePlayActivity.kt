@@ -10,39 +10,31 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.example.yatzy.Players.listOfPlayers
 import kotlinx.android.synthetic.main.activity_game_play.*
 import kotlinx.android.synthetic.main.activity_scoreboard.*
 
 class GamePlayActivity : AppCompatActivity() {
 
-    val listOfPlayers: MutableList<Player> = mutableListOf<Player>()
+    val listOfPlayers = Players.listOfPlayers
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var currentRound : Int = 0
-    lateinit var currentPlayer :Player
+    var currentPlayer = listOfPlayers.last()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_play)
 
-        //Adds received list of player names to players list
-        val listOfPlayerNames = intent.getStringArrayListExtra("listOfPlayerNames")
-        if (listOfPlayerNames != null) {
-            for (name in listOfPlayerNames) {
-                listOfPlayers.add(Player(name))
-            }
-        }
         setupScoresheet()
         setupDice()
         setupListOfDieImageViews()
-        currentPlayer = listOfPlayers.last()
-
         newTurn()
     }
 
         //Starts next turn
     fun newTurn(){
         hideStuff()
-        if(currentRound == 15 && currentPlayer == listOfPlayers.last()){
+        if(currentRound == 5 && currentPlayer == listOfPlayers.last()){
             startScoreboardActivity()
         }
         if(currentPlayer == listOfPlayers.last()){
@@ -343,7 +335,6 @@ class GamePlayActivity : AppCompatActivity() {
             scoreboardList.add(player.scoreSheet[17].points.toString())
         }
         val intent = Intent(this, ScoreboardActivity::class.java)
-        intent.putStringArrayListExtra("scoreboardList", scoreboardList)
         startActivity(intent)
 
     }

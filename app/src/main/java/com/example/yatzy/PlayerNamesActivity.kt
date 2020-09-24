@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_player_names.*
 class PlayerNamesActivity : AppCompatActivity() {
 
     var nrOfplayers = 0
-    val listOfPlayerNames :ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,20 +39,26 @@ class PlayerNamesActivity : AppCompatActivity() {
     }
 
     fun startGamePlayActivity(v : View){
-        listOfPlayerNames.add (Player1NamePlainText.text.toString())
-        listOfPlayerNames.add (Player2NamePlainText.text.toString())
+        Players.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
+        Players.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
+        //listOfPlayerNames.add (Player1NamePlainText.text.toString())
+        //listOfPlayerNames.add (Player2NamePlainText.text.toString())
 
         if (nrOfplayers >= 3) {
-            listOfPlayerNames.add(Player3NamePlainText.text.toString())
+            Players.listOfPlayers.add(Player("${Player3NamePlainText.text}"))
+            //listOfPlayerNames.add(Player3NamePlainText.text.toString())
 
             if(nrOfplayers >= 4){
-                listOfPlayerNames.add(Player4NamePlainText.text.toString())
+                Players.listOfPlayers.add(Player("${Player4NamePlainText.text}"))
+                //listOfPlayerNames.add(Player4NamePlainText.text.toString())
 
                 if(nrOfplayers >= 5){
-                    listOfPlayerNames.add(Player5NamePlainText.text.toString())
+                    Players.listOfPlayers.add(Player("${Player5NamePlainText.text}"))
+                    //listOfPlayerNames.add(Player5NamePlainText.text.toString())
 
                     if(nrOfplayers >= 6){
-                        listOfPlayerNames.add(Player6NamePlainText.text.toString())
+                        Players.listOfPlayers.add(Player("${Player6NamePlainText.text}"))
+                        //listOfPlayerNames.add(Player6NamePlainText.text.toString())
                     }
                 }
             }
@@ -61,7 +66,6 @@ class PlayerNamesActivity : AppCompatActivity() {
         }
 
         val intent = Intent(this, GamePlayActivity::class.java)
-        intent.putStringArrayListExtra("listOfPlayerNames", listOfPlayerNames)
         startActivity(intent)
     }
 }
