@@ -38,27 +38,22 @@ class PlayerNamesActivity : AppCompatActivity() {
         }
     }
 
+        //Creates players from name input
     fun startGamePlayActivity(v : View){
         Players.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
         Players.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
-        //listOfPlayerNames.add (Player1NamePlainText.text.toString())
-        //listOfPlayerNames.add (Player2NamePlainText.text.toString())
 
         if (nrOfplayers >= 3) {
             Players.listOfPlayers.add(Player("${Player3NamePlainText.text}"))
-            //listOfPlayerNames.add(Player3NamePlainText.text.toString())
 
             if(nrOfplayers >= 4){
                 Players.listOfPlayers.add(Player("${Player4NamePlainText.text}"))
-                //listOfPlayerNames.add(Player4NamePlainText.text.toString())
 
                 if(nrOfplayers >= 5){
                     Players.listOfPlayers.add(Player("${Player5NamePlainText.text}"))
-                    //listOfPlayerNames.add(Player5NamePlainText.text.toString())
 
-                    if(nrOfplayers >= 6){
+                    if(nrOfplayers == 6){
                         Players.listOfPlayers.add(Player("${Player6NamePlainText.text}"))
-                        //listOfPlayerNames.add(Player6NamePlainText.text.toString())
                     }
                 }
             }
