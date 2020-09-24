@@ -9,37 +9,34 @@ import kotlinx.android.synthetic.main.activity_player_names.*
 
 class PlayerNamesActivity : AppCompatActivity() {
 
-    var nrOfplayers = 0
+    var nrOfplayers = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_names)
 
         nrOfplayers = intent.getIntExtra("nrOfPlayers", 2)
+        hideRedundantNameBoxes()
+    }
 
-        when(nrOfplayers){
-            2 ->    {Player3NamePlainText.visibility = View.GONE
+        //Makes unnecessary nameboxes disappear
+    fun hideRedundantNameBoxes(){
+        if(nrOfplayers <= 5){
+            Player6NamePlainText.visibility = View.GONE
+            if(nrOfplayers <= 4){
+                Player5NamePlainText.visibility = View.GONE
+                if(nrOfplayers <= 3){
                     Player4NamePlainText.visibility = View.GONE
-                    Player5NamePlainText.visibility = View.GONE
-                    Player6NamePlainText.visibility = View.GONE
-            }
-
-            3 ->    {Player4NamePlainText.visibility = View.GONE
-                    Player5NamePlainText.visibility = View.GONE
-                    Player6NamePlainText.visibility = View.GONE
-            }
-
-            4 ->    {Player5NamePlainText.visibility = View.GONE
-                    Player6NamePlainText.visibility = View.GONE
-            }
-
-            5 ->    {Player6NamePlainText.visibility = View.GONE
+                    if(nrOfplayers <= 2){
+                        Player3NamePlainText.visibility = View.GONE
+                    }
+                }
             }
         }
     }
 
-        //Creates players from name input
-    fun startGamePlayActivity(v : View){
+        //Creates players
+    fun createPlayers(){
         Players.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
         Players.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
 
@@ -59,7 +56,11 @@ class PlayerNamesActivity : AppCompatActivity() {
             }
 
         }
+    }
 
+        //Starts Gameplay activity
+    fun startGamePlayActivity(v : View){
+        createPlayers()
         val intent = Intent(this, GamePlayActivity::class.java)
         startActivity(intent)
     }

@@ -8,7 +8,7 @@ import android.view.WindowInsetsController
 
 class MainActivity : AppCompatActivity() {
 
-    var nrOfPlayers = 0
+    var nrOfPlayers :Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
