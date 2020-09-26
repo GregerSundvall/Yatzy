@@ -16,11 +16,11 @@ class PlayerNamesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_player_names)
 
         nrOfplayers = intent.getIntExtra("nrOfPlayers", 2)
-        hideRedundantNameBoxes()
+        showOnlyNecessaryNameboxes()
     }
 
         //Makes unnecessary nameboxes disappear
-    fun hideRedundantNameBoxes(){
+    fun showOnlyNecessaryNameboxes(){
         if(nrOfplayers <= 5){
             Player6NamePlainText.visibility = View.GONE
             if(nrOfplayers <= 4){
@@ -35,7 +35,6 @@ class PlayerNamesActivity : AppCompatActivity() {
         }
     }
 
-        //Creates players
     fun createPlayers(){
         Players.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
         Players.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
@@ -58,7 +57,6 @@ class PlayerNamesActivity : AppCompatActivity() {
         }
     }
 
-        //Starts Gameplay activity
     fun startGamePlayActivity(v : View){
         createPlayers()
         val intent = Intent(this, GamePlayActivity::class.java)

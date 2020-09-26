@@ -25,8 +25,8 @@ class GamePlayActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_play)
 
-        setupScoresheet()
-        setupDice()
+        createScoresheet()
+        createDice()
         setupListOfDieImageViews()
         newTurn()
     }
@@ -58,8 +58,8 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-        //Adds a set of dice for each player
-    fun setupDice(){
+        //Creates a set of dice for each player
+    fun createDice(){
         for(player in listOfPlayers) {
             for (i in 1..5) {
                 player.listOfDice.add(Die())
@@ -67,65 +67,16 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Sets up a scoresheet for each player
-    fun setupScoresheet(){
+        //Creates a scoresheet for each player
+    fun createScoresheet(){
         for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(1, "Aces"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(2, "Twos"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(3, "Threes"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(4, "Fours"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(5, "Fives"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(6, "Sixes"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(7, "Sum"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(8, "Bonus"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(9, "Pair"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(10, "Two pairs"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(11, "3 of a kind"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(12, "4 of a kind"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(13, "Full house"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(14, "SM straight"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(15, "LG straight"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(16, "Chance"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(17, "Yahtzee"))
-        }
-        for (player in listOfPlayers) {
-            player.scoreSheet.add(Score(18, "Total"))
+            for (i in 1..18){
+                player.scoreSheet.add(Score())
+            }
         }
     }
 
-        //Prints points for used slots in textviews on screen
+        //Shows saved points on screen
     fun showPlayerPoints(){
         findViewById<TextView>(R.id.onesTextView).text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
         findViewById<TextView>(R.id.twosTextView).text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
@@ -145,7 +96,7 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-        //Hides buttons for already used slots and shows everything else.
+        //Shows and hides score buttons according to visible variable in every score
     fun showHideButtons(){
         if(currentPlayer.scoreSheet[0].visible == false) {
             findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE

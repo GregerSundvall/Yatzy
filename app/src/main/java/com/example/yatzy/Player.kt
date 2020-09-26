@@ -10,14 +10,13 @@ class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
               var rolls : Int = 3,
               var listOfDice: MutableList<Die> = mutableListOf(),
-              var score :Int = 0
 
 ){
 
     fun setOnes() {
         for (die in listOfDice) {
             if (die.currentValue == 1) {
-                scoreSheet[0].points += 1
+                scoreSheet[0].points += 2
             }
         }
         scoreSheet[0].visible = false

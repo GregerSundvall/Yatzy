@@ -74,8 +74,8 @@ class ScoreboardActivity : AppCompatActivity() {
     }
 
     fun playAgain(view: View){
+        listOfPlayers.clear()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
 }
