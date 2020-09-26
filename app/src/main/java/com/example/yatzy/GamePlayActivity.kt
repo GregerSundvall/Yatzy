@@ -33,7 +33,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         //Starts next turn
     fun newTurn(){
-        hideStuff()
+        hideEverything()
         if(currentRound == 5 && currentPlayer == listOfPlayers.last()){
             startScoreboardActivity()
         }
@@ -76,7 +76,7 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Shows saved points on screen
+        //Shows points numbers on screen
     fun showPlayerPoints(){
         findViewById<TextView>(R.id.onesTextView).text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
         findViewById<TextView>(R.id.twosTextView).text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
@@ -96,7 +96,7 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
-        //Shows and hides score buttons according to visible variable in every score
+        //Shows and hides score buttons according to visibility variable in every score
     fun showHideButtons(){
         if(currentPlayer.scoreSheet[0].visible == false) {
             findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
@@ -201,7 +201,7 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
         //Hides mostly everything. For when waiting for a new player to roll.
-    fun hideStuff(){
+    fun hideEverything(){
             findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
@@ -287,11 +287,10 @@ class GamePlayActivity : AppCompatActivity() {
         }
         val intent = Intent(this, ScoreboardActivity::class.java)
         startActivity(intent)
-
     }
 
 
-        //Rolls dice and sets correct images
+        //Rolls dice
     fun rollDice(view: View){
         if (currentPlayer.rolls == 3){
             for(die in currentPlayer.listOfDice)
@@ -306,25 +305,34 @@ class GamePlayActivity : AppCompatActivity() {
             }
             currentPlayer.rolls -= 1
         }
-
         setDiceImages()
         showHideButtons()
         showPlayerPoints()
     }
 
-        //Sets a correct die image according to value
+        //Sets correct die image according to value and selected-state to one die
     fun setDieImage(die : Die, dieView: ImageView){
-            when(die.currentValue){
-            1 -> dieView.setImageResource(R.drawable.die1)
-            2 -> dieView.setImageResource(R.drawable.die2)
-            3 -> dieView.setImageResource(R.drawable.die3)
-            4 -> dieView.setImageResource(R.drawable.die4)
-            5 -> dieView.setImageResource(R.drawable.die5)
-            6 -> dieView.setImageResource(R.drawable.die6)
+        when(die.toBeRolled){
+            false ->    when(die.currentValue){
+                            1 -> dieView.setImageResource(R.drawable.die1)
+                            2 -> dieView.setImageResource(R.drawable.die2)
+                            3 -> dieView.setImageResource(R.drawable.die3)
+                            4 -> dieView.setImageResource(R.drawable.die4)
+                            5 -> dieView.setImageResource(R.drawable.die5)
+                            6 -> dieView.setImageResource(R.drawable.die6)
+                            }
+            true ->     when(die.currentValue){
+                            1 -> dieView.setImageResource(R.drawable.die1selected)
+                            2 -> dieView.setImageResource(R.drawable.die2selected)
+                            3 -> dieView.setImageResource(R.drawable.die3selected)
+                            4 -> dieView.setImageResource(R.drawable.die4selected)
+                            5 -> dieView.setImageResource(R.drawable.die5selected)
+                            6 -> dieView.setImageResource(R.drawable.die6selected)
+                            }
         }
     }
 
-        //Uses setDieImage to set the right die images
+        //Uses setDieImage to set the right die images on all dice
     fun setDiceImages(){
         setDieImage(currentPlayer.listOfDice[0], listOfDieImageViews[0])
         setDieImage(currentPlayer.listOfDice[1], listOfDieImageViews[1])
@@ -333,125 +341,45 @@ class GamePlayActivity : AppCompatActivity() {
         setDieImage(currentPlayer.listOfDice[4], listOfDieImageViews[4])
     }
 
-        //Sets the selected/red image for selected dice
-    fun selectDie1(view: View){
-        when(currentPlayer.listOfDice[0].toBeRolled) {
-            false -> {when (currentPlayer.listOfDice[0].currentValue) {
-                1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1selected)
-                2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2selected)
-                3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3selected)
-                4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4selected)
-                5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5selected)
-                6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6selected)
-            }
-                currentPlayer.listOfDice [0].toBeRolled = true}
-
-            true -> {when (currentPlayer.listOfDice[0].currentValue) {
-                1 -> listOfDieImageViews[0].setImageResource(R.drawable.die1)
-                2 -> listOfDieImageViews[0].setImageResource(R.drawable.die2)
-                3 -> listOfDieImageViews[0].setImageResource(R.drawable.die3)
-                4 -> listOfDieImageViews[0].setImageResource(R.drawable.die4)
-                5 -> listOfDieImageViews[0].setImageResource(R.drawable.die5)
-                6 -> listOfDieImageViews[0].setImageResource(R.drawable.die6)
-            }
-                currentPlayer.listOfDice [0].toBeRolled = false}
+        //Sets toBeRolled value and the white or red image accordingly for die 1
+    fun selectAndDeselectDie1(view: View){
+        when(currentPlayer.listOfDice[0].toBeRolled){
+            false -> currentPlayer.listOfDice[0].toBeRolled = true
+            true -> currentPlayer.listOfDice[0].toBeRolled = false
         }
+        setDieImage(currentPlayer.listOfDice[0], listOfDieImageViews[0])
     }
-
-    fun selectDie2(view: View){
-        when(currentPlayer.listOfDice[1].toBeRolled) {
-            false -> {when (currentPlayer.listOfDice[1].currentValue) {
-                1 -> listOfDieImageViews[1].setImageResource(R.drawable.die1selected)
-                2 -> listOfDieImageViews[1].setImageResource(R.drawable.die2selected)
-                3 -> listOfDieImageViews[1].setImageResource(R.drawable.die3selected)
-                4 -> listOfDieImageViews[1].setImageResource(R.drawable.die4selected)
-                5 -> listOfDieImageViews[1].setImageResource(R.drawable.die5selected)
-                6 -> listOfDieImageViews[1].setImageResource(R.drawable.die6selected)
-            }
-                currentPlayer.listOfDice [1].toBeRolled = true}
-
-            true -> {when (currentPlayer.listOfDice[1].currentValue) {
-                1 -> listOfDieImageViews[1].setImageResource(R.drawable.die1)
-                2 -> listOfDieImageViews[1].setImageResource(R.drawable.die2)
-                3 -> listOfDieImageViews[1].setImageResource(R.drawable.die3)
-                4 -> listOfDieImageViews[1].setImageResource(R.drawable.die4)
-                5 -> listOfDieImageViews[1].setImageResource(R.drawable.die5)
-                6 -> listOfDieImageViews[1].setImageResource(R.drawable.die6)
-            }
-                currentPlayer.listOfDice [1].toBeRolled = false}
+    //Sets toBeRolled value and the white or red image accordingly for die 2
+    fun selectAndDeselectDie2(view: View){
+        when(currentPlayer.listOfDice[1].toBeRolled){
+            false -> currentPlayer.listOfDice[1].toBeRolled = true
+            true -> currentPlayer.listOfDice[1].toBeRolled = false
         }
+        setDieImage(currentPlayer.listOfDice[1], listOfDieImageViews[1])
     }
-
+    //Sets toBeRolled value and the white or red image accordingly for die 3
     fun selectDie3(view: View){
-        when(currentPlayer.listOfDice[2].toBeRolled) {
-            false -> {when (currentPlayer.listOfDice[2].currentValue) {
-                1 -> listOfDieImageViews[2].setImageResource(R.drawable.die1selected)
-                2 -> listOfDieImageViews[2].setImageResource(R.drawable.die2selected)
-                3 -> listOfDieImageViews[2].setImageResource(R.drawable.die3selected)
-                4 -> listOfDieImageViews[2].setImageResource(R.drawable.die4selected)
-                5 -> listOfDieImageViews[2].setImageResource(R.drawable.die5selected)
-                6 -> listOfDieImageViews[2].setImageResource(R.drawable.die6selected)
-            }
-                currentPlayer.listOfDice [2].toBeRolled = true}
-
-            true -> {when (currentPlayer.listOfDice[2].currentValue) {
-                1 -> listOfDieImageViews[2].setImageResource(R.drawable.die1)
-                2 -> listOfDieImageViews[2].setImageResource(R.drawable.die2)
-                3 -> listOfDieImageViews[2].setImageResource(R.drawable.die3)
-                4 -> listOfDieImageViews[2].setImageResource(R.drawable.die4)
-                5 -> listOfDieImageViews[2].setImageResource(R.drawable.die5)
-                6 -> listOfDieImageViews[2].setImageResource(R.drawable.die6)
-            }
-                currentPlayer.listOfDice [2].toBeRolled = false}
+        when(currentPlayer.listOfDice[2].toBeRolled){
+            false -> currentPlayer.listOfDice[2].toBeRolled = true
+            true -> currentPlayer.listOfDice[2].toBeRolled = false
         }
+        setDieImage(currentPlayer.listOfDice[2], listOfDieImageViews[2])
     }
-
+    //Sets toBeRolled value and the white or red image accordingly for die 4
     fun selectDie4(view: View){
-        when(currentPlayer.listOfDice[3].toBeRolled) {
-            false -> {when (currentPlayer.listOfDice[3].currentValue) {
-                1 -> listOfDieImageViews[3].setImageResource(R.drawable.die1selected)
-                2 -> listOfDieImageViews[3].setImageResource(R.drawable.die2selected)
-                3 -> listOfDieImageViews[3].setImageResource(R.drawable.die3selected)
-                4 -> listOfDieImageViews[3].setImageResource(R.drawable.die4selected)
-                5 -> listOfDieImageViews[3].setImageResource(R.drawable.die5selected)
-                6 -> listOfDieImageViews[3].setImageResource(R.drawable.die6selected)
-            }
-                currentPlayer.listOfDice [3].toBeRolled = true}
-
-            true -> {when (currentPlayer.listOfDice[3].currentValue) {
-                1 -> listOfDieImageViews[3].setImageResource(R.drawable.die1)
-                2 -> listOfDieImageViews[3].setImageResource(R.drawable.die2)
-                3 -> listOfDieImageViews[3].setImageResource(R.drawable.die3)
-                4 -> listOfDieImageViews[3].setImageResource(R.drawable.die4)
-                5 -> listOfDieImageViews[3].setImageResource(R.drawable.die5)
-                6 -> listOfDieImageViews[3].setImageResource(R.drawable.die6)
-            }
-                currentPlayer.listOfDice [3].toBeRolled = false}
+        when(currentPlayer.listOfDice[3].toBeRolled){
+            false -> currentPlayer.listOfDice[3].toBeRolled = true
+            true -> currentPlayer.listOfDice[3].toBeRolled = false
         }
+        setDieImage(currentPlayer.listOfDice[3], listOfDieImageViews[3])
     }
-
+    //Sets toBeRolled value and the white or red image accordingly for die 5
     fun selectDie5(view: View){
-        when(currentPlayer.listOfDice[4].toBeRolled) {
-            false -> {when (currentPlayer.listOfDice[4].currentValue) {
-                1 -> listOfDieImageViews[4].setImageResource(R.drawable.die1selected)
-                2 -> listOfDieImageViews[4].setImageResource(R.drawable.die2selected)
-                3 -> listOfDieImageViews[4].setImageResource(R.drawable.die3selected)
-                4 -> listOfDieImageViews[4].setImageResource(R.drawable.die4selected)
-                5 -> listOfDieImageViews[4].setImageResource(R.drawable.die5selected)
-                6 -> listOfDieImageViews[4].setImageResource(R.drawable.die6selected)
-            }
-                currentPlayer.listOfDice [4].toBeRolled = true}
-
-            true -> {when (currentPlayer.listOfDice[4].currentValue) {
-                1 -> listOfDieImageViews[4].setImageResource(R.drawable.die1)
-                2 -> listOfDieImageViews[4].setImageResource(R.drawable.die2)
-                3 -> listOfDieImageViews[4].setImageResource(R.drawable.die3)
-                4 -> listOfDieImageViews[4].setImageResource(R.drawable.die4)
-                5 -> listOfDieImageViews[4].setImageResource(R.drawable.die5)
-                6 -> listOfDieImageViews[4].setImageResource(R.drawable.die6)
-            }
-                currentPlayer.listOfDice [4].toBeRolled = false}
+        when(currentPlayer.listOfDice[4].toBeRolled){
+            false -> currentPlayer.listOfDice[4].toBeRolled = true
+            true -> currentPlayer.listOfDice[4].toBeRolled = false
         }
+        setDieImage(currentPlayer.listOfDice[4], listOfDieImageViews[4])
     }
 
         //Methods to call points setters and start next turn

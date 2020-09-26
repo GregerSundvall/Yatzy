@@ -72,7 +72,7 @@ class ScoreboardActivity : AppCompatActivity() {
             }
         }
     }
-
+        //Clears list of players and restarts game
     fun playAgain(view: View){
         listOfPlayers.clear()
         val intent = Intent(this, MainActivity::class.java)
