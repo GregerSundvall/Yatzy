@@ -43,7 +43,6 @@ class GamePlayActivity : AppCompatActivity() {
         }else{
             currentPlayer = listOfPlayers[+1]
         }
-
         findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
         currentPlayer.rolls = 3
     }
@@ -55,7 +54,6 @@ class GamePlayActivity : AppCompatActivity() {
         listOfDieImageViews.add(findViewById(R.id.die3))
         listOfDieImageViews.add(findViewById(R.id.die4))
         listOfDieImageViews.add(findViewById(R.id.die5))
-
     }
 
         //Creates a set of dice for each player

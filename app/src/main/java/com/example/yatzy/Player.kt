@@ -2,9 +2,7 @@ package com.example.yatzy
 
 import android.util.Log
 import java.util.*
-//object Settings{
-    //var listOfPlayers:MutableList<Player> = mutableListOf()
-//}
+
 
 class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),

@@ -3,7 +3,6 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_player_names.*
 
@@ -16,11 +15,11 @@ class PlayerNamesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_player_names)
 
         nrOfplayers = intent.getIntExtra("nrOfPlayers", 2)
-        showOnlyNecessaryNameboxes()
+        hideUnnecessaryNameboxes()
     }
 
         //Makes unnecessary nameboxes disappear
-    fun showOnlyNecessaryNameboxes(){
+    fun hideUnnecessaryNameboxes(){
         if(nrOfplayers <= 5){
             Player6NamePlainText.visibility = View.GONE
             if(nrOfplayers <= 4){
