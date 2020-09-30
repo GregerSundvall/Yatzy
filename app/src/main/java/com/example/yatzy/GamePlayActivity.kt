@@ -108,12 +108,13 @@ class GamePlayActivity : AppCompatActivity() {
 
     }
 
+        //shows a button if score is not used
     fun showAButton(score : Score , button : Button){
         if(score.visible == true){
             button.visibility = View.VISIBLE
         }
     }
-
+        //shows a pointsbox if not zero
     fun showScoreIfDone(points : Int , textView : TextView){
         if(points != 0){
             textView.visibility = View.VISIBLE
@@ -164,7 +165,8 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.desiredTextView).visibility = View.VISIBLE
     }
 
-        //Hides mostly everything. For when waiting for a new player to roll.
+        //Hides everything but roll button and textview with player name.
+        //Used when waiting for a new player to roll.
     fun hideEverything(){
             findViewById<Button>(R.id.buttonOnes).visibility = View.INVISIBLE
             findViewById<Button>(R.id.buttonTwos).visibility = View.INVISIBLE
@@ -274,7 +276,7 @@ class GamePlayActivity : AppCompatActivity() {
         showPlayerPoints()
     }
 
-        //Sets correct die image according to value and selected-state to one die
+        //Sets correct die image according to value and selected-state to a die
     fun setDieImage(die : Die, dieView: ImageView){
         when(die.toBeRolled){
             false ->    when(die.currentValue){
