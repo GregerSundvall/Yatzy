@@ -1,18 +1,12 @@
 package com.example.yatzy
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
-import com.example.yatzy.Players.listOfPlayers
-import kotlinx.android.synthetic.main.activity_game_play.*
-import kotlinx.android.synthetic.main.activity_scoreboard.*
 
 class GamePlayActivity : AppCompatActivity() {
 
@@ -20,6 +14,7 @@ class GamePlayActivity : AppCompatActivity() {
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var currentRound : Int = 0
     var currentPlayer = listOfPlayers.last()
+    var listOfPointsBoxes = mutableListOf<TextView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +22,8 @@ class GamePlayActivity : AppCompatActivity() {
 
         createScoresheet()
         createDice()
-        setupListOfDieImageViews()
+        populateListOfDieImageViews()
+        populateListOfPointsBoxes()
         newTurn()
     }
 
@@ -47,8 +43,26 @@ class GamePlayActivity : AppCompatActivity() {
         currentPlayer.rolls = 3
     }
 
+    fun populateListOfPointsBoxes(){
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.onesTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.twosTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.threesTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.foursTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.fivesTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.sixesTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.onePairTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.twoPairsTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.tripsTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.fourOfAKindTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.fullHouseTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.chanceTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.yatzyTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.smStraightTextView))
+        listOfPointsBoxes.add(findViewById<TextView>(R.id.lgStraightTextView))
+    }
+
         //populates list of die images
-    fun setupListOfDieImageViews(){
+    fun populateListOfDieImageViews(){
         listOfDieImageViews.add(findViewById(R.id.die1))
         listOfDieImageViews.add(findViewById(R.id.die2))
         listOfDieImageViews.add(findViewById(R.id.die3))
@@ -74,23 +88,23 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Shows points numbers on screen
+        //Shows correct points in points boxes
     fun showPlayerPoints(){
-        findViewById<TextView>(R.id.onesTextView).text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
-        findViewById<TextView>(R.id.twosTextView).text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
-        findViewById<TextView>(R.id.threesTextView).text = getString(R.string.threesPoints, currentPlayer.scoreSheet[2].points.toString())
-        findViewById<TextView>(R.id.foursTextView).text = getString(R.string.foursPoints, currentPlayer.scoreSheet[3].points.toString())
-        findViewById<TextView>(R.id.fivesTextView).text = getString(R.string.fivesPoints, currentPlayer.scoreSheet[4].points.toString())
-        findViewById<TextView>(R.id.sixesTextView).text = getString(R.string.sixesPoints, currentPlayer.scoreSheet[5].points.toString())
-        findViewById<TextView>(R.id.onePairTextView).text = getString(R.string.onePairPoints, currentPlayer.scoreSheet[8].points.toString())
-        findViewById<TextView>(R.id.twoPairsTextView).text = getString(R.string.twoPairsPoints, currentPlayer.scoreSheet[9].points.toString())
-        findViewById<TextView>(R.id.tripsTextView).text = getString(R.string.tripsPoints, currentPlayer.scoreSheet[10].points.toString())
-        findViewById<TextView>(R.id.fourOfAKindTextView).text = getString(R.string.fourOfAKindPoints, currentPlayer.scoreSheet[11].points.toString())
-        findViewById<TextView>(R.id.fullHouseTextView).text = getString(R.string.fullHousePoints, currentPlayer.scoreSheet[12].points.toString())
-        findViewById<TextView>(R.id.smStraightTextView).text = getString(R.string.smStraightPoints, currentPlayer.scoreSheet[13].points.toString())
-        findViewById<TextView>(R.id.lgStraightTextView).text = getString(R.string.lgStraightPoints, currentPlayer.scoreSheet[14].points.toString())
-        findViewById<TextView>(R.id.chanceTextView).text = getString(R.string.chancePoints, currentPlayer.scoreSheet[15].points.toString())
-        findViewById<TextView>(R.id.yatzyTextView).text = getString(R.string.yatzyPoints, currentPlayer.scoreSheet[16].points.toString())
+        listOfPointsBoxes[0].text = getString(R.string.onesPoints, currentPlayer.scoreSheet[0].points.toString())
+        listOfPointsBoxes[1].text = getString(R.string.twosPoints, currentPlayer.scoreSheet[1].points.toString())
+        listOfPointsBoxes[2].text = getString(R.string.threesPoints, currentPlayer.scoreSheet[2].points.toString())
+        listOfPointsBoxes[3].text = getString(R.string.foursPoints, currentPlayer.scoreSheet[3].points.toString())
+        listOfPointsBoxes[4].text = getString(R.string.fivesPoints, currentPlayer.scoreSheet[4].points.toString())
+        listOfPointsBoxes[5].text = getString(R.string.sixesPoints, currentPlayer.scoreSheet[5].points.toString())
+        listOfPointsBoxes[6].text = getString(R.string.onePairPoints, currentPlayer.scoreSheet[8].points.toString())
+        listOfPointsBoxes[7].text = getString(R.string.twoPairsPoints, currentPlayer.scoreSheet[9].points.toString())
+        listOfPointsBoxes[8].text = getString(R.string.tripsPoints, currentPlayer.scoreSheet[10].points.toString())
+        listOfPointsBoxes[9].text = getString(R.string.fourOfAKindPoints, currentPlayer.scoreSheet[11].points.toString())
+        listOfPointsBoxes[10].text = getString(R.string.fullHousePoints, currentPlayer.scoreSheet[12].points.toString())
+        listOfPointsBoxes[11].text = getString(R.string.smStraightPoints, currentPlayer.scoreSheet[13].points.toString())
+        listOfPointsBoxes[12].text = getString(R.string.lgStraightPoints, currentPlayer.scoreSheet[14].points.toString())
+        listOfPointsBoxes[13].text = getString(R.string.chancePoints, currentPlayer.scoreSheet[15].points.toString())
+        listOfPointsBoxes[14].text = getString(R.string.yatzyPoints, currentPlayer.scoreSheet[16].points.toString())
 
     }
 
@@ -100,7 +114,13 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Shows and hides score buttons according to visibility variable in every score
+    fun showScoreIfDone(points : Int , textView : TextView){
+        if(points != 0){
+            textView.visibility = View.VISIBLE
+        }
+    }
+
+        //Shows score buttons, textviews and dice according to visibility variable and usage
     fun showHideButtons(){
         showAButton(currentPlayer.scoreSheet[0], findViewById<Button>(R.id.buttonOnes))
         showAButton(currentPlayer.scoreSheet[1], findViewById<Button>(R.id.buttonTwos))
@@ -118,21 +138,21 @@ class GamePlayActivity : AppCompatActivity() {
         showAButton(currentPlayer.scoreSheet[15], findViewById<Button>(R.id.buttonChance))
         showAButton(currentPlayer.scoreSheet[16], findViewById<Button>(R.id.buttonYatzy))
 
-        findViewById<TextView>(R.id.onesTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.twosTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.threesTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.foursTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.fivesTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.sixesTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.onePairTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.twoPairsTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.tripsTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.fourOfAKindTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.fullHouseTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.chanceTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.yatzyTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.smStraightTextView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.lgStraightTextView).visibility = View.VISIBLE
+        showScoreIfDone(currentPlayer.scoreSheet[0].points, listOfPointsBoxes[0])
+        showScoreIfDone(currentPlayer.scoreSheet[1].points, listOfPointsBoxes[1])
+        showScoreIfDone(currentPlayer.scoreSheet[2].points, listOfPointsBoxes[2])
+        showScoreIfDone(currentPlayer.scoreSheet[3].points, listOfPointsBoxes[3])
+        showScoreIfDone(currentPlayer.scoreSheet[4].points, listOfPointsBoxes[4])
+        showScoreIfDone(currentPlayer.scoreSheet[5].points, listOfPointsBoxes[5])
+        showScoreIfDone(currentPlayer.scoreSheet[8].points, listOfPointsBoxes[6])
+        showScoreIfDone(currentPlayer.scoreSheet[9].points, listOfPointsBoxes[7])
+        showScoreIfDone(currentPlayer.scoreSheet[10].points, listOfPointsBoxes[8])
+        showScoreIfDone(currentPlayer.scoreSheet[11].points, listOfPointsBoxes[9])
+        showScoreIfDone(currentPlayer.scoreSheet[12].points, listOfPointsBoxes[10])
+        showScoreIfDone(currentPlayer.scoreSheet[13].points, listOfPointsBoxes[11])
+        showScoreIfDone(currentPlayer.scoreSheet[14].points, listOfPointsBoxes[12])
+        showScoreIfDone(currentPlayer.scoreSheet[15].points, listOfPointsBoxes[13])
+        showScoreIfDone(currentPlayer.scoreSheet[16].points, listOfPointsBoxes[14])
 
         findViewById<ImageView>(R.id.die1).visibility =View.VISIBLE
         findViewById<ImageView>(R.id.die2).visibility =View.VISIBLE
