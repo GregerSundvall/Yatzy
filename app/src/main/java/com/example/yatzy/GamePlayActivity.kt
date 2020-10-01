@@ -18,8 +18,8 @@ class GamePlayActivity : AppCompatActivity() {
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var currentRound : Int = 0
     var currentPlayer = listOfPlayers.last()
-    var listOfPointsBoxes = mutableListOf<TextView>()
-    var recyclerScores = currentPlayer.scoreSheet
+    var recyclerPlayer = currentPlayer
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = ScoreRecyclerAdapter(this, recyclerScores)
+        val adapter = ScoreRecyclerAdapter(this, recyclerPlayer, )
         recyclerView.adapter = adapter
 
         createScoresheet()
@@ -74,20 +74,35 @@ class GamePlayActivity : AppCompatActivity() {
     fun createScoresheet(){
         for(player in Players.listOfPlayers){
             player.scoreSheet.add(Ones())
-           /* player.scoreSheet.add(Twos())
-            player.scoreSheet.add(Score("Threes"))
-            player.scoreSheet.add(Score("Fours"))
-            player.scoreSheet.add(Score("Fives"))
-            player.scoreSheet.add(Score("Sixes"))
-            player.scoreSheet.add(Score("Pair"))
-            player.scoreSheet.add(Score("Two pairs"))
-            player.scoreSheet.add(Score("3 of a kind"))
-            player.scoreSheet.add(Score("4 of a kind"))
-            player.scoreSheet.add(Score("Full house"))
-            player.scoreSheet.add(Score("Sm straight"))
-            player.scoreSheet.add(Score("Lg straight"))
-            player.scoreSheet.add(Score("Chance"))
-            player.scoreSheet.add(Score("Yatzy"))*/
+            player.scoreSheet.add(Twos())
+            player.scoreSheet.add(Threes())
+            player.scoreSheet.add(Fours())
+            player.scoreSheet.add(Fives())
+            player.scoreSheet.add(Sixes())
+            player.scoreSheet.add(Pair())
+            player.scoreSheet.add(TwoPairs())
+            player.scoreSheet.add(ThreeOfAKind())
+            player.scoreSheet.add(FourOfAKind())
+            player.scoreSheet.add(FullHouse())
+            player.scoreSheet.add(SmStraight())
+            player.scoreSheet.add(LgStraight())
+            player.scoreSheet.add(Chance())
+            player.scoreSheet.add(Yatzy())
+
+            /* player.scoreSheet.add(Twos())
+             player.scoreSheet.add(Score("Threes"))
+             player.scoreSheet.add(Score("Fours"))
+             player.scoreSheet.add(Score("Fives"))
+             player.scoreSheet.add(Score("Sixes"))
+             player.scoreSheet.add(Score("Pair"))
+             player.scoreSheet.add(Score("Two pairs"))
+             player.scoreSheet.add(Score("3 of a kind"))
+             player.scoreSheet.add(Score("4 of a kind"))
+             player.scoreSheet.add(Score("Full house"))
+             player.scoreSheet.add(Score("Sm straight"))
+             player.scoreSheet.add(Score("Lg straight"))
+             player.scoreSheet.add(Score("Chance"))
+             player.scoreSheet.add(Score("Yatzy"))*/
         }
     }
 

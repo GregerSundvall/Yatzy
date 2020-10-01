@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ScoreRecyclerAdapter (val context: Context, val recyclerScores : List<Score>)
+class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
     :RecyclerView.Adapter<ScoreRecyclerAdapter.ViewHolder>(){
 
     val layoutInflater = LayoutInflater.from((context))
@@ -20,23 +20,23 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerScores : List<Scor
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val score = recyclerScores[position]
+        val score = recyclerPlayer.scoreSheet[position]
         holder.pointsTextView.text = score.points.toString()
         holder.nameTextView.text = score.name
         holder.scorePosition = position
 
-        if(recyclerScores[position].filled == true){
+        if(recyclerPlayer.scoreSheet[position].filled == true){
             holder.saveTextView.visibility = View.INVISIBLE
         }
 
     }
 
     override fun getItemCount(): Int {
-        return recyclerScores.size
+        return recyclerPlayer.scoreSheet.size
     }
 
     fun saveScore(scorePosition : Int){
-        recyclerScores[0].saveScore()
+        recyclerPlayer.scoreSheet[0].saveScore(recyclerPlayer)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
