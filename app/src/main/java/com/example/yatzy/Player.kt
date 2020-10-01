@@ -1,23 +1,41 @@
 package com.example.yatzy
 
-import android.util.Log
-import java.util.*
-
 
 class Player (var name : String,
               var scoreSheet: MutableList<Score> = mutableListOf(),
               var rolls : Int = 3,
               var listOfDice: MutableList<Die> = mutableListOf(),
 
-){
+){/*
+    init{
+        scoreSheet.add(Score("Ones"))
+        scoreSheet.add(Score("Twos"))
+        scoreSheet.add(Score("Threes"))
+        scoreSheet.add(Score("Fours"))
+        scoreSheet.add(Score("Fives"))
+        scoreSheet.add(Score("Sixes"))
+        scoreSheet.add(Score("Pair"))
+        scoreSheet.add(Score("Two pairs"))
+        scoreSheet.add(Score("3 of a kind"))
+        scoreSheet.add(Score("4 of a kind"))
+        scoreSheet.add(Score("Full house"))
+        scoreSheet.add(Score("Sm straight"))
+        scoreSheet.add(Score("Lg straight"))
+        scoreSheet.add(Score("Chance"))
+        scoreSheet.add(Score("Yatzy"))
 
+        for(i in 1..5) {
+            listOfDice.add(Die())
+        }
+    }
+*/
     fun setOnes() {
         for (die in listOfDice) {
             if (die.currentValue == 1) {
                 scoreSheet[0].points += 2
             }
         }
-        scoreSheet[0].visible = false
+        scoreSheet[0].filled = false
     }
 
     fun setTwos() {
@@ -26,7 +44,7 @@ class Player (var name : String,
                 scoreSheet[1].points += 2
             }
         }
-        scoreSheet[1].visible = false
+        scoreSheet[1].filled = false
     }
 
     fun setThrees() {
@@ -35,7 +53,7 @@ class Player (var name : String,
                 scoreSheet[2].points += 3
             }
         }
-        scoreSheet[2].visible = false
+        scoreSheet[2].filled = false
     }
 
     fun setFours() {
@@ -44,7 +62,7 @@ class Player (var name : String,
                 scoreSheet[3].points += 4
             }
         }
-        scoreSheet[3].visible = false
+        scoreSheet[3].filled = false
     }
 
     fun setFives() {
@@ -53,7 +71,7 @@ class Player (var name : String,
                 scoreSheet[4].points += 5
             }
         }
-        scoreSheet[4].visible = false
+        scoreSheet[4].filled = false
     }
 
     fun setSixes() {
@@ -62,7 +80,7 @@ class Player (var name : String,
                 scoreSheet[5].points += 6
             }
         }
-        scoreSheet[5].visible = false
+        scoreSheet[5].filled = false
     }
 
     fun setOnePair(){
@@ -80,7 +98,7 @@ class Player (var name : String,
         }else if(listOfValues[3] == listOfValues[4]){
             scoreSheet[8].points = listOfValues[3] + listOfValues[4]
         }
-        scoreSheet[8].visible = false
+        scoreSheet[8].filled = false
     }
 
     fun setTwoPairs(){
@@ -105,7 +123,7 @@ class Player (var name : String,
         if(listOfPairs.size == 2){
             scoreSheet[9].points = listOfPairs[0] + listOfPairs[1]
         }
-        scoreSheet[9].visible = false
+        scoreSheet[9].filled = false
     }
 
     fun setTrips(){
@@ -121,7 +139,7 @@ class Player (var name : String,
         }else if(listOfValues[2] == listOfValues[3] && listOfValues[2] == listOfValues[4]){
             scoreSheet[10].points = listOfValues[2] + listOfValues[3] + listOfValues[4]
         }
-        scoreSheet[10].visible = false
+        scoreSheet[10].filled = false
     }
 
     fun setFourOfAKind(){
@@ -135,7 +153,7 @@ class Player (var name : String,
         }else if(listOfValues[1] == listOfValues[2] && listOfValues[1] == listOfValues[3] && listOfValues[1] == listOfValues[4]){
             scoreSheet[11].points = listOfValues[1] + listOfValues[2] + listOfValues[3] + listOfValues[4]
         }
-        scoreSheet[11].visible = false
+        scoreSheet[11].filled = false
     }
 
     fun setFullHouse(){
@@ -153,7 +171,7 @@ class Player (var name : String,
                 scoreSheet[12].points = listOfValues[0] + listOfValues[1] + listOfValues[2] + listOfValues[3] + listOfValues[4]
             }
         }
-        scoreSheet[12].visible = false
+        scoreSheet[12].filled = false
     }
 
     fun setSmStraight(){
@@ -165,7 +183,7 @@ class Player (var name : String,
         if(listOfValues[0] == 5 && listOfValues[1] == 4 && listOfValues[2] == 3 && listOfValues[3] == 2 && listOfValues[4] == 1){
             scoreSheet[13].points = 15
         }
-        scoreSheet[13].visible = false
+        scoreSheet[13].filled = false
     }
 
     fun setLgStraight(){
@@ -177,14 +195,14 @@ class Player (var name : String,
         if(listOfValues[0] == 6 && listOfValues[1] == 5 && listOfValues[2] == 4 && listOfValues[3] == 3 && listOfValues[4] == 2){
             scoreSheet[14].points = 20
         }
-        scoreSheet[14].visible = false
+        scoreSheet[14].filled = false
     }
 
     fun setChance(){
         for(die in listOfDice){
             scoreSheet[15].points += die.currentValue
         }
-        scoreSheet[15].visible = false
+        scoreSheet[15].filled = false
     }
 
     fun setYatzy(){
@@ -195,7 +213,7 @@ class Player (var name : String,
         if(listOfValues[0] == listOfValues[1] && listOfValues[0] == listOfValues[2]  && listOfValues[0] == listOfValues[3] && listOfValues[0] == listOfValues[4]){
             scoreSheet[16].points = 50
         }
-        scoreSheet[16].visible = false
+        scoreSheet[16].filled = false
     }
 
 
