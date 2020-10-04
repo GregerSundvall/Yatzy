@@ -43,7 +43,7 @@ class GamePlayActivity : AppCompatActivity() {
         Log.d("!!!", "${currentPlayer.scoreSheet[0].points.toString()}")
         Log.d("!!!", "${currentPlayer.scoreSheet[6].points.toString()}")
 
-        if(currentRound == 5 && currentPlayer == listOfPlayers.last()){
+        if(currentRound == 1 && currentPlayer == listOfPlayers.last()){
             startScoreboardActivity()
         }
         if(currentPlayer == listOfPlayers.last()){

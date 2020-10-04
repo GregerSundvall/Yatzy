@@ -28,7 +28,12 @@
     <string name="LargeStraight">Hi straight</string>
     <string name="Chance">Chance</string>
     <string name="FourOfAKind">4 of a kind</string>
-    <string name="player1Name">%1$s</string>
+    <string name="player1NameAndScore">%1$s: %2$s points.</string>
+    <string name="player2NameAndScore">%1$s: %2$s points.</string>
+    <string name="player3NameAndScore">%1$s: %2$s points.</string>
+    <string name="player4NameAndScore">%1$s: %2$s points.</string>
+    <string name="player5NameAndScore">%1$s: %2$s points.</string>
+    <string name="player6NameAndScore">%1$s: %2$s points.</string>
     <string name="player1Score">%1$s</string>
     <string name="player2Name">%1$s</string>
     <string name="player2Score">%1$s</string>
@@ -49,4 +54,5 @@
     <string name="smStraightPoints">%1$s</string>
     <string name="start_again">Start again!</string>
     <string name="roll_dice">Roll!</string>
+    <string name="playAgain">Play again!</string>
 </resources>
