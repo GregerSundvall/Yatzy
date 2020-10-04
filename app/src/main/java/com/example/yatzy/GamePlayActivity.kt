@@ -3,6 +3,7 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -36,9 +37,12 @@ class GamePlayActivity : AppCompatActivity() {
         newTurn()
     }
 
-        //Starts next turn
-    fun newTurn(){
-        hideEverything()
+    fun savePoints(scorePosition : Int){
+        Log.d("!!!", "savePoints started")
+        currentPlayer.scoreSheet[scorePosition].saveScore(currentPlayer)
+        Log.d("!!!", "${currentPlayer.scoreSheet[0].points.toString()}")
+        Log.d("!!!", "${currentPlayer.scoreSheet[6].points.toString()}")
+
         if(currentRound == 5 && currentPlayer == listOfPlayers.last()){
             startScoreboardActivity()
         }
@@ -48,6 +52,15 @@ class GamePlayActivity : AppCompatActivity() {
         }else{
             currentPlayer = listOfPlayers[+1]
         }
+        newTurn()
+    }
+        //Starts next turn
+    fun newTurn(){
+        Log.d("!!!", "newTurn started")
+        Log.d("!!!", "${currentPlayer.scoreSheet[0].points.toString()}")
+        Log.d("!!!", "${currentPlayer.scoreSheet[6].points.toString()}")
+        hideEverything()
+        Log.d("!!!", "hideEverything done")
         findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
         currentPlayer.rolls = 3
     }
@@ -88,26 +101,12 @@ class GamePlayActivity : AppCompatActivity() {
             player.scoreSheet.add(LgStraight())
             player.scoreSheet.add(Chance())
             player.scoreSheet.add(Yatzy())
-
-            /* player.scoreSheet.add(Twos())
-             player.scoreSheet.add(Score("Threes"))
-             player.scoreSheet.add(Score("Fours"))
-             player.scoreSheet.add(Score("Fives"))
-             player.scoreSheet.add(Score("Sixes"))
-             player.scoreSheet.add(Score("Pair"))
-             player.scoreSheet.add(Score("Two pairs"))
-             player.scoreSheet.add(Score("3 of a kind"))
-             player.scoreSheet.add(Score("4 of a kind"))
-             player.scoreSheet.add(Score("Full house"))
-             player.scoreSheet.add(Score("Sm straight"))
-             player.scoreSheet.add(Score("Lg straight"))
-             player.scoreSheet.add(Score("Chance"))
-             player.scoreSheet.add(Score("Yatzy"))*/
         }
     }
 
 
     fun hideEverything(){
+        Log.d("!!!", "HideEverything started")
         findViewById<ImageView>(R.id.die1).visibility =View.INVISIBLE
         findViewById<ImageView>(R.id.die2).visibility =View.INVISIBLE
         findViewById<ImageView>(R.id.die3).visibility =View.INVISIBLE
@@ -117,6 +116,7 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.selectTextView).visibility =View.INVISIBLE
 
         findViewById<RecyclerView>(R.id.recyclerView).visibility = View.INVISIBLE
+        Log.d("!!!", "hideEverything end")
     }
 
     fun showEverything(){
@@ -134,14 +134,16 @@ class GamePlayActivity : AppCompatActivity() {
         //Summarizes every player's bonus and score
     fun sumPoints(){
         for(player in listOfPlayers){
-            player.scoreSheet[6].points =
+            player.scoreSheet[15].points =
                 player.scoreSheet[0].points + player.scoreSheet[1].points +
                 player.scoreSheet[2].points + player.scoreSheet[3].points +
                 player.scoreSheet[4].points + player.scoreSheet[5].points
         }
         for(player in listOfPlayers){
-            if(player.scoreSheet[6].points >= 63){
-                player.scoreSheet[7].points = 50
+            if(player.scoreSheet[15].points >= 63){
+                player.scoreSheet[16].points = 50
+            }else{
+                player.scoreSheet[16].points = 0
             }
         }
         for(player in listOfPlayers){
@@ -174,7 +176,7 @@ class GamePlayActivity : AppCompatActivity() {
             for(die in currentPlayer.listOfDice) {
                 die.toBeRolled = true
             }
-            showEverything()
+
         }
         if(currentPlayer.rolls > 0){
             for(die in currentPlayer.listOfDice) {
@@ -186,7 +188,7 @@ class GamePlayActivity : AppCompatActivity() {
             currentPlayer.rolls -= 1
         }
         setDiceImages()
-
+        showEverything()
     }
 
         //Sets correct die image according to value and selected-state to a die
@@ -261,8 +263,8 @@ class GamePlayActivity : AppCompatActivity() {
         setDieImage(currentPlayer.listOfDice[4], listOfDieImageViews[4])
     }
 
-        //Methods to call points setters and start next turn
-    fun saveOnes(view: View){
+  /*      //Methods to call points setters and start next turn
+    fun saveOnes(){
         currentPlayer.setOnes()
         newTurn()
     }
@@ -335,5 +337,5 @@ class GamePlayActivity : AppCompatActivity() {
     fun saveYatzy(view: View){
         currentPlayer.setYatzy()
         newTurn()
-    }
+    }*/
 }

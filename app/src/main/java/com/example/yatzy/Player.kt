@@ -28,7 +28,7 @@ class Player (var name : String,
             listOfDice.add(Die())
         }
     }
-*/
+
     fun setOnes() {
         for (die in listOfDice) {
             if (die.currentValue == 1) {
@@ -216,5 +216,5 @@ class Player (var name : String,
         scoreSheet[16].filled = false
     }
 
-
+*/
 }

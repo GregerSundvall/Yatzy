@@ -1,12 +1,15 @@
 package com.example.yatzy
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.yatzy.Players.listOfPlayers
 
 class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
     :RecyclerView.Adapter<ScoreRecyclerAdapter.ViewHolder>(){
@@ -24,20 +27,18 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
         holder.pointsTextView.text = score.points.toString()
         holder.nameTextView.text = score.name
         holder.scorePosition = position
-
+/*
         if(recyclerPlayer.scoreSheet[position].filled == true){
             holder.saveTextView.visibility = View.INVISIBLE
         }
-
+*/
     }
 
     override fun getItemCount(): Int {
         return recyclerPlayer.scoreSheet.size
     }
 
-    fun saveScore(scorePosition : Int){
-        recyclerPlayer.scoreSheet[0].saveScore(recyclerPlayer)
-    }
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val nameTextView = itemView.findViewById<TextView>(R.id.nameTextView)
@@ -47,7 +48,7 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
 
         init {
             saveTextView.setOnClickListener{
-                saveScore(scorePosition)
+                (GamePlayActivity()).savePoints(scorePosition)
             }
         }
     }
