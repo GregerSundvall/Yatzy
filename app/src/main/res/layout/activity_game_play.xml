@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".GamePlayActivity">
 
     <View
@@ -22,7 +23,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
-        android:onClick="selectAndDeselectDie1"
+        android:onClick="selectOrDeselectDie1"
         app:layout_constraintEnd_toStartOf="@+id/die2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -34,7 +35,7 @@
         android:id="@+id/die3"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:onClick="selectDie3"
+        android:onClick="selectOrDeselectDie3"
         app:layout_constraintEnd_toStartOf="@+id/die4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -48,7 +49,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:onClick="selectDie4"
+        android:onClick="selectOrDeselectDie4"
         app:layout_constraintBottom_toBottomOf="@+id/die3"
         app:layout_constraintEnd_toStartOf="@+id/die5"
         app:layout_constraintHorizontal_bias="0.5"
@@ -60,7 +61,7 @@
         android:id="@+id/die5"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:onClick="selectDie5"
+        android:onClick="selectOrDeselectDie5"
         app:layout_constraintBottom_toBottomOf="@+id/die4"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.5"
@@ -72,7 +73,7 @@
         android:id="@+id/die2"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:onClick="selectAndDeselectDie2"
+        android:onClick="selectOrDeselectDie2"
         app:layout_constraintBottom_toBottomOf="@+id/die1"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.5"
@@ -111,16 +112,17 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintBottom_toTopOf="@+id/nextPlayerTextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/rollTextView"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/rollTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:capitalize="none"
         android:fontFamily="@font/carter_one"
         android:onClick="rollDice"
         android:text="@string/roll_dice"
@@ -130,5 +132,60 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectTextView" />
+
+    <TextView
+        android:id="@+id/nextPlayerTextView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/carter_one"
+        android:gravity="center"
+        android:onClick="nextPlayer"
+        android:text="@string/nextPlayer"
+        android:textAlignment="gravity"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/getReadyLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/getReadyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/getReady"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/rollDiceTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/rollDiceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:capitalize="none"
+            android:fontFamily="@font/carter_one"
+            android:onClick="rollDice"
+            android:text="@string/rollDice"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,5 @@
 <resources>
     <string name="app_name">Yatzy</string>
-    <string name="HowMany">Hur många spelare?</string>
-    <string name="twoPlayers">2  SPELARE</string>
-    <string name="threePlayers">3  SPELARE</string>
-    <string name="fourPlayers">4  SPELARE</string>
-    <string name="fivePlayers">5  SPELARE</string>
-    <string name="sixPlayers">6  SPELARE</string>
     <string name="whoIsPlaying">%1$s is playing</string>
     <string name="tap_die_to_reroll">Tap dice to select for re-roll</string>
     <string name="where">Tap to select bracket below</string>
@@ -55,4 +49,7 @@
     <string name="start_again">Start again!</string>
     <string name="roll_dice">Roll!</string>
     <string name="playAgain">Play again!</string>
+    <string name="nextPlayer">Next Player</string>
+    <string name="getReady">Get ready %1$s</string>
+    <string name="rollDice">Roll dice!</string>
 </resources>

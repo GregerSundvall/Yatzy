@@ -3,11 +3,14 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Layout
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +23,7 @@ class GamePlayActivity : AppCompatActivity() {
     var currentRound : Int = 0
     var currentPlayer = listOfPlayers.last()
     var recyclerPlayer = currentPlayer
+    var listOfDice = mutableListOf<Die>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,13 +41,9 @@ class GamePlayActivity : AppCompatActivity() {
         newTurn()
     }
 
-    fun savePoints(scorePosition : Int){
-        Log.d("!!!", "savePoints started")
-        currentPlayer.scoreSheet[scorePosition].saveScore(currentPlayer)
-        Log.d("!!!", "${currentPlayer.scoreSheet[0].points.toString()}")
-        Log.d("!!!", "${currentPlayer.scoreSheet[6].points.toString()}")
-
-        if(currentRound == 1 && currentPlayer == listOfPlayers.last()){
+        //Starts next turn or scoreboard activity
+    fun newTurn(){
+        if(currentRound == 2 && currentPlayer == listOfPlayers.last()){
             startScoreboardActivity()
         }
         if(currentPlayer == listOfPlayers.last()){
@@ -52,20 +52,41 @@ class GamePlayActivity : AppCompatActivity() {
         }else{
             currentPlayer = listOfPlayers[+1]
         }
-        newTurn()
-    }
-        //Starts next turn
-    fun newTurn(){
-        Log.d("!!!", "newTurn started")
-        Log.d("!!!", "${currentPlayer.scoreSheet[0].points.toString()}")
-        Log.d("!!!", "${currentPlayer.scoreSheet[6].points.toString()}")
-        hideEverything()
-        Log.d("!!!", "hideEverything done")
-        findViewById<TextView>(R.id.whoIsPlayingTextView).text = getString(R.string.whoIsPlaying, currentPlayer.name)
+        currentPlayer.alreadySaved = false
+
+        findViewById<TextView>(R.id.getReadyTextView).text =
+            getString(R.string.getReady, currentPlayer.name)
+        findViewById<View>(R.id.getReadyLayout).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.whoIsPlayingTextView).text =
+            getString(R.string.whoIsPlaying, currentPlayer.name)
         currentPlayer.rolls = 3
+        findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
     }
 
-        //populates list of die images
+
+    //Rolls dice
+    fun rollDice(view: View){
+        if (currentPlayer.rolls == 3){
+            for(die in currentPlayer.listOfDice) {
+                die.toBeRolled = true
+            }
+
+        }
+        if(currentPlayer.rolls > 0){
+            for(die in currentPlayer.listOfDice) {
+                if (die.toBeRolled == true) {
+                    die.currentValue =  (1..6).random()
+                    die.toBeRolled = false
+                }
+            }
+            currentPlayer.rolls -= 1
+        }
+        listOfDice = currentPlayer.listOfDice
+        setDiceImages()
+        findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
+    }
+
+    //populates list of die images
     fun populateListOfDieImageViews(){
         listOfDieImageViews.add(findViewById(R.id.die1))
         listOfDieImageViews.add(findViewById(R.id.die2))
@@ -104,7 +125,22 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
+    /*
+        fun nextPlayer(view: View){
+            if(currentRound == 1 && currentPlayer == listOfPlayers.last()){
+                startScoreboardActivity()
+            }
+            if(currentPlayer == listOfPlayers.last()){
+                currentPlayer = listOfPlayers.first()
+                currentRound += 1
+            }else{
+                currentPlayer = listOfPlayers[+1]
+            }
+            newTurn()
+        }
 
+     */
+/*
     fun hideEverything(){
         Log.d("!!!", "HideEverything started")
         findViewById<ImageView>(R.id.die1).visibility =View.INVISIBLE
@@ -130,7 +166,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         findViewById<RecyclerView>(R.id.recyclerView).visibility = View.VISIBLE
     }
-
+*/
         //Summarizes every player's bonus and score
     fun sumPoints(){
         for(player in listOfPlayers){
@@ -170,27 +206,6 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
 
-        //Rolls dice
-    fun rollDice(view: View){
-        if (currentPlayer.rolls == 3){
-            for(die in currentPlayer.listOfDice) {
-                die.toBeRolled = true
-            }
-
-        }
-        if(currentPlayer.rolls > 0){
-            for(die in currentPlayer.listOfDice) {
-                if (die.toBeRolled == true) {
-                    die.currentValue =  (1..6).random()
-                    die.toBeRolled = false
-                }
-            }
-            currentPlayer.rolls -= 1
-        }
-        setDiceImages()
-        showEverything()
-    }
-
         //Sets correct die image according to value and selected-state to a die
     fun setDieImage(die : Die, dieView: ImageView){
         when(die.toBeRolled){
@@ -213,54 +228,65 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Uses setDieImage to set the right die images on all dice
+        //Uses setDieImage to set correct images on all dice and show/hide roll button
     fun setDiceImages(){
-        setDieImage(currentPlayer.listOfDice[0], listOfDieImageViews[0])
-        setDieImage(currentPlayer.listOfDice[1], listOfDieImageViews[1])
-        setDieImage(currentPlayer.listOfDice[2], listOfDieImageViews[2])
-        setDieImage(currentPlayer.listOfDice[3], listOfDieImageViews[3])
-        setDieImage(currentPlayer.listOfDice[4], listOfDieImageViews[4])
+        setDieImage(listOfDice[0], listOfDieImageViews[0])
+        setDieImage(listOfDice[1], listOfDieImageViews[1])
+        setDieImage(listOfDice[2], listOfDieImageViews[2])
+        setDieImage(listOfDice[3], listOfDieImageViews[3])
+        setDieImage(listOfDice[4], listOfDieImageViews[4])
+
+        if (listOfDice[0].toBeRolled == true ||
+            listOfDice[1].toBeRolled == true ||
+            listOfDice[2].toBeRolled == true ||
+            listOfDice[3].toBeRolled == true ||
+            listOfDice[4].toBeRolled == true){
+            findViewById<View>(R.id.rollTextView).visibility = View.VISIBLE
+        }else{
+            findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
+        }
+
     }
 
         //Sets toBeRolled value and the white or red image accordingly for die 1
-    fun selectAndDeselectDie1(view: View){
-        when(currentPlayer.listOfDice[0].toBeRolled){
-            false -> currentPlayer.listOfDice[0].toBeRolled = true
-            true -> currentPlayer.listOfDice[0].toBeRolled = false
+    fun selectOrDeselectDie1(view: View){
+        when(listOfDice[0].toBeRolled){
+            false -> listOfDice[0].toBeRolled = true
+            true -> listOfDice[0].toBeRolled = false
         }
-        setDieImage(currentPlayer.listOfDice[0], listOfDieImageViews[0])
+        setDiceImages()
     }
     //Sets toBeRolled value and the white or red image accordingly for die 2
-    fun selectAndDeselectDie2(view: View){
+    fun selectOrDeselectDie2(view: View){
         when(currentPlayer.listOfDice[1].toBeRolled){
             false -> currentPlayer.listOfDice[1].toBeRolled = true
             true -> currentPlayer.listOfDice[1].toBeRolled = false
         }
-        setDieImage(currentPlayer.listOfDice[1], listOfDieImageViews[1])
+        setDiceImages()
     }
     //Sets toBeRolled value and the white or red image accordingly for die 3
-    fun selectDie3(view: View){
+    fun selectOrDeselectDie3(view: View){
         when(currentPlayer.listOfDice[2].toBeRolled){
             false -> currentPlayer.listOfDice[2].toBeRolled = true
             true -> currentPlayer.listOfDice[2].toBeRolled = false
         }
-        setDieImage(currentPlayer.listOfDice[2], listOfDieImageViews[2])
+        setDiceImages()
     }
     //Sets toBeRolled value and the white or red image accordingly for die 4
-    fun selectDie4(view: View){
+    fun selectOrDeselectDie4(view: View){
         when(currentPlayer.listOfDice[3].toBeRolled){
             false -> currentPlayer.listOfDice[3].toBeRolled = true
             true -> currentPlayer.listOfDice[3].toBeRolled = false
         }
-        setDieImage(currentPlayer.listOfDice[3], listOfDieImageViews[3])
+        setDiceImages()
     }
     //Sets toBeRolled value and the white or red image accordingly for die 5
-    fun selectDie5(view: View){
+    fun selectOrDeselectDie5(view: View){
         when(currentPlayer.listOfDice[4].toBeRolled){
             false -> currentPlayer.listOfDice[4].toBeRolled = true
             true -> currentPlayer.listOfDice[4].toBeRolled = false
         }
-        setDieImage(currentPlayer.listOfDice[4], listOfDieImageViews[4])
+        setDiceImages()
     }
 
   /*      //Methods to call points setters and start next turn

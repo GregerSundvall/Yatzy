@@ -27,11 +27,10 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
         holder.pointsTextView.text = score.points.toString()
         holder.nameTextView.text = score.name
         holder.scorePosition = position
-/*
+
         if(recyclerPlayer.scoreSheet[position].filled == true){
             holder.saveTextView.visibility = View.INVISIBLE
         }
-*/
     }
 
     override fun getItemCount(): Int {
@@ -47,9 +46,16 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
         var scorePosition = 0
 
         init {
+
             saveTextView.setOnClickListener{
-                (GamePlayActivity()).savePoints(scorePosition)
+                if(recyclerPlayer.alreadySaved == false) {
+                    recyclerPlayer.scoreSheet[scorePosition].saveScore(recyclerPlayer)
+                    notifyDataSetChanged()
+                    recyclerPlayer.alreadySaved = true
+                    itemView.findViewById<TextView>(R.id.saveTextView).visibility = View.INVISIBLE
+                }
             }
         }
+
     }
 }
