@@ -139,7 +139,7 @@
         android:layout_height="50dp"
         android:fontFamily="@font/carter_one"
         android:gravity="center"
-        android:onClick="nextPlayer"
+        android:onClick="nextTurnOrScoreboard"
         android:text="@string/nextPlayer"
         android:textAlignment="gravity"
         android:textAllCaps="true"

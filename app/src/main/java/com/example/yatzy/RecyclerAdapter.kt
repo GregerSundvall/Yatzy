@@ -56,6 +56,9 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
                 }
             }
         }
+        fun updatePointsList(){
+            notifyDataSetChanged()
+        }
 
     }
 }
