@@ -1,7 +1,6 @@
 package com.example.yatzy
 
-import android.graphics.drawable.Drawable
-import android.util.Log
+
 
 abstract class Score(var name: String, var points: Int = 0, var filled: Boolean = false,
 
@@ -14,7 +13,6 @@ abstract fun saveScore(player : Player)
 
 class Ones : Score("Ones"){
     override fun saveScore(player: Player){
-        Log.d("!!!", "saveScore started")
         for (die in player.listOfDice) {
             if (die.currentValue == 1) {
                 player.scoreSheet[0].points += 1

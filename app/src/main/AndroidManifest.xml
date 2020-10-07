@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppFullScreenTheme">
         <activity android:name=".ScoreboardActivity"></activity>
-        <activity android:name=".PrepareActivity" />
         <activity android:name=".GamePlayActivity" />
         <activity android:name=".PlayerNamesActivity" />
         <activity android:name=".MainActivity">

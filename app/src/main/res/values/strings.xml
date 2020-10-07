@@ -52,4 +52,5 @@
     <string name="nextPlayer">Next Player</string>
     <string name="getReady">Get ready %1$s</string>
     <string name="rollDice">Roll dice!</string>
+    <string name="continueString">Continue</string>
 </resources>

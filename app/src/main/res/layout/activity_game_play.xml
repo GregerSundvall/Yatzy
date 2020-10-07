@@ -96,7 +96,7 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:id="@+id/selectTextView"
+        android:id="@+id/tapToSelectTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -131,7 +131,7 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/die4" />
 
     <TextView
         android:id="@+id/nextPlayerTextView"
@@ -159,33 +159,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/bowlOfDiceImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bowl_of_dice" />
+
         <TextView
             android:id="@+id/getReadyTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
             android:text="@string/getReady"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/rollDiceTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/bowlOfDiceImageView" />
 
         <TextView
-            android:id="@+id/rollDiceTextView"
+            android:id="@+id/continueTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:capitalize="none"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/carter_one"
-            android:onClick="rollDice"
-            android:text="@string/rollDice"
+            android:onClick="startPlaying"
+            android:text="@string/continueString"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/bowlOfDiceImageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

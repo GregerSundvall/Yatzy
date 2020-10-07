@@ -17,7 +17,7 @@ class ScoreboardActivity : AppCompatActivity() {
         showScores()
     }
 
-        //Shows necessary fields and writes out info
+        //Shows necessary fields and info
     fun showScores(){
         val p1TextView = findViewById<TextView>(R.id.player1TextView)
         val p2TextView = findViewById<TextView>(R.id.player2TextView)

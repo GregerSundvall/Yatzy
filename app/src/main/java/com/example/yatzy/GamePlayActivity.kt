@@ -51,19 +51,27 @@ class GamePlayActivity : AppCompatActivity() {
         //Starts next turn or scoreboard activity
     fun newTurn(){
         currentPlayer.alreadySaved = false
-
+        currentPlayer.rolls = 3
         findViewById<TextView>(R.id.getReadyTextView).text =
             getString(R.string.getReady, currentPlayer.name)
         findViewById<View>(R.id.getReadyLayout).visibility = View.VISIBLE
         findViewById<TextView>(R.id.whoIsPlayingTextView).text =
             getString(R.string.whoIsPlaying, currentPlayer.name)
-        currentPlayer.rolls = 3
         findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
         //UPDATE RECYCLER VIEW HERE
         }
 
 
-    //Rolls dice
+    fun startPlaying(view: View){
+        for(die in listOfDieImageViews){
+            die.visibility = View.INVISIBLE
+        }
+        findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
+        findViewById<TextView>(R.id.rollTextView).visibility = View.VISIBLE
+        findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
+    }
+
+    //Rolls dice, applys correct images and shows them
     fun rollDice(view: View){
         if (currentPlayer.rolls == 3){
             for(die in currentPlayer.listOfDice) {
@@ -82,7 +90,11 @@ class GamePlayActivity : AppCompatActivity() {
         }
         listOfDice = currentPlayer.listOfDice
         setDiceImages()
-        findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
+        for(die in listOfDieImageViews){
+            die.visibility = View.VISIBLE
+        }
+        findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.rollTextView).visibility = View.INVISIBLE
     }
 
     //populates list of die images
@@ -199,11 +211,12 @@ class GamePlayActivity : AppCompatActivity() {
             listOfDice[2].toBeRolled == true ||
             listOfDice[3].toBeRolled == true ||
             listOfDice[4].toBeRolled == true){
-            findViewById<View>(R.id.rollTextView).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.rollTextView).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
         }else{
-            findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.rollTextView).visibility = View.INVISIBLE
+            findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.VISIBLE
         }
-
     }
 
         //Sets toBeRolled value and the white or red image accordingly for die 1
