@@ -8,7 +8,7 @@ import android.widget.TextView
 
 class ScoreboardActivity : AppCompatActivity() {
 
-    val listOfPlayers = Players.listOfPlayers
+    val listOfPlayers = ObjectManager.listOfPlayers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

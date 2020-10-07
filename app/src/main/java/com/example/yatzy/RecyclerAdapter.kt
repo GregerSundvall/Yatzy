@@ -1,17 +1,13 @@
 package com.example.yatzy
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.yatzy.Players.listOfPlayers
 
-class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
+class ScoreRecyclerAdapter (val context: Context, )
     :RecyclerView.Adapter<ScoreRecyclerAdapter.ViewHolder>(){
 
     val layoutInflater = LayoutInflater.from((context))
@@ -23,18 +19,18 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val score = recyclerPlayer.scoreSheet[position]
+        val score = ObjectManager.currentPlayer.scoreSheet[position]
         holder.pointsTextView.text = score.points.toString()
         holder.nameTextView.text = score.name
         holder.scorePosition = position
 
-        if(recyclerPlayer.scoreSheet[position].filled == true){
+        if(ObjectManager.currentPlayer.scoreSheet[position].filled == true){
             holder.saveTextView.visibility = View.INVISIBLE
         }
     }
 
     override fun getItemCount(): Int {
-        return recyclerPlayer.scoreSheet.size
+        return ObjectManager.currentPlayer.scoreSheet.size
     }
 
 
@@ -48,10 +44,10 @@ class ScoreRecyclerAdapter (val context: Context, val recyclerPlayer : Player)
         init {
 
             saveTextView.setOnClickListener{
-                if(recyclerPlayer.alreadySaved == false) {
-                    recyclerPlayer.scoreSheet[scorePosition].saveScore(recyclerPlayer)
+                if(ObjectManager.currentPlayer.alreadySaved == false) {
+                    ObjectManager.currentPlayer.scoreSheet[scorePosition].saveScore(ObjectManager.currentPlayer)
                     notifyDataSetChanged()
-                    recyclerPlayer.alreadySaved = true
+                    ObjectManager.currentPlayer.alreadySaved = true
                     itemView.findViewById<TextView>(R.id.saveTextView).visibility = View.INVISIBLE
                 }
             }

@@ -35,20 +35,20 @@ class PlayerNamesActivity : AppCompatActivity() {
     }
 
     fun createPlayers(){
-        Players.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
-        Players.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
+        ObjectManager.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
+        ObjectManager.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
 
         if (nrOfplayers >= 3) {
-            Players.listOfPlayers.add(Player("${Player3NamePlainText.text}"))
+            ObjectManager.listOfPlayers.add(Player("${Player3NamePlainText.text}"))
 
             if(nrOfplayers >= 4){
-                Players.listOfPlayers.add(Player("${Player4NamePlainText.text}"))
+                ObjectManager.listOfPlayers.add(Player("${Player4NamePlainText.text}"))
 
                 if(nrOfplayers >= 5){
-                    Players.listOfPlayers.add(Player("${Player5NamePlainText.text}"))
+                    ObjectManager.listOfPlayers.add(Player("${Player5NamePlainText.text}"))
 
                     if(nrOfplayers == 6){
-                        Players.listOfPlayers.add(Player("${Player6NamePlainText.text}"))
+                        ObjectManager.listOfPlayers.add(Player("${Player6NamePlainText.text}"))
                     }
                 }
             }
@@ -58,6 +58,7 @@ class PlayerNamesActivity : AppCompatActivity() {
 
     fun startGamePlayActivity(v : View){
         createPlayers()
+        ObjectManager.currentPlayer = ObjectManager.listOfPlayers.last()
         val intent = Intent(this, GamePlayActivity::class.java)
         startActivity(intent)
     }

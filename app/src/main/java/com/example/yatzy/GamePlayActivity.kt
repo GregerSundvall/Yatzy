@@ -3,24 +3,24 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_game_play.*
 
 
 class GamePlayActivity : AppCompatActivity() {
 
-    val listOfPlayers = Players.listOfPlayers
+    val listOfPlayers = ObjectManager.listOfPlayers
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var currentRound : Int = 0
-    var currentPlayer = listOfPlayers.last()
-    var recyclerPlayer = currentPlayer
+
+    var currentPlayer = ObjectManager.currentPlayer
+
     var listOfDice = mutableListOf<Die>()
-    var scoreSheet = mutableListOf<Score>()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +28,10 @@ class GamePlayActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = ScoreRecyclerAdapter(this, recyclerPlayer, )
+        val adapter = ScoreRecyclerAdapter(this )
         recyclerView.adapter = adapter
 
-        //createScoresheet()
+
         createDice()
         populateListOfDieImageViews()
         newTurn()
@@ -59,7 +59,7 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.whoIsPlayingTextView).text =
             getString(R.string.whoIsPlaying, currentPlayer.name)
         findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
-        //UPDATE RECYCLER VIEW HERE
+
         }
 
 
@@ -70,8 +70,6 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
         findViewById<TextView>(R.id.rollTextView).visibility = View.VISIBLE
         findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
-        Log.d("!!!", "asdf")
-        Log.d("!!!", "${currentPlayer.scoreSheet.size.toString()}")
     }
 
     //Rolls dice, applys correct images and shows them
@@ -199,6 +197,7 @@ class GamePlayActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.VISIBLE
         }
     }
+
 
         //Sets toBeRolled value and the white or red image accordingly for die 1
     fun selectOrDeselectDie1(view: View){
