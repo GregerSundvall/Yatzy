@@ -3,6 +3,7 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,7 +31,7 @@ class GamePlayActivity : AppCompatActivity() {
         val adapter = ScoreRecyclerAdapter(this, recyclerPlayer, )
         recyclerView.adapter = adapter
 
-        createScoresheet()
+        //createScoresheet()
         createDice()
         populateListOfDieImageViews()
         newTurn()
@@ -69,6 +70,8 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
         findViewById<TextView>(R.id.rollTextView).visibility = View.VISIBLE
         findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
+        Log.d("!!!", "asdf")
+        Log.d("!!!", "${currentPlayer.scoreSheet.size.toString()}")
     }
 
     //Rolls dice, applys correct images and shows them
@@ -114,28 +117,6 @@ class GamePlayActivity : AppCompatActivity() {
             }
         }
     }
-
-        //Creates a scoresheet for each player
-    fun createScoresheet(){
-        for(player in Players.listOfPlayers){
-            player.scoreSheet.add(Ones())
-            player.scoreSheet.add(Twos())
-            player.scoreSheet.add(Threes())
-            player.scoreSheet.add(Fours())
-            player.scoreSheet.add(Fives())
-            player.scoreSheet.add(Sixes())
-            player.scoreSheet.add(Pair())
-            player.scoreSheet.add(TwoPairs())
-            player.scoreSheet.add(ThreeOfAKind())
-            player.scoreSheet.add(FourOfAKind())
-            player.scoreSheet.add(FullHouse())
-            player.scoreSheet.add(SmStraight())
-            player.scoreSheet.add(LgStraight())
-            player.scoreSheet.add(Chance())
-            player.scoreSheet.add(Yatzy())
-        }
-    }
-
 
         //Summarizes every player's bonus and score
     fun summarizePoints(){
