@@ -122,19 +122,17 @@ class GamePlayActivity : AppCompatActivity() {
 
         //Summarizes every player's bonus and score
     fun summarizePoints(){
-            Log.d("!!!", "summarize points started")
         for(player in ObjectManager.listOfPlayers){
             player.scoreSheet[15].saveScore(player)
             player.scoreSheet[16].saveScore(player)
             player.scoreSheet[17].saveScore(player)
         }
-            Log.d("!!!", "summarize points end")
     }
 
         //starts scoreboard activity and passes along names and scores
     fun startScoreboardActivity()   {
-            Log.d("!!!", "startscoreboardactivity  started")
-        summarizePoints()
+
+        //summarizePoints()
 
         val intent = Intent(this, ScoreboardActivity::class.java)
         startActivity(intent)

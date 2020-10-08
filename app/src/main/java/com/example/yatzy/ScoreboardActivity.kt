@@ -14,8 +14,17 @@ class ScoreboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
-Log.d("!!!", "scoreboard activity started")
+        summarizePoints()
         showScores()
+    }
+
+    //Summarizes every player's bonus and score
+    fun summarizePoints(){
+        for(player in ObjectManager.listOfPlayers){
+            player.scoreSheet[15].saveScore(player)
+            player.scoreSheet[16].saveScore(player)
+            player.scoreSheet[17].saveScore(player)
+        }
     }
 
         //Shows necessary fields and info
