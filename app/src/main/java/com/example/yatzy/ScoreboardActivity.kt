@@ -27,36 +27,36 @@ Log.d("!!!", "scoreboard activity started")
         val player5TextView = findViewById<TextView>(R.id.player5TextView)
         val player6TextView = findViewById<TextView>(R.id.player6TextView)
 
-        player1TextView.text = getString(R.string.player1NameAndScore,
+        player1TextView.text = getString(R.string.playerNameAndScore,
             ObjectManager.listOfPlayers[0].name,
-            ObjectManager.listOfPlayers[0].scoreSheet[17].toString())
-        player2TextView.text = getString(R.string.player2NameAndScore,
-            ObjectManager.listOfPlayers[0].name,
-            ObjectManager.listOfPlayers[0].scoreSheet[17].toString())
+            ObjectManager.listOfPlayers[0].scoreSheet[17].points.toString())
+        player2TextView.text = getString(R.string.playerNameAndScore,
+            ObjectManager.listOfPlayers[1].name,
+            ObjectManager.listOfPlayers[1].scoreSheet[17].points.toString())
         player3TextView.visibility = View.INVISIBLE
         player4TextView.visibility = View.INVISIBLE
         player5TextView.visibility = View.INVISIBLE
         player6TextView.visibility = View.INVISIBLE
 
         if(ObjectManager.listOfPlayers.size >= 3){
-            player3TextView.text = getString(R.string.player3NameAndScore,
+            player3TextView.text = getString(R.string.playerNameAndScore,
                 ObjectManager.listOfPlayers[2].name,
-                ObjectManager.listOfPlayers[2].scoreSheet[17].toString())
+                ObjectManager.listOfPlayers[2].scoreSheet[17].points.toString())
             player3TextView.visibility = View.VISIBLE
             if(ObjectManager.listOfPlayers.size >= 4){
-                player4TextView.text = getString(R.string.player4NameAndScore,
+                player4TextView.text = getString(R.string.playerNameAndScore,
                     ObjectManager.listOfPlayers[3].name,
-                    ObjectManager.listOfPlayers[3].scoreSheet[17].toString())
+                    ObjectManager.listOfPlayers[3].scoreSheet[17].points.toString())
                 player4TextView.visibility = View.VISIBLE
                 if(ObjectManager.listOfPlayers.size >= 5){
-                    player5TextView.text = getString(R.string.player5NameAndScore,
+                    player5TextView.text = getString(R.string.playerNameAndScore,
                         ObjectManager.listOfPlayers[4].name,
-                        ObjectManager.listOfPlayers[4].scoreSheet[17].toString())
+                        ObjectManager.listOfPlayers[4].scoreSheet[17].points.toString())
                     player5TextView.visibility = View.VISIBLE
                     if(ObjectManager.listOfPlayers.size == 6){
-                        player6TextView.text = getString(R.string.player6NameAndScore,
+                        player6TextView.text = getString(R.string.playerNameAndScore,
                             ObjectManager.listOfPlayers[5].name,
-                            ObjectManager.listOfPlayers[5].scoreSheet[17].toString())
+                            ObjectManager.listOfPlayers[5].scoreSheet[17].points.toString())
                         player6TextView.visibility = View.VISIBLE
                     }
                 }
