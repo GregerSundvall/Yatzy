@@ -15,7 +15,7 @@ class GamePlayActivity : AppCompatActivity() {
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
     var currentRound : Int = 0
     var listOfDice = mutableListOf<Die>()
-
+    lateinit var adapter: ScoreRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = ScoreRecyclerAdapter(this )
+        adapter = ScoreRecyclerAdapter(this )
         recyclerView.adapter = adapter
 
 
@@ -54,7 +54,8 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.whoIsPlayingTextView).text =
             getString(R.string.whoIsPlaying, ObjectManager.currentPlayer.name)
         findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
-        ScoreRecyclerAdapter(this).notifyDataSetChanged()
+
+        adapter.notifyDataSetChanged()
     }
 
 

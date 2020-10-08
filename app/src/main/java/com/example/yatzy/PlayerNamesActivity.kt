@@ -58,7 +58,7 @@ class PlayerNamesActivity : AppCompatActivity() {
 
     fun startGamePlayActivity(v : View){
         createPlayers()
-        ObjectManager.currentPlayer = ObjectManager.listOfPlayers.last()
+        ObjectManager.currentPlayer = ObjectManager.listOfPlayers.first()
         val intent = Intent(this, GamePlayActivity::class.java)
         startActivity(intent)
     }

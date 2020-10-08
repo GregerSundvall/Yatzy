@@ -45,13 +45,15 @@ class ScoreRecyclerAdapter (val context: Context, )
         init {
 
             saveTextView.setOnClickListener{
-                if(ObjectManager.currentPlayer.alreadySaved == false) {
+                if(ObjectManager.currentPlayer.rolls == 3){
+                    Toast.makeText(context, "Roll dice first!", Toast.LENGTH_SHORT).show()
+                }else if(ObjectManager.currentPlayer.alreadySaved == false) {
                     ObjectManager.currentPlayer.scoreSheet[scorePosition].saveScore(ObjectManager.currentPlayer)
                     ObjectManager.currentPlayer.alreadySaved = true
                     notifyDataSetChanged()
                     itemView.findViewById<TextView>(R.id.saveTextView).visibility = View.INVISIBLE
                 }else{
-                    Toast.makeText(context, "You have already saved!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "You already saved!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
