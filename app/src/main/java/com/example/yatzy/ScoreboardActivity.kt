@@ -3,6 +3,7 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 
@@ -13,44 +14,50 @@ class ScoreboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
-
+Log.d("!!!", "scoreboard activity started")
         showScores()
     }
 
         //Shows necessary fields and info
     fun showScores(){
-        val p1TextView = findViewById<TextView>(R.id.player1TextView)
-        val p2TextView = findViewById<TextView>(R.id.player2TextView)
-        val p3TextView = findViewById<TextView>(R.id.player3TextView)
-        val p4TextView = findViewById<TextView>(R.id.player4TextView)
-        val p5TextView = findViewById<TextView>(R.id.player5TextView)
-        val p6TextView = findViewById<TextView>(R.id.player6TextView)
+        val player1TextView = findViewById<TextView>(R.id.player1TextView)
+        val player2TextView = findViewById<TextView>(R.id.player2TextView)
+        val player3TextView = findViewById<TextView>(R.id.player3TextView)
+        val player4TextView = findViewById<TextView>(R.id.player4TextView)
+        val player5TextView = findViewById<TextView>(R.id.player5TextView)
+        val player6TextView = findViewById<TextView>(R.id.player6TextView)
 
-        p1TextView.text = getString(R.string.player1NameAndScore,
-            listOfPlayers[0].name, listOfPlayers[0].scoreSheet[17].toString())
-        p2TextView.text = getString(R.string.player2NameAndScore,
-            listOfPlayers[0].name, listOfPlayers[0].scoreSheet[17].toString())
-        p3TextView.visibility = View.INVISIBLE
-        p4TextView.visibility = View.INVISIBLE
-        p5TextView.visibility = View.INVISIBLE
-        p6TextView.visibility = View.INVISIBLE
+        player1TextView.text = getString(R.string.player1NameAndScore,
+            ObjectManager.listOfPlayers[0].name,
+            ObjectManager.listOfPlayers[0].scoreSheet[17].toString())
+        player2TextView.text = getString(R.string.player2NameAndScore,
+            ObjectManager.listOfPlayers[0].name,
+            ObjectManager.listOfPlayers[0].scoreSheet[17].toString())
+        player3TextView.visibility = View.INVISIBLE
+        player4TextView.visibility = View.INVISIBLE
+        player5TextView.visibility = View.INVISIBLE
+        player6TextView.visibility = View.INVISIBLE
 
-        if(listOfPlayers.size >= 3){
-            p3TextView.text = getString(R.string.player3NameAndScore,
-                listOfPlayers[2].name, listOfPlayers[2].scoreSheet[17].toString())
-            p3TextView.visibility = View.VISIBLE
-            if(listOfPlayers.size >= 4){
-                p4TextView.text = getString(R.string.player4NameAndScore,
-                    listOfPlayers[3].name, listOfPlayers[3].scoreSheet[17].toString())
-                p4TextView.visibility = View.VISIBLE
-                if(listOfPlayers.size >= 5){
-                    p5TextView.text = getString(R.string.player5NameAndScore,
-                        listOfPlayers[4].name, listOfPlayers[4].scoreSheet[17].toString())
-                    p5TextView.visibility = View.VISIBLE
-                    if(listOfPlayers.size == 6){
-                        p6TextView.text = getString(R.string.player6NameAndScore,
-                            listOfPlayers[5].name, listOfPlayers[5].scoreSheet[17].toString())
-                        p6TextView.visibility = View.VISIBLE
+        if(ObjectManager.listOfPlayers.size >= 3){
+            player3TextView.text = getString(R.string.player3NameAndScore,
+                ObjectManager.listOfPlayers[2].name,
+                ObjectManager.listOfPlayers[2].scoreSheet[17].toString())
+            player3TextView.visibility = View.VISIBLE
+            if(ObjectManager.listOfPlayers.size >= 4){
+                player4TextView.text = getString(R.string.player4NameAndScore,
+                    ObjectManager.listOfPlayers[3].name,
+                    ObjectManager.listOfPlayers[3].scoreSheet[17].toString())
+                player4TextView.visibility = View.VISIBLE
+                if(ObjectManager.listOfPlayers.size >= 5){
+                    player5TextView.text = getString(R.string.player5NameAndScore,
+                        ObjectManager.listOfPlayers[4].name,
+                        ObjectManager.listOfPlayers[4].scoreSheet[17].toString())
+                    player5TextView.visibility = View.VISIBLE
+                    if(ObjectManager.listOfPlayers.size == 6){
+                        player6TextView.text = getString(R.string.player6NameAndScore,
+                            ObjectManager.listOfPlayers[5].name,
+                            ObjectManager.listOfPlayers[5].scoreSheet[17].toString())
+                        player6TextView.visibility = View.VISIBLE
                     }
                 }
             }
@@ -58,7 +65,7 @@ class ScoreboardActivity : AppCompatActivity() {
     }
         //Clears list of players and restarts game
     fun playAgain(view: View){
-        listOfPlayers.clear()
+            ObjectManager.listOfPlayers.clear()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }

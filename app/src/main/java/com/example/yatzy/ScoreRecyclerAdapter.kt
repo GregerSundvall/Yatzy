@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 
 class ScoreRecyclerAdapter (val context: Context, )
@@ -20,7 +21,7 @@ class ScoreRecyclerAdapter (val context: Context, )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val score = ObjectManager.currentPlayer.scoreSheet[position]
+        var score = ObjectManager.currentPlayer.scoreSheet[position]
         holder.pointsTextView.text = score.points.toString()
         holder.nameTextView.text = score.name
         holder.scorePosition = position
@@ -33,7 +34,6 @@ class ScoreRecyclerAdapter (val context: Context, )
     override fun getItemCount(): Int {
         return ObjectManager.currentPlayer.scoreSheet.size
     }
-
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -51,7 +51,11 @@ class ScoreRecyclerAdapter (val context: Context, )
                     ObjectManager.currentPlayer.scoreSheet[scorePosition].saveScore(ObjectManager.currentPlayer)
                     ObjectManager.currentPlayer.alreadySaved = true
                     notifyDataSetChanged()
-                    itemView.findViewById<TextView>(R.id.saveTextView).visibility = View.INVISIBLE
+                    Toast.makeText(context,
+                        "${ObjectManager.currentPlayer.scoreSheet[scorePosition].points.toString()}" +
+                                " points saved",
+                        Toast.LENGTH_SHORT).show()
+                    //itemView.findViewById<TextView>(R.id.saveTextView).visibility = View.INVISIBLE
                 }else{
                     Toast.makeText(context, "You already saved!", Toast.LENGTH_SHORT).show()
                 }

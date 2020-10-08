@@ -3,6 +3,7 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    var currentRound : Int = 0
+    var currentRound : Int = 1
     var listOfDice = mutableListOf<Die>()
     lateinit var adapter: ScoreRecyclerAdapter
 
@@ -54,8 +55,6 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.whoIsPlayingTextView).text =
             getString(R.string.whoIsPlaying, ObjectManager.currentPlayer.name)
         findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
-
-        adapter.notifyDataSetChanged()
     }
 
 
@@ -65,7 +64,16 @@ class GamePlayActivity : AppCompatActivity() {
         }
         findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
         findViewById<TextView>(R.id.rollTextView).visibility = View.VISIBLE
+        Log.d("!!!", "1${ObjectManager.currentPlayer.scoreSheet[0].filled}")
+        Log.d("!!!", "2${ObjectManager.currentPlayer.scoreSheet[1].filled}")
+        Log.d("!!!", "3${ObjectManager.currentPlayer.scoreSheet[2].filled}")
+        Log.d("!!!", "4${ObjectManager.currentPlayer.scoreSheet[3].filled}")
+        Log.d("!!!", "5${ObjectManager.currentPlayer.scoreSheet[4].filled}")
+        Log.d("!!!", "6${ObjectManager.currentPlayer.scoreSheet[5].filled}")
+
+        adapter.notifyDataSetChanged()
         findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
+
     }
 
     //Rolls dice, applys correct images and shows them
@@ -114,6 +122,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         //Summarizes every player's bonus and score
     fun summarizePoints(){
+            Log.d("!!!", "summarize points started")
         for(player in ObjectManager.listOfPlayers){
             player.scoreSheet[15].points =
                 player.scoreSheet[0].points + player.scoreSheet[1].points +
@@ -136,16 +145,14 @@ class GamePlayActivity : AppCompatActivity() {
                 player.scoreSheet[14].points + player.scoreSheet[15].points +
                 player.scoreSheet[16].points
         }
+            Log.d("!!!", "summarize points end")
     }
 
         //starts scoreboard activity and passes along names and scores
     fun startScoreboardActivity()   {
+            Log.d("!!!", "startscoreboardactivity  started")
         summarizePoints()
-        val scoreboardList :ArrayList<String> = arrayListOf()
-        for(player in ObjectManager.listOfPlayers){
-            scoreboardList.add(player.name)
-            scoreboardList.add(player.scoreSheet[17].points.toString())
-        }
+
         val intent = Intent(this, ScoreboardActivity::class.java)
         startActivity(intent)
     }
