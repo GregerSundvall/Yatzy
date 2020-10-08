@@ -81,6 +81,16 @@
         app:layout_constraintTop_toTopOf="@+id/die1"
         app:srcCompat="@drawable/die1" />
 
+    <ImageView
+        android:id="@+id/rollingDiceImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/rollTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/roll_dice_flip_crop" />
+
     <TextView
         android:id="@+id/whoIsPlayingTextView"
         android:layout_width="wrap_content"

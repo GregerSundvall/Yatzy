@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -27,28 +28,33 @@ class GamePlayActivity : AppCompatActivity() {
         adapter = ScoreRecyclerAdapter(this )
         recyclerView.adapter = adapter
 
-
         createDice()
         populateListOfDieImageViews()
         newTurn()
     }
 
+        //Checks that user has saved and reminds otherwise.
+        //Then starts next turn, a new round, or scoreboard.
     fun nextTurnOrScoreboard(view: View){
-        if(currentRound == 2 && ObjectManager.currentPlayer == ObjectManager.listOfPlayers.last()){
+        if(ObjectManager.currentPlayer.alreadySaved == false){
+            Toast.makeText(this, "You need to save first!",
+                Toast.LENGTH_SHORT).show()
+        }else if(currentRound == 2 && ObjectManager.currentPlayer == ObjectManager.listOfPlayers.last()){
             startScoreboardActivity()
-        }
-        if(ObjectManager.currentPlayer == ObjectManager.listOfPlayers.last()){
+        }else if(ObjectManager.currentPlayer == ObjectManager.listOfPlayers.last()){
             ObjectManager.currentPlayer = ObjectManager.listOfPlayers.first()
             currentRound += 1
+            newTurn()
         }else{
             ObjectManager.currentPlayer = ObjectManager.listOfPlayers[+1]
+            newTurn()
         }
-        newTurn()
     }
         //Starts next turn or scoreboard activity
     fun newTurn(){
         ObjectManager.currentPlayer.alreadySaved = false
         ObjectManager.currentPlayer.rolls = 3
+        findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.VISIBLE
         findViewById<TextView>(R.id.getReadyTextView).text =
             getString(R.string.getReady, ObjectManager.currentPlayer.name)
         findViewById<View>(R.id.getReadyLayout).visibility = View.VISIBLE
@@ -64,20 +70,14 @@ class GamePlayActivity : AppCompatActivity() {
         }
         findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
         findViewById<TextView>(R.id.rollTextView).visibility = View.VISIBLE
-        Log.d("!!!", "1${ObjectManager.currentPlayer.scoreSheet[0].filled}")
-        Log.d("!!!", "2${ObjectManager.currentPlayer.scoreSheet[1].filled}")
-        Log.d("!!!", "3${ObjectManager.currentPlayer.scoreSheet[2].filled}")
-        Log.d("!!!", "4${ObjectManager.currentPlayer.scoreSheet[3].filled}")
-        Log.d("!!!", "5${ObjectManager.currentPlayer.scoreSheet[4].filled}")
-        Log.d("!!!", "6${ObjectManager.currentPlayer.scoreSheet[5].filled}")
-
         adapter.notifyDataSetChanged()
         findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
 
     }
 
-    //Rolls dice, applys correct images and shows them
+    //Rolls dice, applys correct images and makes them visible
     fun rollDice(view: View){
+        findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.INVISIBLE
         if (ObjectManager.currentPlayer.rolls == 3){
             for(die in ObjectManager.currentPlayer.listOfDice) {
                 die.toBeRolled = true
@@ -120,20 +120,10 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
-        //Summarizes every player's bonus and score
-    fun summarizePoints(){
-        for(player in ObjectManager.listOfPlayers){
-            player.scoreSheet[15].saveScore(player)
-            player.scoreSheet[16].saveScore(player)
-            player.scoreSheet[17].saveScore(player)
-        }
-    }
 
-        //starts scoreboard activity and passes along names and scores
+
+        //starts scoreboard activity
     fun startScoreboardActivity()   {
-
-        //summarizePoints()
-
         val intent = Intent(this, ScoreboardActivity::class.java)
         startActivity(intent)
     }
@@ -181,6 +171,7 @@ class GamePlayActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.VISIBLE
         }
     }
+
 
 
         //Sets toBeRolled value and the white or red image accordingly for die 1

@@ -55,7 +55,6 @@ class ScoreRecyclerAdapter (val context: Context, )
                         "${ObjectManager.currentPlayer.scoreSheet[scorePosition].points.toString()}" +
                                 " points saved",
                         Toast.LENGTH_SHORT).show()
-                    //itemView.findViewById<TextView>(R.id.saveTextView).visibility = View.INVISIBLE
                 }else{
                     Toast.makeText(context, "You already saved!", Toast.LENGTH_SHORT).show()
                 }
