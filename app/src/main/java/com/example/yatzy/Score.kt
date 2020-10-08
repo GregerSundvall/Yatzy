@@ -236,3 +236,40 @@ class Yatzy : Score("Yatzy"){
         player.scoreSheet[14].filled = true
     }
 }
+class SumOfTopSection : Score("Sum"){
+    override fun saveScore(player: Player) {
+        player.scoreSheet[15].points =
+            player.scoreSheet[0].points +
+            player.scoreSheet[1].points +
+            player.scoreSheet[2].points +
+            player.scoreSheet[3].points +
+            player.scoreSheet[4].points +
+            player.scoreSheet[5].points
+    }
+}
+
+class Bonus : Score("Bonus"){
+    override fun saveScore(player: Player) {
+        if(player.scoreSheet[15].points >= 63){
+            player.scoreSheet[16].points = 50
+        }
+    }
+}
+
+class Total : Score("Total"){
+    override fun saveScore(player: Player) {
+        player.scoreSheet[17].points =
+            player.scoreSheet[6].points +
+            player.scoreSheet[7].points +
+            player.scoreSheet[8].points +
+            player.scoreSheet[9].points +
+            player.scoreSheet[10].points +
+            player.scoreSheet[11].points +
+            player.scoreSheet[12].points +
+            player.scoreSheet[13].points +
+            player.scoreSheet[14].points +
+            player.scoreSheet[15].points +
+            player.scoreSheet[16].points
+
+    }
+}
