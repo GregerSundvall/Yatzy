@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class ScoreRecyclerAdapter (val context: Context, )
@@ -46,15 +47,15 @@ class ScoreRecyclerAdapter (val context: Context, )
             saveTextView.setOnClickListener{
                 if(ObjectManager.currentPlayer.alreadySaved == false) {
                     ObjectManager.currentPlayer.scoreSheet[scorePosition].saveScore(ObjectManager.currentPlayer)
-                    notifyDataSetChanged()
                     ObjectManager.currentPlayer.alreadySaved = true
+                    notifyDataSetChanged()
                     itemView.findViewById<TextView>(R.id.saveTextView).visibility = View.INVISIBLE
+                }else{
+                    Toast.makeText(context, "You have already saved!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-        fun updatePointsList(){
-            notifyDataSetChanged()
-        }
+
 
     }
 }
