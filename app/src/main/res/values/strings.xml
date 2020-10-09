@@ -48,4 +48,6 @@
     <string name="getReady">Get ready %1$s</string>
     <string name="rollDice">Roll dice!</string>
     <string name="continueString">Continue</string>
+    <string name="enterNames">Enter player names</string>
+    <string name="startGame">Start game!</string>
 </resources>
