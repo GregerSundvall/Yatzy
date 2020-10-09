@@ -18,8 +18,8 @@
     <string name="trips">Trips</string>
     <string name="results">Results</string>
     <string name="fullHouse">Full house</string>
-    <string name="SmallStraight">Lo straight</string>
-    <string name="LargeStraight">Hi straight</string>
+    <string name="SmallStraight">Small straight</string>
+    <string name="LargeStraight">Large straight</string>
     <string name="Chance">Chance</string>
     <string name="FourOfAKind">4 of a kind</string>
     <string name="playerNameAndScore">%1$s got %2$s points.</string>
@@ -54,4 +54,8 @@
     <string name="score">Score</string>
     <string name="playerName">%1$s</string>
     <string name="totalScore">%1$s</string>
+    <string name="threeOfAKind">3 of a kind</string>
+    <string name="sum">Sum</string>
+    <string name="bonus">Bonus</string>
+    <string name="total">Total</string>
 </resources>

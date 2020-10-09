@@ -7,161 +7,6 @@
     android:background="#000000"
     tools:context=".ScoreboardActivity">
 
-    <TextView
-        android:id="@+id/player1NameTextView"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/playerName"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/player"
-        app:layout_constraintStart_toStartOf="@+id/player"
-        app:layout_constraintTop_toBottomOf="@+id/player" />
-
-    <TextView
-        android:id="@+id/player3NameTextView"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/playerName"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/player2NameTextView"
-        app:layout_constraintStart_toStartOf="@+id/player2NameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/player2NameTextView" />
-
-    <TextView
-        android:id="@+id/player4NameTextView"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/playerName"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/player3NameTextView"
-        app:layout_constraintStart_toStartOf="@+id/player3NameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/player3NameTextView" />
-
-    <TextView
-        android:id="@+id/player5NameTextView"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/playerName"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/player4NameTextView"
-        app:layout_constraintStart_toStartOf="@+id/player4NameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/player4NameTextView" />
-
-    <TextView
-        android:id="@+id/player6NameTextView"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/playerName"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/player5NameTextView"
-        app:layout_constraintStart_toStartOf="@+id/player5NameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/player5NameTextView" />
-
-    <TextView
-        android:id="@+id/player2NameTextView"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/playerName"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/player1NameTextView"
-        app:layout_constraintStart_toStartOf="@+id/player1NameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/player1NameTextView" />
-
-    <TextView
-        android:id="@+id/player1ScoreTextView"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/totalScore"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/player1NameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/score"
-        app:layout_constraintStart_toStartOf="@+id/score"
-        app:layout_constraintTop_toTopOf="@+id/player1NameTextView" />
-
-    <TextView
-        android:id="@+id/player2ScoreTextView"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/totalScore"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/player2NameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/player1ScoreTextView"
-        app:layout_constraintStart_toStartOf="@+id/player1ScoreTextView"
-        app:layout_constraintTop_toTopOf="@+id/player2NameTextView" />
-
-    <TextView
-        android:id="@+id/player3ScoreTextView"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/totalScore"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/player3NameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/player2ScoreTextView"
-        app:layout_constraintStart_toStartOf="@+id/player2ScoreTextView"
-        app:layout_constraintTop_toTopOf="@+id/player3NameTextView" />
-
-    <TextView
-        android:id="@+id/player4ScoreTextView"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/totalScore"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/player4NameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/player3ScoreTextView"
-        app:layout_constraintStart_toStartOf="@+id/player3ScoreTextView"
-        app:layout_constraintTop_toTopOf="@+id/player4NameTextView" />
-
-    <TextView
-        android:id="@+id/player5ScoreTextView"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/totalScore"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/player5NameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/player4ScoreTextView"
-        app:layout_constraintStart_toStartOf="@+id/player4ScoreTextView"
-        app:layout_constraintTop_toTopOf="@+id/player5NameTextView" />
-
-    <TextView
-        android:id="@+id/player6ScoreTextView"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/totalScore"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/player6NameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/player5ScoreTextView"
-        app:layout_constraintStart_toStartOf="@+id/player5ScoreTextView"
-        app:layout_constraintTop_toTopOf="@+id/player6NameTextView" />
 
     <TextView
         android:id="@+id/ResultsTextView"
@@ -196,32 +41,359 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/player"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/player"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/score"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ResultsTextView" />
-
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/score"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/player"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/player"
-        app:layout_constraintTop_toTopOf="@+id/player"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/player1NameTextView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="150dp"
+            android:fontFamily="@font/carter_one"
+            android:gravity="center_vertical"
+            android:rotation="-45"
+            android:text="@string/playerName"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/player2NameTextView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="120dp"
+            android:fontFamily="@font/carter_one"
+            android:gravity="center_vertical"
+            android:rotation="-45"
+            android:text="@string/playerName"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/player3NameTextView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="90dp"
+            android:fontFamily="@font/carter_one"
+            android:gravity="center_vertical"
+            android:rotation="-45"
+            android:text="@string/playerName"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/player4NameTextView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="60dp"
+            android:fontFamily="@font/carter_one"
+            android:gravity="center_vertical"
+            android:rotation="-45"
+            android:text="@string/playerName"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/player5NameTextView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/carter_one"
+            android:gravity="center_vertical"
+            android:rotation="-45"
+            android:text="@string/playerName"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/player6NameTextView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:fontFamily="@font/carter_one"
+            android:gravity="center_vertical"
+            android:rotation="-45"
+            android:text="@string/playerName"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/onesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/ones"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/player1NameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/player1NameTextView" />
+
+        <TextView
+            android:id="@+id/twosTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/twos"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/onesTextView"
+            app:layout_constraintTop_toBottomOf="@+id/onesTextView" />
+
+        <TextView
+            android:id="@+id/threesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/threes"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/twosTextView"
+            app:layout_constraintTop_toBottomOf="@+id/twosTextView" />
+
+        <TextView
+            android:id="@+id/foursTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/fours"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/threesTextView"
+            app:layout_constraintTop_toBottomOf="@+id/threesTextView" />
+
+        <TextView
+            android:id="@+id/fivesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/fives"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/foursTextView"
+            app:layout_constraintTop_toBottomOf="@+id/foursTextView" />
+
+        <TextView
+            android:id="@+id/sixesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/sixes"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/fivesTextView"
+            app:layout_constraintTop_toBottomOf="@+id/fivesTextView" />
+
+        <TextView
+            android:id="@+id/twoPairsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/twoPairs"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/onePairTextView"
+            app:layout_constraintTop_toBottomOf="@+id/onePairTextView" />
+
+        <TextView
+            android:id="@+id/onePairTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/onePair"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/bonusTextView"
+            app:layout_constraintTop_toBottomOf="@+id/bonusTextView" />
+
+        <TextView
+            android:id="@+id/foakTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/FourOfAKind"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/toakTextView"
+            app:layout_constraintTop_toBottomOf="@+id/toakTextView" />
+
+        <TextView
+            android:id="@+id/toakTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/threeOfAKind"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/twoPairsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/twoPairsTextView" />
+
+        <TextView
+            android:id="@+id/fullHouseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/fullHouse"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/foakTextView"
+            app:layout_constraintTop_toBottomOf="@+id/foakTextView" />
+
+        <TextView
+            android:id="@+id/lgStraightTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/LargeStraight"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/smStraightTextView"
+            app:layout_constraintTop_toBottomOf="@+id/smStraightTextView" />
+
+        <TextView
+            android:id="@+id/chanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/Chance"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/lgStraightTextView"
+            app:layout_constraintTop_toBottomOf="@+id/lgStraightTextView" />
+
+        <TextView
+            android:id="@+id/yatzyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/yatzy"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/chanceTextView"
+            app:layout_constraintTop_toBottomOf="@+id/chanceTextView" />
+
+        <TextView
+            android:id="@+id/totalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/total"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/yatzyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/yatzyTextView" />
+
+        <TextView
+            android:id="@+id/bonusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/bonus"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/sumTextView"
+            app:layout_constraintTop_toBottomOf="@+id/sumTextView" />
+
+        <TextView
+            android:id="@+id/sumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/sum"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/sixesTextView"
+            app:layout_constraintTop_toBottomOf="@+id/sixesTextView" />
+
+        <TextView
+            android:id="@+id/smStraightTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/SmallStraight"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/fullHouseTextView"
+            app:layout_constraintTop_toBottomOf="@+id/fullHouseTextView" />
+
+        <TextView
+            android:id="@+id/onesP5TextView"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/totalScore"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="321dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <TextView
+            android:id="@+id/onesP1TextView"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/totalScore"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="201dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <TextView
+            android:id="@+id/onesP2TextView"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/totalScore"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="231dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <TextView
+            android:id="@+id/player1ScoreTextView3"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/totalScore"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="261dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <TextView
+            android:id="@+id/onesP3TextView"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/totalScore"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="261dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <TextView
+            android:id="@+id/onesP4TextView"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/totalScore"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="291dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <TextView
+            android:id="@+id/onesP6TextView"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/carter_one"
+            android:text="@string/totalScore"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="351dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

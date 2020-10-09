@@ -34,7 +34,7 @@ class ScoreboardActivity : AppCompatActivity() {
         val player4NameTextView = findViewById<TextView>(R.id.player4NameTextView)
         val player5NameTextView = findViewById<TextView>(R.id.player5NameTextView)
         val player6NameTextView = findViewById<TextView>(R.id.player6NameTextView)
-        val player1ScoreTextView = findViewById<TextView>(R.id.player1ScoreTextView)
+        val player1ScoreTextView = findViewById<TextView>(R.id.onesP1TextView)
         val player2ScoreTextView = findViewById<TextView>(R.id.player2ScoreTextView)
         val player3ScoreTextView = findViewById<TextView>(R.id.player3ScoreTextView)
         val player4ScoreTextView = findViewById<TextView>(R.id.player4ScoreTextView)
