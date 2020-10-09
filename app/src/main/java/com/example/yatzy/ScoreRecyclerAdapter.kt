@@ -28,6 +28,8 @@ class ScoreRecyclerAdapter (val context: Context, )
 
         if(ObjectManager.currentPlayer.scoreSheet[position].filled == true){
             holder.saveTextView.visibility = View.INVISIBLE
+        }else{
+            holder.saveTextView.visibility = View.VISIBLE
         }
     }
 
