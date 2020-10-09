@@ -8,87 +8,160 @@
     tools:context=".ScoreboardActivity">
 
     <TextView
-        android:id="@+id/player1TextView"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="30dp"
+        android:id="@+id/player1NameTextView"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/carter_one"
-        android:text="@string/playerNameAndScore"
-        android:textAlignment="textEnd"
+        android:text="@string/playerName"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ResultsTextView" />
+        app:layout_constraintEnd_toEndOf="@+id/player"
+        app:layout_constraintStart_toStartOf="@+id/player"
+        app:layout_constraintTop_toBottomOf="@+id/player" />
 
     <TextView
-        android:id="@+id/player2TextView"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/player3NameTextView"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/carter_one"
-        android:text="@string/playerNameAndScore"
-        android:textAlignment="textEnd"
+        android:text="@string/playerName"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player1TextView" />
+        app:layout_constraintEnd_toEndOf="@+id/player2NameTextView"
+        app:layout_constraintStart_toStartOf="@+id/player2NameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/player2NameTextView" />
 
     <TextView
-        android:id="@+id/player3TextView"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/player4NameTextView"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/carter_one"
-        android:text="@string/playerNameAndScore"
-        android:textAlignment="textEnd"
+        android:text="@string/playerName"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player2TextView" />
+        app:layout_constraintEnd_toEndOf="@+id/player3NameTextView"
+        app:layout_constraintStart_toStartOf="@+id/player3NameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/player3NameTextView" />
 
     <TextView
-        android:id="@+id/player4TextView"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/player5NameTextView"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/carter_one"
-        android:text="@string/playerNameAndScore"
-        android:textAlignment="textEnd"
+        android:text="@string/playerName"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player3TextView" />
+        app:layout_constraintEnd_toEndOf="@+id/player4NameTextView"
+        app:layout_constraintStart_toStartOf="@+id/player4NameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/player4NameTextView" />
 
     <TextView
-        android:id="@+id/player5TextView"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/player6NameTextView"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/carter_one"
-        android:text="@string/playerNameAndScore"
-        android:textAlignment="textEnd"
+        android:text="@string/playerName"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player4TextView" />
+        app:layout_constraintEnd_toEndOf="@+id/player5NameTextView"
+        app:layout_constraintStart_toStartOf="@+id/player5NameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/player5NameTextView" />
 
     <TextView
-        android:id="@+id/player6TextView"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/player2NameTextView"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/carter_one"
-        android:text="@string/playerNameAndScore"
-        android:textAlignment="textEnd"
+        android:text="@string/playerName"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player5TextView" />
+        app:layout_constraintEnd_toEndOf="@+id/player1NameTextView"
+        app:layout_constraintStart_toStartOf="@+id/player1NameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/player1NameTextView" />
+
+    <TextView
+        android:id="@+id/player1ScoreTextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/totalScore"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/player1NameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/score"
+        app:layout_constraintStart_toStartOf="@+id/score"
+        app:layout_constraintTop_toTopOf="@+id/player1NameTextView" />
+
+    <TextView
+        android:id="@+id/player2ScoreTextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/totalScore"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/player2NameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/player1ScoreTextView"
+        app:layout_constraintStart_toStartOf="@+id/player1ScoreTextView"
+        app:layout_constraintTop_toTopOf="@+id/player2NameTextView" />
+
+    <TextView
+        android:id="@+id/player3ScoreTextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/totalScore"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/player3NameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/player2ScoreTextView"
+        app:layout_constraintStart_toStartOf="@+id/player2ScoreTextView"
+        app:layout_constraintTop_toTopOf="@+id/player3NameTextView" />
+
+    <TextView
+        android:id="@+id/player4ScoreTextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/totalScore"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/player4NameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/player3ScoreTextView"
+        app:layout_constraintStart_toStartOf="@+id/player3ScoreTextView"
+        app:layout_constraintTop_toTopOf="@+id/player4NameTextView" />
+
+    <TextView
+        android:id="@+id/player5ScoreTextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/totalScore"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/player5NameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/player4ScoreTextView"
+        app:layout_constraintStart_toStartOf="@+id/player4ScoreTextView"
+        app:layout_constraintTop_toTopOf="@+id/player5NameTextView" />
+
+    <TextView
+        android:id="@+id/player6ScoreTextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/totalScore"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/player6NameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/player5ScoreTextView"
+        app:layout_constraintStart_toStartOf="@+id/player5ScoreTextView"
+        app:layout_constraintTop_toTopOf="@+id/player6NameTextView" />
 
     <TextView
         android:id="@+id/ResultsTextView"
@@ -122,4 +195,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/player"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/player"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ResultsTextView" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/score"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/player"
+        app:layout_constraintTop_toTopOf="@+id/player"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,4 +50,8 @@
     <string name="continueString">Continue</string>
     <string name="enterNames">Enter player names</string>
     <string name="startGame">Start game!</string>
+    <string name="player">Player</string>
+    <string name="score">Score</string>
+    <string name="playerName">%1$s</string>
+    <string name="totalScore">%1$s</string>
 </resources>

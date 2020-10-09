@@ -32,6 +32,18 @@
         app:srcCompat="@drawable/die1" />
 
     <ImageView
+        android:id="@+id/die2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:onClick="selectOrDeselectDie2"
+        app:layout_constraintBottom_toBottomOf="@+id/die1"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/die1"
+        app:layout_constraintTop_toTopOf="@+id/die1"
+        app:srcCompat="@drawable/die1" />
+
+    <ImageView
         android:id="@+id/die3"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -67,18 +79,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/die4"
         app:layout_constraintTop_toTopOf="@+id/die4"
-        app:srcCompat="@drawable/die1" />
-
-    <ImageView
-        android:id="@+id/die2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:onClick="selectOrDeselectDie2"
-        app:layout_constraintBottom_toBottomOf="@+id/die1"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/die1"
-        app:layout_constraintTop_toTopOf="@+id/die1"
         app:srcCompat="@drawable/die1" />
 
     <ImageView
