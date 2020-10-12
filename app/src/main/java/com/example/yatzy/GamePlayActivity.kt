@@ -3,7 +3,6 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    var currentRound : Int = 1
+    val totalRounds = 2
+    var currentRound = 1
+    var turnsInEveryRound = ObjectManager.listOfPlayers.lastIndex
+    var currentPlayerNr = 0
     var listOfDice = mutableListOf<Die>()
     lateinit var adapter: ScoreRecyclerAdapter
 
@@ -30,28 +32,37 @@ class GamePlayActivity : AppCompatActivity() {
 
         createDice()
         populateListOfDieImageViews()
-        newTurn()
+        startTurn()
     }
 
         //Checks that user has saved and reminds otherwise.
         //Then starts next turn, a new round, or scoreboard.
-    fun nextTurnOrScoreboard(view: View){
-        if(ObjectManager.currentPlayer.alreadySaved == false){
-            Toast.makeText(this, "You need to save first!",
-                Toast.LENGTH_SHORT).show()
-        }else if(currentRound == 2 && ObjectManager.currentPlayer == ObjectManager.listOfPlayers.last()){
-            startScoreboardActivity()
-        }else if(ObjectManager.currentPlayer == ObjectManager.listOfPlayers.last()){
-            ObjectManager.currentPlayer = ObjectManager.listOfPlayers.first()
-            currentRound += 1
-            newTurn()
+    fun nextPlayerOrScoreboard(view: View){
+        if(ObjectManager.currentPlayer.alreadySaved){
+            if(currentPlayerNr == turnsInEveryRound && currentRound == totalRounds){
+                startScoreboardActivity()
+            }else {
+                nextPlayer()
+                startTurn()
+            }
         }else{
-            ObjectManager.currentPlayer = ObjectManager.listOfPlayers[+1]
-            newTurn()
+            Toast.makeText(this, "You need to save first!", Toast.LENGTH_SHORT).show()
         }
     }
-        //Starts next turn or scoreboard activity
-    fun newTurn(){
+
+        //Sets currentPlayer to next player up
+    fun nextPlayer(){
+        if(currentPlayerNr == turnsInEveryRound) {
+            currentPlayerNr = 0
+            currentRound++
+        }else{
+            currentPlayerNr++
+        }
+        ObjectManager.currentPlayer = ObjectManager.listOfPlayers[currentPlayerNr]
+    }
+
+
+    fun startTurn(){
         ObjectManager.currentPlayer.alreadySaved = false
         ObjectManager.currentPlayer.rolls = 3
         findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.VISIBLE
@@ -64,7 +75,7 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
 
-    fun startPlaying(view: View){
+    fun startPlay(view: View){
         for(die in listOfDieImageViews){
             die.visibility = View.INVISIBLE
         }
