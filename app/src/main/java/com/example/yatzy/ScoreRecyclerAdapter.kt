@@ -53,10 +53,6 @@ class ScoreRecyclerAdapter (val context: Context, )
                     ObjectManager.currentPlayer.scoreSheet[scorePosition].saveScore(ObjectManager.currentPlayer)
                     ObjectManager.currentPlayer.alreadySaved = true
                     notifyDataSetChanged()
-                    Toast.makeText(context,
-                        "${ObjectManager.currentPlayer.scoreSheet[scorePosition].points.toString()}" +
-                                " points saved",
-                        Toast.LENGTH_SHORT).show()
                 }else{
                     Toast.makeText(context, "You already saved!", Toast.LENGTH_SHORT).show()
                 }

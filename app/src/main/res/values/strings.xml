@@ -52,10 +52,11 @@
     <string name="startGame">Start game!</string>
     <string name="player">Player</string>
     <string name="score">Score</string>
-    <string name="playerName">%1$s</string>
+    <string name="playerName"></string>
     <string name="totalScore">%1$s</string>
     <string name="threeOfAKind">3 of a kind</string>
     <string name="sum">Sum</string>
     <string name="bonus">Bonus</string>
     <string name="total">Total</string>
+    <string name="scoreBox" />
 </resources>
