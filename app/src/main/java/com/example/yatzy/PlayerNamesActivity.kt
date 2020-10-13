@@ -28,6 +28,9 @@ class PlayerNamesActivity : AppCompatActivity() {
                     Player4NamePlainText.visibility = View.GONE
                     if(nrOfplayers <= 2){
                         Player3NamePlainText.visibility = View.GONE
+                        if(nrOfplayers <= 1){
+                            Player2NamePlainText.visibility = View.GONE
+                        }
                     }
                 }
             }
@@ -36,23 +39,25 @@ class PlayerNamesActivity : AppCompatActivity() {
 
     fun createPlayers(){
         ObjectManager.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
-        ObjectManager.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
 
-        if (nrOfplayers >= 3) {
-            ObjectManager.listOfPlayers.add(Player("${Player3NamePlainText.text}"))
+        if (nrOfplayers >= 2) {
+            ObjectManager.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
 
-            if(nrOfplayers >= 4){
-                ObjectManager.listOfPlayers.add(Player("${Player4NamePlainText.text}"))
+            if (nrOfplayers >= 3) {
+                ObjectManager.listOfPlayers.add(Player("${Player3NamePlainText.text}"))
 
-                if(nrOfplayers >= 5){
-                    ObjectManager.listOfPlayers.add(Player("${Player5NamePlainText.text}"))
+                if (nrOfplayers >= 4) {
+                    ObjectManager.listOfPlayers.add(Player("${Player4NamePlainText.text}"))
 
-                    if(nrOfplayers == 6){
-                        ObjectManager.listOfPlayers.add(Player("${Player6NamePlainText.text}"))
+                    if (nrOfplayers >= 5) {
+                        ObjectManager.listOfPlayers.add(Player("${Player5NamePlainText.text}"))
+
+                        if (nrOfplayers == 6) {
+                            ObjectManager.listOfPlayers.add(Player("${Player6NamePlainText.text}"))
+                        }
                     }
                 }
             }
-
         }
     }
 

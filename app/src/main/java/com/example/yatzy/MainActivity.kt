@@ -15,6 +15,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    fun start1(view:View){
+        nrOfPlayers = 1
+        startPlayerNamesActivity()
+    }
+
     fun start2(view:View){
         nrOfPlayers = 2
         startPlayerNamesActivity()
