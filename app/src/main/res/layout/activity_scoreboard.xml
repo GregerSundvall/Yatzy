@@ -12,7 +12,7 @@
         android:id="@+id/ResultsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/carter_one"
         android:text="@string/results"
         android:textAlignment="center"
@@ -28,7 +28,7 @@
         android:id="@+id/playAgainTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="@font/carter_one"
         android:onClick="playAgain"
         android:text="@string/playAgain"
@@ -43,8 +43,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,6 @@
             android:id="@+id/nameP1TextView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="150dp"
             android:fontFamily="@font/carter_one"
             android:gravity="center_vertical"
             android:maxLength="12"
@@ -63,14 +62,13 @@
             android:text="@string/playerName"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/onesP1TextView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nameP2TextView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="120dp"
             android:fontFamily="@font/carter_one"
             android:gravity="center_vertical"
             android:maxLength="12"
@@ -79,14 +77,13 @@
             android:text="@string/playerName"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/onesP1TextView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nameP3TextView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="90dp"
             android:fontFamily="@font/carter_one"
             android:gravity="center_vertical"
             android:maxLength="12"
@@ -95,14 +92,13 @@
             android:text="@string/playerName"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/onesP3TextView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nameP4TextView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="60dp"
             android:fontFamily="@font/carter_one"
             android:gravity="center_vertical"
             android:maxLength="12"
@@ -111,14 +107,13 @@
             android:text="@string/playerName"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/onesP3TextView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nameP5TextView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="30dp"
             android:fontFamily="@font/carter_one"
             android:gravity="center_vertical"
             android:maxLength="12"
@@ -127,7 +122,7 @@
             android:text="@string/playerName"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/onesP4TextView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -142,7 +137,7 @@
             android:text="@string/playerName"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/onesP6TextView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -152,7 +147,7 @@
             android:fontFamily="@font/carter_one"
             android:text="@string/ones"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toStartOf="@+id/nameP1TextView"
+            app:layout_constraintEnd_toStartOf="@+id/onesP1TextView"
             app:layout_constraintTop_toBottomOf="@+id/nameP1TextView" />
 
         <TextView
@@ -288,9 +283,11 @@
         <TextView
             android:id="@+id/totalTextView"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
             android:text="@string/total"
+            android:textAlignment="textEnd"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/yatzyTextView"
@@ -334,8 +331,8 @@
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            app:layout_constraintStart_toEndOf="@+id/onesTextView"
-            app:layout_constraintTop_toTopOf="@+id/onesTextView" />
+            app:layout_constraintEnd_toStartOf="@+id/onesP2TextView"
+            app:layout_constraintTop_toBottomOf="@+id/nameP1TextView" />
 
         <TextView
             android:id="@+id/twosP1TextView"
@@ -582,8 +579,10 @@
         <TextView
             android:id="@+id/totalP1TextView"
             android:layout_width="30dp"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
+            android:gravity="bottom"
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -593,8 +592,10 @@
         <TextView
             android:id="@+id/totalP6TextView"
             android:layout_width="30dp"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
+            android:gravity="bottom"
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -604,8 +605,10 @@
         <TextView
             android:id="@+id/totalP5TextView"
             android:layout_width="30dp"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
+            android:gravity="bottom"
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -615,8 +618,10 @@
         <TextView
             android:id="@+id/totalP4TextView"
             android:layout_width="30dp"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
+            android:gravity="bottom"
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -626,8 +631,10 @@
         <TextView
             android:id="@+id/totalP3TextView"
             android:layout_width="30dp"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
+            android:gravity="bottom"
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -637,8 +644,10 @@
         <TextView
             android:id="@+id/totalP2TextView"
             android:layout_width="30dp"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/carter_one"
+            android:gravity="bottom"
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -1467,7 +1476,8 @@
             android:text="@string/scoreBox"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            app:layout_constraintStart_toEndOf="@+id/onesP1TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/onesP1TextView" />
 
         <TextView
