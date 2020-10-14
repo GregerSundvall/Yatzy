@@ -44,7 +44,7 @@
     <string name="start_again">Start again!</string>
     <string name="roll_dice">Roll!</string>
     <string name="playAgain">Play again!</string>
-    <string name="nextPlayer">Next Player</string>
+    <string name="done">Done!</string>
     <string name="getReady">Get ready %1$s</string>
     <string name="rollDice">Roll dice!</string>
     <string name="continueString">Continue</string>
@@ -66,4 +66,6 @@
     <string name="four">4</string>
     <string name="five">5</string>
     <string name="six">6</string>
+    <string name="playerOne">Player 1</string>
+    <string name="NameHint">Name</string>
 </resources>

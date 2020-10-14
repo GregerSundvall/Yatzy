@@ -124,7 +124,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/nextPlayerTextView"
+        app:layout_constraintBottom_toTopOf="@+id/doneTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,13 +147,13 @@
         app:layout_constraintTop_toBottomOf="@+id/die4" />
 
     <TextView
-        android:id="@+id/nextPlayerTextView"
+        android:id="@+id/doneTextView"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:fontFamily="@font/carter_one"
         android:gravity="center"
         android:onClick="nextPlayerOrScoreboard"
-        android:text="@string/nextPlayer"
+        android:text="@string/done"
         android:textAlignment="gravity"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
