@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    val totalRounds = 2
+    val totalRounds = 15
     var currentRound = 1
     var turnsInEveryRound = ObjectManager.listOfPlayers.lastIndex
     var currentPlayerNr = 0
@@ -46,7 +46,7 @@ class GamePlayActivity : AppCompatActivity() {
                 startTurn()
             }
         }else{
-            Toast.makeText(this, "You need to save first!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "${getString(R.string.saveFirst)}", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -109,7 +109,11 @@ class GamePlayActivity : AppCompatActivity() {
         for(die in listOfDieImageViews){
             die.visibility = View.VISIBLE
         }
-        findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.VISIBLE
+        if(ObjectManager.currentPlayer.rolls >= 1) {
+            findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.VISIBLE
+        }else{
+            findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
+        }
         findViewById<TextView>(R.id.rollTextView).visibility = View.INVISIBLE
     }
 
@@ -185,55 +189,42 @@ class GamePlayActivity : AppCompatActivity() {
 
 
 
-        //Sets toBeRolled value and the white or red image accordingly for die 1
-    fun selectOrDeselectDie1(view: View){
-        if(ObjectManager.currentPlayer.rolls >0) {
-            when (listOfDice[0].toBeRolled) {
-                false -> listOfDice[0].toBeRolled = true
-                true -> listOfDice[0].toBeRolled = false
+        //Sets toBeRolled value and the white or red image accordingly for a die
+        //(Selects or deselects ONE die and shows correct images for ALL die)
+    fun selectOrDeselectDie(view: View){
+        if(ObjectManager.currentPlayer.alreadySaved == false) {
+            if (ObjectManager.currentPlayer.rolls > 0) {
+                when (view.id) {
+                    R.id.die1 -> when (listOfDice[0].toBeRolled) {
+                        false -> listOfDice[0].toBeRolled = true
+                        true -> listOfDice[0].toBeRolled = false
+                    }
+                    R.id.die2 -> when (listOfDice[1].toBeRolled) {
+                        false -> listOfDice[1].toBeRolled = true
+                        true -> listOfDice[1].toBeRolled = false
+                    }
+                    R.id.die3 -> when (listOfDice[2].toBeRolled) {
+                        false -> listOfDice[2].toBeRolled = true
+                        true -> listOfDice[2].toBeRolled = false
+                    }
+                    R.id.die4 -> when (listOfDice[3].toBeRolled) {
+                        false -> listOfDice[3].toBeRolled = true
+                        true -> listOfDice[3].toBeRolled = false
+                    }
+                    R.id.die5 -> when (listOfDice[4].toBeRolled) {
+                        false -> listOfDice[4].toBeRolled = true
+                        true -> listOfDice[4].toBeRolled = false
+                    }
+                }
+                setDiceImages()
+            } else {
+                Toast.makeText(this, "${getString(R.string.noMoreRolls)}",
+                    Toast.LENGTH_SHORT).show()
             }
+        }else{
+            Toast.makeText(this, "${getString(R.string.youAlreadySaved)}",
+                Toast.LENGTH_SHORT).show()
         }
-        setDiceImages()
-    }
-    //Sets toBeRolled value and the white or red image accordingly for die 2
-    fun selectOrDeselectDie2(view: View){
-        if(ObjectManager.currentPlayer.rolls >0) {
-            when (ObjectManager.currentPlayer.listOfDice[1].toBeRolled) {
-                false -> ObjectManager.currentPlayer.listOfDice[1].toBeRolled = true
-                true -> ObjectManager.currentPlayer.listOfDice[1].toBeRolled = false
-            }
-        }
-        setDiceImages()
-    }
-    //Sets toBeRolled value and the white or red image accordingly for die 3
-    fun selectOrDeselectDie3(view: View){
-        if(ObjectManager.currentPlayer.rolls >0) {
-            when (ObjectManager.currentPlayer.listOfDice[2].toBeRolled) {
-                false -> ObjectManager.currentPlayer.listOfDice[2].toBeRolled = true
-                true -> ObjectManager.currentPlayer.listOfDice[2].toBeRolled = false
-            }
-        }
-        setDiceImages()
-    }
-    //Sets toBeRolled value and the white or red image accordingly for die 4
-    fun selectOrDeselectDie4(view: View){
-        if(ObjectManager.currentPlayer.rolls >0) {
-            when (ObjectManager.currentPlayer.listOfDice[3].toBeRolled) {
-                false -> ObjectManager.currentPlayer.listOfDice[3].toBeRolled = true
-                true -> ObjectManager.currentPlayer.listOfDice[3].toBeRolled = false
-            }
-        }
-        setDiceImages()
-    }
-    //Sets toBeRolled value and the white or red image accordingly for die 5
-    fun selectOrDeselectDie5(view: View){
-        if(ObjectManager.currentPlayer.rolls >0) {
-            when (ObjectManager.currentPlayer.listOfDice[4].toBeRolled) {
-                false -> ObjectManager.currentPlayer.listOfDice[4].toBeRolled = true
-                true -> ObjectManager.currentPlayer.listOfDice[4].toBeRolled = false
-            }
-        }
-        setDiceImages()
     }
 
 

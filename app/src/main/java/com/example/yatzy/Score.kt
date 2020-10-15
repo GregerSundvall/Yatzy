@@ -104,6 +104,7 @@ class TwoPairs : Score("Two pairs"){
         for(die in player.listOfDice){
             listOfValues.add(die.currentValue)
         }
+        listOfValues.sortDescending()
         if(listOfValues[0] == listOfValues[1]){
             listOfPairs.add(listOfValues [0] + listOfValues[1])
             if(listOfValues[2] == listOfValues[3]){
@@ -214,7 +215,7 @@ class LgStraight : Score("Large straight"){
     }
 }
 
-class Chance : Score("Chance"){
+class Chance : Score("chance"){
     override fun saveScore(player : Player){
         for(die in player.listOfDice){
             player.scoreSheet[13].points += die.currentValue

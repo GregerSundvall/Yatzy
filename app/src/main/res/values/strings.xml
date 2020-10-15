@@ -12,30 +12,30 @@
     <string name="fours">Fours</string>
     <string name="fives">Fives</string>
     <string name="sixes">Sixes</string>
-    <string name="yatzy">Yatzy</string>
     <string name="onePair">One pair</string>
     <string name="twoPairs">Two Pairs</string>
-    <string name="trips">Trips</string>
-    <string name="results">Results</string>
+    <string name="threeOfAKind">3 of a kind</string>
+    <string name="fourOfAKind">4 of a kind</string>
     <string name="fullHouse">Full house</string>
-    <string name="SmallStraight">Small straight</string>
-    <string name="LargeStraight">Large straight</string>
-    <string name="Chance">Chance</string>
-    <string name="FourOfAKind">4 of a kind</string>
-    <string name="playerNameAndScore">%1$s got %2$s points.</string>
-    <string name="player1Score">%1$s</string>
+    <string name="smallStraight">Small straight</string>
+    <string name="largeStraight">Large straight</string>
+    <string name="chance">Chance</string>
+    <string name="yatzy">Yatzy</string>
+
+    <string name="results">Results</string>
+    <string name="noMoreRolls">You already did your 3 rolls!</string>
+
     <string name="player2Name">%1$s</string>
-    <string name="player2Score">%1$s</string>
     <string name="onesPoints">%1$s</string>
     <string name="twosPoints">%1$s</string>
     <string name="threesPoints">%1$s</string>
     <string name="foursPoints">%1$s</string>
-    <string name="tripsPoints">%1$s</string>
     <string name="fivesPoints">%1$s</string>
-    <string name="chancePoints">%1$s</string>
     <string name="sixesPoints">%1$s</string>
-    <string name="yatzyPoints">%1$s</string>
     <string name="twoPairsPoints">%1$s</string>
+    <string name="tripsPoints">%1$s</string>
+    <string name="chancePoints">%1$s</string>
+    <string name="yatzyPoints">%1$s</string>
     <string name="fullHousePoints">%1$s</string>
     <string name="lgStraightPoints">%1$s</string>
     <string name="onePairPoints">%1$s</string>
@@ -54,7 +54,6 @@
     <string name="score">Score</string>
     <string name="playerName"></string>
     <string name="totalScore">%1$s</string>
-    <string name="threeOfAKind">3 of a kind</string>
     <string name="sum">Sum</string>
     <string name="bonus">Bonus</string>
     <string name="total">Total</string>
@@ -68,4 +67,7 @@
     <string name="six">6</string>
     <string name="playerOne">Player 1</string>
     <string name="NameHint">Name</string>
+    <string name="saveFirst">You need to save first!</string>
+    <string name="rollDiceFirst">Roll your dice first!</string>
+    <string name="youAlreadySaved">You have already saved!</string>
 </resources>

@@ -6,26 +6,27 @@
     <string name="reRoll">Slå om!</string>
     <string name="save">Spara</string>
     <string name="save_as">Tap desired button to save your score</string>
+
     <string name="ones">Ettor</string>
     <string name="twos">Tvåor</string>
     <string name="threes">Treor</string>
     <string name="fours">Fyror</string>
     <string name="fives">Femmor</string>
     <string name="sixes">Sexor</string>
-    <string name="yatzy">Yatzy</string>
     <string name="onePair">Ett par</string>
     <string name="twoPairs">Två par</string>
-    <string name="trips">Tretal</string>
-    <string name="results">Resultat</string>
+    <string name="threeOfAKind">Tretal</string>
+    <string name="fourOfAKind">Fyrtal</string>
     <string name="fullHouse">Kåk</string>
-    <string name="SmallStraight">Liten stege</string>
-    <string name="LargeStraight">Stor stege</string>
-    <string name="Chance">Chans</string>
-    <string name="FourOfAKind">Fyrtal</string>
-    <string name="playerNameAndScore">%1$s got %2$s points.</string>
-    <string name="player1Score">%1$s</string>
+    <string name="smallStraight">Liten stege</string>
+    <string name="largeStraight">Stor stege</string>
+    <string name="chance">Chans</string>
+    <string name="yatzy">Yatzy</string>
+
+    <string name="results">Resultat</string>
+    <string name="noMoreRolls">Du har redan slagit 3 gånger!</string>
+
     <string name="player2Name">%1$s</string>
-    <string name="player2Score">%1$s</string>
     <string name="onesPoints">%1$s</string>
     <string name="twosPoints">%1$s</string>
     <string name="threesPoints">%1$s</string>
@@ -54,7 +55,6 @@
     <string name="score">Poäng</string>
     <string name="playerName"></string>
     <string name="totalScore">%1$s</string>
-    <string name="threeOfAKind">Tretal</string>
     <string name="sum">Summa</string>
     <string name="bonus">Bonus</string>
     <string name="total">Total</string>
@@ -68,4 +68,7 @@
     <string name="six">6</string>
     <string name="playerOne">Spelare 1</string>
     <string name="NameHint">Namn</string>
+    <string name="saveFirst">Du behöver spara först!</string>
+    <string name="rollDiceFirst">Slå tärningarna först!</string>
+    <string name="youAlreadySaved">Du har redan sparat!</string>
 </resources>

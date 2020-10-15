@@ -225,7 +225,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:fontFamily="@font/carter_one"
-            android:text="@string/FourOfAKind"
+            android:text="@string/fourOfAKind"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="@+id/toakTextView"
             app:layout_constraintTop_toBottomOf="@+id/toakTextView" />
@@ -255,7 +255,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:fontFamily="@font/carter_one"
-            android:text="@string/LargeStraight"
+            android:text="@string/largeStraight"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="@+id/smStraightTextView"
             app:layout_constraintTop_toBottomOf="@+id/smStraightTextView" />
@@ -265,7 +265,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:fontFamily="@font/carter_one"
-            android:text="@string/Chance"
+            android:text="@string/chance"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="@+id/lgStraightTextView"
             app:layout_constraintTop_toBottomOf="@+id/lgStraightTextView" />
@@ -318,7 +318,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:fontFamily="@font/carter_one"
-            android:text="@string/SmallStraight"
+            android:text="@string/smallStraight"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="@+id/fullHouseTextView"
             app:layout_constraintTop_toBottomOf="@+id/fullHouseTextView" />
