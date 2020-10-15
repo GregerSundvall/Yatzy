@@ -33,7 +33,7 @@ class ScoreRecyclerAdapter (val context: Context, )
     }
 
     override fun getItemCount(): Int {
-        return ObjectManager.currentPlayer.scoreSheet.size
+        return ObjectManager.currentPlayer.scoreSheet.size-3
     }
 
 
