@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">Yatzy</string>
+    <string name="noNameWarning">All names must be at least 1 character!</string>
     <string name="whoIsPlaying">%1$s is playing</string>
     <string name="tap_die_to_reroll">Tap dice to select for re-roll</string>
     <string name="where">Tap to select bracket below</string>
     <string name="reRoll">Re-roll</string>
     <string name="save">Save</string>
     <string name="save_as">Tap desired button to save your score</string>
+
     <string name="ones">Ones</string>
     <string name="twos">Twos</string>
     <string name="threes">Threes</string>

@@ -4,11 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_player_names.*
 
 class PlayerNamesActivity : AppCompatActivity() {
 
     var nrOfplayers = 2
+    val listOfNameBoxes = mutableListOf<EditText>()
+    var noNameWarning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +20,8 @@ class PlayerNamesActivity : AppCompatActivity() {
 
         nrOfplayers = intent.getIntExtra("nrOfPlayers", 2)
         hideUnnecessaryNameboxes()
+
+
     }
 
         //Makes unnecessary nameboxes disappear
@@ -39,7 +45,6 @@ class PlayerNamesActivity : AppCompatActivity() {
 
     fun createPlayers(){
         ObjectManager.listOfPlayers.add(Player("${Player1NamePlainText.text}"))
-
         if (nrOfplayers >= 2) {
             ObjectManager.listOfPlayers.add(Player("${Player2NamePlainText.text}"))
 
@@ -61,10 +66,41 @@ class PlayerNamesActivity : AppCompatActivity() {
         }
     }
 
-    fun startGamePlayActivity(v : View){
-        createPlayers()
-        ObjectManager.currentPlayer = ObjectManager.listOfPlayers.first()
-        val intent = Intent(this, GamePlayActivity::class.java)
-        startActivity(intent)
+    fun checkPlayerNames(){
+        listOfNameBoxes.add(findViewById(R.id.Player1NamePlainText))
+        if(nrOfplayers >= 2 ){
+            listOfNameBoxes.add(findViewById(R.id.Player2NamePlainText))
+            if(nrOfplayers >= 3 ) {
+                listOfNameBoxes.add(findViewById(R.id.Player3NamePlainText))
+                if(nrOfplayers >= 4 ) {
+                    listOfNameBoxes.add(findViewById(R.id.Player4NamePlainText))
+                    if(nrOfplayers >= 5 ) {
+                        listOfNameBoxes.add(findViewById(R.id.Player5NamePlainText))
+                        if(nrOfplayers >= 6 ) {
+                            listOfNameBoxes.add(findViewById(R.id.Player6NamePlainText))
+                        }
+                    }
+                }
+            }
+        }
+
+        for(nameBox in listOfNameBoxes){
+            if(nameBox.text.length < 1){
+                noNameWarning = true
+            }
+        }
+    }
+    fun startGamePlayActivity(view : View){
+        noNameWarning = false
+        checkPlayerNames()
+        if(noNameWarning == false){
+            createPlayers()
+            ObjectManager.currentPlayer = ObjectManager.listOfPlayers.first()
+            val intent = Intent(this, GamePlayActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(this, "${getString(R.string.noNameWarning)}",
+                Toast.LENGTH_SHORT).show()
+        }
     }
 }
