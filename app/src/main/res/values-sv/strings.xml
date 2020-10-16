@@ -3,10 +3,8 @@
     <string name="noNameWarning">Alla namn måste vara minst 1 tecken!</string>
     <string name="whoIsPlaying">%1$s spelar</string>
     <string name="tap_die_to_reroll">Nudda tärningarna du vill slå om</string>
-    <string name="where">Tap to select bracket below</string>
     <string name="reRoll">Slå om!</string>
     <string name="save">Spara</string>
-    <string name="save_as">Tap desired button to save your score</string>
 
     <string name="ones">Ettor</string>
     <string name="twos">Tvåor</string>
@@ -27,22 +25,6 @@
     <string name="results">Resultat</string>
     <string name="noMoreRolls">Du har redan slagit 3 gånger!</string>
 
-    <string name="player2Name">%1$s</string>
-    <string name="onesPoints">%1$s</string>
-    <string name="twosPoints">%1$s</string>
-    <string name="threesPoints">%1$s</string>
-    <string name="foursPoints">%1$s</string>
-    <string name="tripsPoints">%1$s</string>
-    <string name="fivesPoints">%1$s</string>
-    <string name="chancePoints">%1$s</string>
-    <string name="sixesPoints">%1$s</string>
-    <string name="yatzyPoints">%1$s</string>
-    <string name="twoPairsPoints">%1$s</string>
-    <string name="fullHousePoints">%1$s</string>
-    <string name="lgStraightPoints">%1$s</string>
-    <string name="onePairPoints">%1$s</string>
-    <string name="fourOfAKindPoints">%1$s</string>
-    <string name="smStraightPoints">%1$s</string>
     <string name="start_again">Spela igen!</string>
     <string name="roll_dice">Slå!</string>
     <string name="playAgain">Spela igen!</string>
@@ -74,4 +56,5 @@
     <string name="youAlreadySaved">Du har redan sparat!</string>
     <string name="highscore">Highscore</string>
     <string name="winner">Vinnare</string>
+    <string name="newHighscore">Nytt highscore!</string>
 </resources>

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    val totalRounds = 2
+    val totalRounds = 15
     var currentRound = 1
     var turnsInEveryRound = ObjectManager.listOfPlayers.lastIndex
     var currentPlayerNr = 0
@@ -33,6 +33,10 @@ class GamePlayActivity : AppCompatActivity() {
         createDice()
         populateListOfDieImageViews()
         startTurn()
+    }
+
+    fun hideTapToSelect(){
+        findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
     }
 
         //Checks that user has saved and reminds otherwise.

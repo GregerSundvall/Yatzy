@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class ScoreRecyclerAdapter (val context: Context, )
+class ScoreRecyclerAdapter (val context: GamePlayActivity, )
     :RecyclerView.Adapter<ScoreRecyclerAdapter.ViewHolder>(){
 
     val layoutInflater = LayoutInflater.from((context))
@@ -55,6 +55,8 @@ class ScoreRecyclerAdapter (val context: Context, )
                     ObjectManager.currentPlayer.scoreSheet[scorePosition].saveScore(ObjectManager.currentPlayer)
                     ObjectManager.currentPlayer.alreadySaved = true
                     notifyDataSetChanged()
+                    context.hideTapToSelect()
+
                 }else{
                     Toast.makeText(context, "${context.getString(R.string.youAlreadySaved)}",
                         Toast.LENGTH_SHORT).show()

@@ -48,7 +48,8 @@ class ScoreboardActivity : AppCompatActivity() {
         if(highscore < currentGameHighscore){
             highscore = currentGameHighscore
             sharedPreference.edit().putInt("HIGHSCORE", highscore).apply()
-            Toast.makeText(this, "New highscore!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "${getString(R.string.newHighscore)}",
+                Toast.LENGTH_SHORT).show()
         }
     }
 
