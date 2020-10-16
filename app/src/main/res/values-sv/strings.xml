@@ -73,4 +73,5 @@
     <string name="rollDiceFirst">Slå tärningarna först!</string>
     <string name="youAlreadySaved">Du har redan sparat!</string>
     <string name="highscore">Highscore: %1$s</string>
+    <string name="winner">Vinnare</string>
 </resources>

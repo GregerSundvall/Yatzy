@@ -1,7 +1,6 @@
 package com.example.yatzy
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,11 +8,18 @@ import android.widget.TextView
 
 class ScoreboardActivity : AppCompatActivity() {
 
+    var sortedListOfPlayers = listOf<Player>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
         summarizePoints()
+        createSortedListOfPlayers()
         showScores()
+    }
+
+    fun createSortedListOfPlayers(){
+    sortedListOfPlayers = ObjectManager.listOfPlayers.sortedByDescending { it.scoreSheet[17].points }
     }
 
     //Summarizes every player's bonus and score
@@ -23,11 +29,16 @@ class ScoreboardActivity : AppCompatActivity() {
             player.scoreSheet[16].saveScore(player)
             player.scoreSheet[17].saveScore(player)
         }
+
+
     }
 
 
         //Displays necessary fields and info
     fun showScores(){
+            //Displays winner name
+        findViewById<TextView>(R.id.winnerNameTextView).text = sortedListOfPlayers[0].name
+
             //Displays player 1 data
         val p1 = ObjectManager.listOfPlayers[0]
         findViewById<TextView>(R.id.nameP1TextView).text = p1.name
