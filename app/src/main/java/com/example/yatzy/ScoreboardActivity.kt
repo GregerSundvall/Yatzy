@@ -1,20 +1,29 @@
 package com.example.yatzy
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 class ScoreboardActivity : AppCompatActivity() {
 
     var sortedListOfPlayers = listOf<Player>()
+    var highscore = 0
+    //lateinit var sharedPreference : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
+
         summarizePoints()
         createSortedListOfPlayers()
+        checkHighscore()
+
         showScores()
     }
 
@@ -29,15 +38,27 @@ class ScoreboardActivity : AppCompatActivity() {
             player.scoreSheet[16].saveScore(player)
             player.scoreSheet[17].saveScore(player)
         }
-
-
     }
 
+    fun checkHighscore(){
+
+        var sharedPreference = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
+        highscore = sharedPreference.getInt("HIGHSCORE", 0)
+        var currentGameHighscore = sortedListOfPlayers[0].scoreSheet[17].points
+        if(highscore < currentGameHighscore){
+            highscore = currentGameHighscore
+            sharedPreference.edit().putInt("HIGHSCORE", highscore).apply()
+            Toast.makeText(this, "New highscore!", Toast.LENGTH_SHORT).show()
+        }
+    }
 
         //Displays necessary fields and info
     fun showScores(){
             //Displays winner name
         findViewById<TextView>(R.id.winnerNameTextView).text = sortedListOfPlayers[0].name
+
+            //Displays highscore value
+        findViewById<TextView>(R.id.highscoreValueTextView).text = highscore.toString()
 
             //Displays player 1 data
         val p1 = ObjectManager.listOfPlayers[0]
@@ -61,9 +82,18 @@ class ScoreboardActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.yatzyP1TextView).text = p1.scoreSheet[14].points.toString()
         findViewById<TextView>(R.id.totalP1TextView).text = p1.scoreSheet[17].points.toString()
 
-        if(ObjectManager.listOfPlayers.size >= 2){
+        findViewById<TextView>(R.id.nameP2TextView).visibility = View.GONE
+        findViewById<TextView>(R.id.nameP3TextView).visibility = View.GONE
+        findViewById<TextView>(R.id.nameP4TextView).visibility = View.GONE
+        findViewById<TextView>(R.id.nameP5TextView).visibility = View.GONE
+        findViewById<TextView>(R.id.nameP6TextView).visibility = View.GONE
+
+
+            if(ObjectManager.listOfPlayers.size >= 2){
             //Displays player 2 data
             val p2 = ObjectManager.listOfPlayers[1]
+            findViewById<TextView>(R.id.nameP2TextView).visibility = View.VISIBLE
+
             findViewById<TextView>(R.id.nameP2TextView).text = p2.name
             findViewById<TextView>(R.id.onesP2TextView).text = p2.scoreSheet[0].points.toString()
             findViewById<TextView>(R.id.twosP2TextView).text = p2.scoreSheet[1].points.toString()
@@ -86,6 +116,7 @@ class ScoreboardActivity : AppCompatActivity() {
 
             if(ObjectManager.listOfPlayers.size >= 3) {
                 //Displays player 3 data
+                findViewById<TextView>(R.id.nameP3TextView).visibility = View.VISIBLE
                 val p3 = ObjectManager.listOfPlayers[2]
                 findViewById<TextView>(R.id.nameP3TextView).text = p3.name
                 findViewById<TextView>(R.id.onesP3TextView).text =
@@ -127,6 +158,7 @@ class ScoreboardActivity : AppCompatActivity() {
 
                 if (ObjectManager.listOfPlayers.size >= 4) {
                     //Displays player 4 data
+                    findViewById<TextView>(R.id.nameP4TextView).visibility = View.VISIBLE
                     val p4 = ObjectManager.listOfPlayers[3]
                     findViewById<TextView>(R.id.nameP4TextView).text = p4.name
                     findViewById<TextView>(R.id.onesP4TextView).text =
@@ -169,6 +201,7 @@ class ScoreboardActivity : AppCompatActivity() {
                     if (ObjectManager.listOfPlayers.size >= 5) {
                         //Displays player 5 data
                         val p5 = ObjectManager.listOfPlayers[4]
+                        findViewById<TextView>(R.id.nameP5TextView).visibility = View.VISIBLE
                         findViewById<TextView>(R.id.nameP5TextView).text = p5.name
                         findViewById<TextView>(R.id.onesP5TextView).text =
                             p5.scoreSheet[0].points.toString()
@@ -210,6 +243,7 @@ class ScoreboardActivity : AppCompatActivity() {
                         if (ObjectManager.listOfPlayers.size == 6) {
                             //Displays player 6 data
                             val p6 = ObjectManager.listOfPlayers[5]
+                            findViewById<TextView>(R.id.nameP6TextView).visibility = View.VISIBLE
                             findViewById<TextView>(R.id.nameP6TextView).text = p6.name
                             findViewById<TextView>(R.id.onesP6TextView).text =
                                 p6.scoreSheet[0].points.toString()

@@ -72,6 +72,6 @@
     <string name="saveFirst">You need to save first!</string>
     <string name="rollDiceFirst">Roll your dice first!</string>
     <string name="youAlreadySaved">You have already saved!</string>
-    <string name="highscore">Highscore: %1$s</string>
+    <string name="highscore">Highscore</string>
     <string name="winner">Winner</string>
 </resources>

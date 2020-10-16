@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    val totalRounds = 15
+    val totalRounds = 2
     var currentRound = 1
     var turnsInEveryRound = ObjectManager.listOfPlayers.lastIndex
     var currentPlayerNr = 0
