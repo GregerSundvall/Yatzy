@@ -2,9 +2,8 @@ package com.example.yatzy
 
 
 
-abstract class Score(var name: String, var points: Int = 0, var filled: Boolean = false,
-
-){
+abstract class Score(var name: String, var points: Int = 0, var saved: Boolean = false, )
+{
 
 abstract fun saveScore(player : Player)
 
@@ -18,7 +17,7 @@ class Ones : Score("Ones"){
                 player.scoreSheet[0].points += 1
             }
         }
-        player.scoreSheet[0].filled = true
+        player.scoreSheet[0].saved = true
     }
 }
 
@@ -29,7 +28,7 @@ class Twos : Score("Twos"){
                 player.scoreSheet[1].points += 2
             }
         }
-        player.scoreSheet[1].filled = true
+        player.scoreSheet[1].saved = true
     }
 }
 
@@ -40,7 +39,7 @@ class Threes : Score("Threes"){
                 player.scoreSheet[2].points += 3
             }
         }
-        player.scoreSheet[2].filled = true
+        player.scoreSheet[2].saved = true
     }
 }
 
@@ -51,7 +50,7 @@ class Fours : Score("Fours"){
                 player.scoreSheet[3].points += 4
             }
         }
-        player.scoreSheet[3].filled = true
+        player.scoreSheet[3].saved = true
     }
 }
 
@@ -62,7 +61,7 @@ class Fives : Score("Fives"){
                 player.scoreSheet[4].points += 5
             }
         }
-        player.scoreSheet[4].filled = true
+        player.scoreSheet[4].saved = true
     }
 }
 
@@ -73,7 +72,7 @@ class Sixes : Score("Sixes"){
                 player.scoreSheet[5].points += 6
             }
         }
-        player.scoreSheet[5].filled = true
+        player.scoreSheet[5].saved = true
     }
 }
 
@@ -93,7 +92,7 @@ class Pair : Score("Pair"){
         }else if(listOfValues[3] == listOfValues[4]){
             player.scoreSheet[6].points = listOfValues[3] + listOfValues[4]
         }
-        player.scoreSheet[6].filled = true
+        player.scoreSheet[6].saved = true
     }
 }
 
@@ -121,7 +120,7 @@ class TwoPairs : Score("Two pairs"){
         if(listOfPairs.size == 2){
             player.scoreSheet[7].points = listOfPairs[0] + listOfPairs[1]
         }
-        player.scoreSheet[7].filled = true
+        player.scoreSheet[7].saved = true
     }
 }
 
@@ -139,7 +138,7 @@ class ThreeOfAKind : Score("3 of a kind"){
         }else if(listOfValues[2] == listOfValues[3] && listOfValues[2] == listOfValues[4]){
             player.scoreSheet[8].points = listOfValues[2] + listOfValues[3] + listOfValues[4]
         }
-        player.scoreSheet[8].filled = true
+        player.scoreSheet[8].saved = true
     }
 }
 
@@ -159,7 +158,7 @@ class FourOfAKind : Score("4 of a kind"){
             player.scoreSheet[9].points =   listOfValues[1] + listOfValues[2] +
                                             listOfValues[3] + listOfValues[4]
         }
-        player.scoreSheet[9].filled = true
+        player.scoreSheet[9].saved = true
     }
 }
 
@@ -181,7 +180,7 @@ class FullHouse : Score("Full house"){
                 listOfValues[3] + listOfValues[4]
             }
         }
-        player.scoreSheet[10].filled = true
+        player.scoreSheet[10].saved = true
     }
 }
 
@@ -196,7 +195,7 @@ class SmStraight : Score("Small straight"){
             listOfValues[3] == 2 && listOfValues[4] == 1){
             player.scoreSheet[11].points = 15
         }
-        player.scoreSheet[11].filled = true
+        player.scoreSheet[11].saved = true
     }
 }
 
@@ -211,7 +210,7 @@ class LgStraight : Score("Large straight"){
             listOfValues[3] == 3 && listOfValues[4] == 2){
             player.scoreSheet[12].points = 20
         }
-        player.scoreSheet[12].filled = true
+        player.scoreSheet[12].saved = true
     }
 }
 
@@ -220,7 +219,7 @@ class Chance : Score("chance"){
         for(die in player.listOfDice){
             player.scoreSheet[13].points += die.currentValue
         }
-        player.scoreSheet[13].filled = true
+        player.scoreSheet[13].saved = true
     }
 }
 
@@ -234,7 +233,7 @@ class Yatzy : Score("Yatzy"){
             listOfValues[0] == listOfValues[3] && listOfValues[0] == listOfValues[4]){
             player.scoreSheet[14].points = 50
         }
-        player.scoreSheet[14].filled = true
+        player.scoreSheet[14].saved = true
     }
 }
 class SumOfTopSection : Score("Sum"){

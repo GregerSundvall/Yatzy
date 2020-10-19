@@ -1,6 +1,5 @@
 package com.example.yatzy
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ class ScoreRecyclerAdapter (val context: GamePlayActivity, )
 
     val layoutInflater = LayoutInflater.from((context))
     var listOfScoreNames = mutableListOf<String>()
-
+    var lastSavedScorePosition = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = layoutInflater.inflate(R.layout.list_item, parent, false)
@@ -21,11 +20,11 @@ class ScoreRecyclerAdapter (val context: GamePlayActivity, )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var score = ObjectManager.currentPlayer.scoreSheet[position]
+        val score = ObjectManager.currentPlayer.scoreSheet[position]
         holder.pointsTextView.text = score.points.toString()
         holder.scoreNameTextView.text = listOfScoreNames[position]
         holder.scorePosition = position
-        if(ObjectManager.currentPlayer.scoreSheet[position].filled == true){
+        if(ObjectManager.currentPlayer.scoreSheet[position].saved == true){
             holder.saveTextView.visibility = View.INVISIBLE
         }else{
             holder.saveTextView.visibility = View.VISIBLE
@@ -36,6 +35,10 @@ class ScoreRecyclerAdapter (val context: GamePlayActivity, )
         return ObjectManager.currentPlayer.scoreSheet.size-3
     }
 
+    fun revertLastSave(){
+        ObjectManager.currentPlayer.scoreSheet[lastSavedScorePosition].points = 0
+        ObjectManager.currentPlayer.scoreSheet[lastSavedScorePosition].saved = false
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val scoreNameTextView = itemView.findViewById<TextView>(R.id.scoreNameTextView)
@@ -43,28 +46,28 @@ class ScoreRecyclerAdapter (val context: GamePlayActivity, )
         val pointsTextView = itemView.findViewById<TextView>(R.id.pointsTextView)
         var scorePosition = 0
 
-
-
         init {
             populateListOfScoreNames()
             saveTextView.setOnClickListener{
-                if(ObjectManager.currentPlayer.rolls == 3){
-                    Toast.makeText(context, "${context.getString(R.string.rollDiceFirst)}",
-                        Toast.LENGTH_SHORT).show()
-                }else if(ObjectManager.currentPlayer.alreadySaved == false) {
+                if(ObjectManager.currentPlayer.rolls == 3) {
+                    Toast.makeText(
+                        context, "${context.getString(R.string.rollDiceFirst)}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }else{
+                    if(ObjectManager.currentPlayer.alreadySaved == true){
+                        revertLastSave()
+                    }
                     ObjectManager.currentPlayer.scoreSheet[scorePosition].saveScore(ObjectManager.currentPlayer)
                     ObjectManager.currentPlayer.alreadySaved = true
                     notifyDataSetChanged()
                     context.hideTapToSelect()
-
-                }else{
-                    Toast.makeText(context, "${context.getString(R.string.youAlreadySaved)}",
-                        Toast.LENGTH_SHORT).show()
+                    lastSavedScorePosition = scorePosition
                 }
             }
         }
     }
-
+        //fills list of score names from localized strings
     fun populateListOfScoreNames(){
         listOfScoreNames.add(context.getString(R.string.ones))
         listOfScoreNames.add(context.getString(R.string.twos))
