@@ -1,6 +1,7 @@
 package com.example.yatzy
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -99,17 +100,22 @@ class GamePlayActivity : AppCompatActivity() {
             }
 
         }
+
         if(ObjectManager.currentPlayer.rolls > 0){
             for(die in ObjectManager.currentPlayer.listOfDice) {
                 if (die.toBeRolled == true) {
                     die.currentValue =  (1..6).random()
                     die.toBeRolled = false
+                    die.image = (1..4).random()
                 }
             }
             ObjectManager.currentPlayer.rolls -= 1
         }
+
         listOfDice = ObjectManager.currentPlayer.listOfDice
+
         setDiceImages()
+
         for(die in listOfDieImageViews){
             die.visibility = View.VISIBLE
         }
@@ -148,25 +154,97 @@ class GamePlayActivity : AppCompatActivity() {
     }
 
 
-        //Sets correct die image according to value and selected-state to one die
-    fun setDieImage(die : Die, dieView: ImageView){
+        //Sets correct die image according to value and selected-state to ONE die
+    fun setDieImage(die : Die, dieImageView: ImageView){
         when(die.toBeRolled){
             false ->    when(die.currentValue){
-                            1 -> dieView.setImageResource(R.drawable.die1)
-                            2 -> dieView.setImageResource(R.drawable.die2)
-                            3 -> dieView.setImageResource(R.drawable.die3)
-                            4 -> dieView.setImageResource(R.drawable.die4)
-                            5 -> dieView.setImageResource(R.drawable.die5)
-                            6 -> dieView.setImageResource(R.drawable.die6)
+                            1 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die11)
+                                2 -> dieImageView.setImageResource(R.drawable.die12)
+                                3 -> dieImageView.setImageResource(R.drawable.die13)
+                                4 -> dieImageView.setImageResource(R.drawable.die14)
+                                }
                             }
+                            2 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die21)
+                                2 -> dieImageView.setImageResource(R.drawable.die22)
+                                3 -> dieImageView.setImageResource(R.drawable.die23)
+                                4 -> dieImageView.setImageResource(R.drawable.die24)
+                                }
+                            }
+                            3 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die31)
+                                2 -> dieImageView.setImageResource(R.drawable.die32)
+                                3 -> dieImageView.setImageResource(R.drawable.die33)
+                                4 -> dieImageView.setImageResource(R.drawable.die34)
+                                }
+                            }
+                            4 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die41)
+                                2 -> dieImageView.setImageResource(R.drawable.die42)
+                                3 -> dieImageView.setImageResource(R.drawable.die43)
+                                4 -> dieImageView.setImageResource(R.drawable.die44)
+                                }
+                            }
+                            5 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die51)
+                                2 -> dieImageView.setImageResource(R.drawable.die52)
+                                3 -> dieImageView.setImageResource(R.drawable.die53)
+                                4 -> dieImageView.setImageResource(R.drawable.die54)
+                                }
+                            }
+                            6 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die61)
+                                2 -> dieImageView.setImageResource(R.drawable.die62)
+                                3 -> dieImageView.setImageResource(R.drawable.die63)
+                                4 -> dieImageView.setImageResource(R.drawable.die64)
+                                }
+                            }
+                        }
             true ->     when(die.currentValue){
-                            1 -> dieView.setImageResource(R.drawable.die1selected)
-                            2 -> dieView.setImageResource(R.drawable.die2selected)
-                            3 -> dieView.setImageResource(R.drawable.die3selected)
-                            4 -> dieView.setImageResource(R.drawable.die4selected)
-                            5 -> dieView.setImageResource(R.drawable.die5selected)
-                            6 -> dieView.setImageResource(R.drawable.die6selected)
+                            1 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die11dark)
+                                2 -> dieImageView.setImageResource(R.drawable.die12dark)
+                                3 -> dieImageView.setImageResource(R.drawable.die13dark)
+                                4 -> dieImageView.setImageResource(R.drawable.die14dark)
+                                }
                             }
+                            2 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die21dark)
+                                2 -> dieImageView.setImageResource(R.drawable.die22dark)
+                                3 -> dieImageView.setImageResource(R.drawable.die23dark)
+                                4 -> dieImageView.setImageResource(R.drawable.die24dark)
+                                }
+                            }
+                            3 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die31dark)
+                                2 -> dieImageView.setImageResource(R.drawable.die32dark)
+                                3 -> dieImageView.setImageResource(R.drawable.die33dark)
+                                4 -> dieImageView.setImageResource(R.drawable.die34dark)
+                                }
+                            }
+                            4 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die41dark)
+                                2 -> dieImageView.setImageResource(R.drawable.die42dark)
+                                3 -> dieImageView.setImageResource(R.drawable.die43dark)
+                                4 -> dieImageView.setImageResource(R.drawable.die44dark)
+                                }
+                            }
+                            5  -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die51dark)
+                                2 -> dieImageView.setImageResource(R.drawable.die52dark)
+                                3 -> dieImageView.setImageResource(R.drawable.die53dark)
+                                4 -> dieImageView.setImageResource(R.drawable.die54dark)
+                                }
+                            }
+                            6 -> {when (die.image) {
+                                1 -> dieImageView.setImageResource(R.drawable.die61dark)
+                                2 -> dieImageView.setImageResource(R.drawable.die62dark)
+                                3 -> dieImageView.setImageResource(R.drawable.die63dark)
+                                4 -> dieImageView.setImageResource(R.drawable.die64dark)
+                                }
+                            }
+            }
         }
     }
 
