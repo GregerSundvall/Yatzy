@@ -2,15 +2,11 @@ package com.example.yatzy
 
 
 
-abstract class Score(var name: String, var points: Int = 0, var saved: Boolean = false, )
-{
+abstract class Score(var points: Int = 0, var saved: Boolean = false, )
+    {abstract fun saveScore(player : Player)
+    }
 
-abstract fun saveScore(player : Player)
-
-
-}
-
-class Ones : Score("Ones"){
+class Ones : Score(){
     override fun saveScore(player: Player){
         for (die in player.listOfDice) {
             if (die.currentValue == 1) {
@@ -21,7 +17,7 @@ class Ones : Score("Ones"){
     }
 }
 
-class Twos : Score("Twos"){
+class Twos : Score(){
     override fun saveScore(player : Player){
         for (die in player.listOfDice) {
             if (die.currentValue == 2) {
@@ -32,7 +28,7 @@ class Twos : Score("Twos"){
     }
 }
 
-class Threes : Score("Threes"){
+class Threes : Score(){
     override fun saveScore(player : Player){
         for (die in player.listOfDice) {
             if (die.currentValue == 3) {
@@ -43,7 +39,7 @@ class Threes : Score("Threes"){
     }
 }
 
-class Fours : Score("Fours"){
+class Fours : Score(){
     override fun saveScore(player : Player){
         for (die in player.listOfDice) {
             if (die.currentValue == 4) {
@@ -54,7 +50,7 @@ class Fours : Score("Fours"){
     }
 }
 
-class Fives : Score("Fives"){
+class Fives : Score(){
     override fun saveScore(player : Player){
         for (die in player.listOfDice) {
             if (die.currentValue == 5) {
@@ -65,7 +61,7 @@ class Fives : Score("Fives"){
     }
 }
 
-class Sixes : Score("Sixes"){
+class Sixes : Score(){
     override fun saveScore(player : Player){
         for (die in player.listOfDice) {
             if (die.currentValue == 6) {
@@ -76,7 +72,7 @@ class Sixes : Score("Sixes"){
     }
 }
 
-class Pair : Score("Pair"){
+class Pair : Score(){
     override fun saveScore(player : Player){
         val listOfValues : MutableList <Int> = mutableListOf()
         for(die in player.listOfDice){
@@ -96,7 +92,7 @@ class Pair : Score("Pair"){
     }
 }
 
-class TwoPairs : Score("Two pairs"){
+class TwoPairs : Score(){
     override fun saveScore(player : Player){
         val listOfPairs : MutableList<Int> = mutableListOf()
         val listOfValues : MutableList <Int> = mutableListOf()
@@ -124,7 +120,7 @@ class TwoPairs : Score("Two pairs"){
     }
 }
 
-class ThreeOfAKind : Score("3 of a kind"){
+class ThreeOfAKind : Score(){
     override fun saveScore(player : Player){
         val listOfValues : MutableList <Int> = mutableListOf()
         for(die in player.listOfDice){
@@ -142,7 +138,7 @@ class ThreeOfAKind : Score("3 of a kind"){
     }
 }
 
-class FourOfAKind : Score("4 of a kind"){
+class FourOfAKind : Score(){
     override fun saveScore(player : Player){
         val listOfValues : MutableList <Int> = mutableListOf()
         for(die in player.listOfDice){
@@ -162,7 +158,7 @@ class FourOfAKind : Score("4 of a kind"){
     }
 }
 
-class FullHouse : Score("Full house"){
+class FullHouse : Score(){
     override fun saveScore(player : Player){
         val listOfValues : MutableList <Int> = mutableListOf()
         for(die in player.listOfDice){
@@ -184,7 +180,7 @@ class FullHouse : Score("Full house"){
     }
 }
 
-class SmStraight : Score("Small straight"){
+class SmStraight : Score(){
     override fun saveScore(player : Player){
         val listOfValues : MutableList <Int> = mutableListOf()
         for(die in player.listOfDice){
@@ -199,7 +195,7 @@ class SmStraight : Score("Small straight"){
     }
 }
 
-class LgStraight : Score("Large straight"){
+class LgStraight : Score(){
     override fun saveScore(player : Player){
         val listOfValues : MutableList <Int> = mutableListOf()
         for(die in player.listOfDice){
@@ -214,7 +210,7 @@ class LgStraight : Score("Large straight"){
     }
 }
 
-class Chance : Score("chance"){
+class Chance : Score(){
     override fun saveScore(player : Player){
         for(die in player.listOfDice){
             player.scoreSheet[13].points += die.currentValue
@@ -223,7 +219,7 @@ class Chance : Score("chance"){
     }
 }
 
-class Yatzy : Score("Yatzy"){
+class Yatzy : Score(){
     override fun saveScore(player : Player){
         val listOfValues : MutableList <Int> = mutableListOf()
         for(die in player.listOfDice){
@@ -236,7 +232,7 @@ class Yatzy : Score("Yatzy"){
         player.scoreSheet[14].saved = true
     }
 }
-class SumOfTopSection : Score("Sum"){
+class SumOfUpperSection : Score(){
     override fun saveScore(player: Player) {
         player.scoreSheet[15].points =
             player.scoreSheet[0].points +
@@ -248,7 +244,7 @@ class SumOfTopSection : Score("Sum"){
     }
 }
 
-class Bonus : Score("Bonus"){
+class Bonus : Score(){
     override fun saveScore(player: Player) {
         if(player.scoreSheet[15].points >= 63){
             player.scoreSheet[16].points = 50
@@ -256,7 +252,7 @@ class Bonus : Score("Bonus"){
     }
 }
 
-class Total : Score("Total"){
+class Total : Score(){
     override fun saveScore(player: Player) {
         player.scoreSheet[17].points =
             player.scoreSheet[6].points +

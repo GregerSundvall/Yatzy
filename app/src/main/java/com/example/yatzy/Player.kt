@@ -24,7 +24,7 @@ class Player (var name : String,
         scoreSheet.add(LgStraight())
         scoreSheet.add(Chance())
         scoreSheet.add(Yatzy())
-        scoreSheet.add(SumOfTopSection())
+        scoreSheet.add(SumOfUpperSection())
         scoreSheet.add(Bonus())
         scoreSheet.add(Total())
     }

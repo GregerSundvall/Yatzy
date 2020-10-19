@@ -1,7 +1,6 @@
 package com.example.yatzy
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -271,8 +270,8 @@ class GamePlayActivity : AppCompatActivity() {
 
 
 
-        //Sets toBeRolled value and the white or red image accordingly for a die
-        //(Selects or deselects ONE die and shows correct images for ALL die)
+        //Sets toBeRolled value and greys out dice that will be rolled
+        //(Selects or deselects ONE die and shows correct images for ALL dice)
     fun selectOrDeselectDie(view: View){
         if(ObjectManager.currentPlayer.alreadySaved == false) {
             if (ObjectManager.currentPlayer.rolls > 0) {
