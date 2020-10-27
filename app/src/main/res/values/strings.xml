@@ -56,4 +56,15 @@
     <string name="highscore">Highscore</string>
     <string name="winner">Winner</string>
     <string name="newHighscore">New highscore!</string>
+    <string name="howToPlay">How to play Yatzy!</string>
+    <string name="instructions1">The first thing you do is - yeah you probably guessed it - you tap Roll to roll your 5 dice. </string>
+    <string name="instructions2">You now have two more rolls where you can roll any or all your dice. Select which dice to roll by tapping them and then tap Roll.</string>
+    <string name="instructions3">Your goal is to get a combination that gives you a decent amount of points for any row. You can do these in any order so see what you get on the first roll and adapt from there.</string>
+    <string name="instructions4">After your three rolls you hopefully have a good combo. Tap Save on any row. You can change your mind as many times you like but once you tap Done there´s no going back!</string>
+    <string name="instructions5">Only the dice values that correlate to the row you´re selecting will give you points. Yatzy is 50 points regardless of which value, as long as they´re the same. Chance saves the points of all dice without restrictions.</string>
+    <string name="instructions6">If things didn´t go as planned, save any row with 0 points to sacrifice that row.</string>
+    <string name="instructions7">Getting 63 or more points in the upper section (ones - sixes) will give you a 50 point bonus!</string>
+    <string name="clickAnywhere">Click anywhere to go back</string>
+    <string name="questionMark">\?</string>
+
 </resources>

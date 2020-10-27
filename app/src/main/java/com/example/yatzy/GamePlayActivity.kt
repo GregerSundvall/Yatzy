@@ -3,6 +3,7 @@ package com.example.yatzy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    val totalRounds = 15
+    val totalRounds = 3
     var currentRound = 1
     var turnsInEveryRound = ObjectManager.listOfPlayers.lastIndex
     var currentPlayerNr = 0
@@ -69,14 +70,17 @@ class GamePlayActivity : AppCompatActivity() {
     fun startTurn(){
         ObjectManager.currentPlayer.alreadySaved = false
         ObjectManager.currentPlayer.rolls = 3
-        findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.whoIsPlayingTextView).text =
+            getString(R.string.whoIsPlaying, ObjectManager.currentPlayer.name)
+        addGetReadyFragment()
+
+        /*findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.VISIBLE
         findViewById<TextView>(R.id.getReadyTextView).text =
             getString(R.string.getReady, ObjectManager.currentPlayer.name)
         findViewById<View>(R.id.getReadyLayout).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.whoIsPlayingTextView).text =
-            getString(R.string.whoIsPlaying, ObjectManager.currentPlayer.name)
-        findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE
-    }
+
+        findViewById<View>(R.id.rollTextView).visibility = View.INVISIBLE*/
+            }
 
 
     fun startPlay(view: View){
@@ -86,8 +90,8 @@ class GamePlayActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
         findViewById<TextView>(R.id.rollTextView).visibility = View.VISIBLE
         adapter.notifyDataSetChanged()
-        findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
-
+        //findViewById<View>(R.id.getReadyLayout).visibility = View.INVISIBLE
+        removeGetReadyFragment()
     }
 
     //Rolls dice, applys correct images and makes them visible
@@ -125,6 +129,27 @@ class GamePlayActivity : AppCompatActivity() {
         }
         findViewById<TextView>(R.id.rollTextView).visibility = View.INVISIBLE
     }
+
+    fun addGetReadyFragment(){
+
+        val getReadyFragment = GetReadyFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.container, getReadyFragment, "getReadyFragment")
+        transaction.commit()
+    }
+
+    fun removeGetReadyFragment(){
+        val getReadyFragment = supportFragmentManager.findFragmentByTag("getReadyFragment")
+        if(getReadyFragment != null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.remove(getReadyFragment)
+            transaction.commit()
+        }else{
+            Toast.makeText(this, "Fragment not found", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
 
     //populates list of die images
     fun populateListOfDieImageViews(){
@@ -303,8 +328,9 @@ class GamePlayActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()
             }
         }else{
-            Toast.makeText(this, "${getString(R.string.youAlreadySaved)}",
-                Toast.LENGTH_SHORT).show()
+            val toast = Toast.makeText(this, "${getString(R.string.youAlreadySaved)}",Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0)
+            toast.show()
         }
     }
 
