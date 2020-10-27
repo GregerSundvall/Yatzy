@@ -36,6 +36,9 @@ class GamePlayActivity : AppCompatActivity() {
         startTurn()
     }
 
+    override fun onBackPressed() {
+    }
+
     fun hideTapToSelect(){
         findViewById<TextView>(R.id.tapToSelectTextView).visibility = View.INVISIBLE
     }
@@ -74,8 +77,8 @@ class GamePlayActivity : AppCompatActivity() {
             getString(R.string.whoIsPlaying, ObjectManager.currentPlayer.name)
         addGetReadyFragment()
 
-        /*findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.VISIBLE
-        findViewById<TextView>(R.id.getReadyTextView).text =
+        findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.VISIBLE
+        /*findViewById<TextView>(R.id.getReadyTextView).text =
             getString(R.string.getReady, ObjectManager.currentPlayer.name)
         findViewById<View>(R.id.getReadyLayout).visibility = View.VISIBLE
 
@@ -172,11 +175,11 @@ class GamePlayActivity : AppCompatActivity() {
 
     //populates list of die images
     fun populateListOfDieImageViews(){
-        listOfDieImageViews.add(findViewById(R.id.die1))
-        listOfDieImageViews.add(findViewById(R.id.die2))
-        listOfDieImageViews.add(findViewById(R.id.die3))
-        listOfDieImageViews.add(findViewById(R.id.die4))
-        listOfDieImageViews.add(findViewById(R.id.die5))
+        listOfDieImageViews.add(findViewById(R.id.die1ImageView))
+        listOfDieImageViews.add(findViewById(R.id.die2ImageView))
+        listOfDieImageViews.add(findViewById(R.id.die3ImageView))
+        listOfDieImageViews.add(findViewById(R.id.die4ImageView))
+        listOfDieImageViews.add(findViewById(R.id.die5ImageView))
     }
 
         //Creates a set of dice for each player
@@ -293,11 +296,11 @@ class GamePlayActivity : AppCompatActivity() {
 
         //Uses setDieImage to set correct images on all dice and shows/hides roll button
     fun setDiceImages(){
-        setDieImage(listOfDice[0], findViewById(R.id.die1))
-        setDieImage(listOfDice[1], findViewById(R.id.die2))
-        setDieImage(listOfDice[2], findViewById(R.id.die3))
-        setDieImage(listOfDice[3], findViewById(R.id.die4))
-        setDieImage(listOfDice[4], findViewById(R.id.die5))
+        setDieImage(listOfDice[0], findViewById(R.id.die1ImageView))
+        setDieImage(listOfDice[1], findViewById(R.id.die2ImageView))
+        setDieImage(listOfDice[2], findViewById(R.id.die3ImageView))
+        setDieImage(listOfDice[3], findViewById(R.id.die4ImageView))
+        setDieImage(listOfDice[4], findViewById(R.id.die5ImageView))
 
         if (listOfDice[0].toBeRolled == true ||
             listOfDice[1].toBeRolled == true ||
@@ -320,23 +323,23 @@ class GamePlayActivity : AppCompatActivity() {
         if(ObjectManager.currentPlayer.alreadySaved == false) {
             if (ObjectManager.currentPlayer.rolls > 0) {
                 when (view.id) {
-                    R.id.die1 -> when (listOfDice[0].toBeRolled) {
+                    R.id.die1ImageView -> when (listOfDice[0].toBeRolled) {
                         false -> listOfDice[0].toBeRolled = true
                         true -> listOfDice[0].toBeRolled = false
                     }
-                    R.id.die2 -> when (listOfDice[1].toBeRolled) {
+                    R.id.die2ImageView -> when (listOfDice[1].toBeRolled) {
                         false -> listOfDice[1].toBeRolled = true
                         true -> listOfDice[1].toBeRolled = false
                     }
-                    R.id.die3 -> when (listOfDice[2].toBeRolled) {
+                    R.id.die3ImageView -> when (listOfDice[2].toBeRolled) {
                         false -> listOfDice[2].toBeRolled = true
                         true -> listOfDice[2].toBeRolled = false
                     }
-                    R.id.die4 -> when (listOfDice[3].toBeRolled) {
+                    R.id.die4ImageView -> when (listOfDice[3].toBeRolled) {
                         false -> listOfDice[3].toBeRolled = true
                         true -> listOfDice[3].toBeRolled = false
                     }
-                    R.id.die5 -> when (listOfDice[4].toBeRolled) {
+                    R.id.die5ImageView -> when (listOfDice[4].toBeRolled) {
                         false -> listOfDice[4].toBeRolled = true
                         true -> listOfDice[4].toBeRolled = false
                     }

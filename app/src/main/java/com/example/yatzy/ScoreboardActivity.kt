@@ -27,6 +27,10 @@ class ScoreboardActivity : AppCompatActivity() {
         showScores()
     }
 
+    override fun onBackPressed() {
+
+    }
+
     fun createSortedListOfPlayers(){
     sortedListOfPlayers = ObjectManager.listOfPlayers.sortedByDescending { it.scoreSheet[17].points }
     }

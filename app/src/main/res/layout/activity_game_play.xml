@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/die1"
+        android:id="@+id/die1ImageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:onClick="selectOrDeselectDie"
-        app:layout_constraintEnd_toStartOf="@+id/die2"
+        app:layout_constraintEnd_toStartOf="@+id/die2ImageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@+id/view"
@@ -32,66 +32,65 @@
         app:srcCompat="@drawable/die11" />
 
     <ImageView
-        android:id="@+id/die2"
+        android:id="@+id/die2ImageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:onClick="selectOrDeselectDie"
-        app:layout_constraintBottom_toBottomOf="@+id/die1"
+        app:layout_constraintBottom_toBottomOf="@+id/die1ImageView"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/die1"
-        app:layout_constraintTop_toTopOf="@+id/die1"
+        app:layout_constraintStart_toEndOf="@+id/die1ImageView"
+        app:layout_constraintTop_toTopOf="@+id/die1ImageView"
         app:srcCompat="@drawable/die11" />
 
     <ImageView
-        android:id="@+id/die3"
+        android:id="@+id/die3ImageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:onClick="selectOrDeselectDie"
-        app:layout_constraintEnd_toStartOf="@+id/die4"
+        app:layout_constraintEnd_toStartOf="@+id/die4ImageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/die1"
+        app:layout_constraintTop_toBottomOf="@+id/die1ImageView"
         app:srcCompat="@drawable/die11" />
 
     <ImageView
-        android:id="@+id/die4"
+        android:id="@+id/die4ImageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:onClick="selectOrDeselectDie"
-        app:layout_constraintBottom_toBottomOf="@+id/die3"
-        app:layout_constraintEnd_toStartOf="@+id/die5"
+        app:layout_constraintBottom_toBottomOf="@+id/die3ImageView"
+        app:layout_constraintEnd_toStartOf="@+id/die5ImageView"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/die3"
-        app:layout_constraintTop_toTopOf="@+id/die3"
+        app:layout_constraintStart_toEndOf="@+id/die3ImageView"
+        app:layout_constraintTop_toTopOf="@+id/die3ImageView"
         app:srcCompat="@drawable/die11" />
 
     <ImageView
-        android:id="@+id/die5"
+        android:id="@+id/die5ImageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:onClick="selectOrDeselectDie"
-        app:layout_constraintBottom_toBottomOf="@+id/die4"
+        app:layout_constraintBottom_toBottomOf="@+id/die4ImageView"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/die4"
-        app:layout_constraintTop_toTopOf="@+id/die4"
+        app:layout_constraintStart_toEndOf="@+id/die4ImageView"
+        app:layout_constraintTop_toTopOf="@+id/die4ImageView"
         app:srcCompat="@drawable/die11" />
 
     <ImageView
         android:id="@+id/rollingDiceImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/rollTextView"
+        android:layout_width="220dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/roll_dice_flip_crop" />
+        app:srcCompat="@drawable/roll_dice" />
 
     <TextView
         android:id="@+id/whoIsPlayingTextView"
@@ -118,7 +117,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/die4" />
+        app:layout_constraintTop_toBottomOf="@+id/die4ImageView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -144,7 +143,7 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/die4" />
+        app:layout_constraintTop_toBottomOf="@+id/die4ImageView" />
 
     <TextView
         android:id="@+id/doneTextView"

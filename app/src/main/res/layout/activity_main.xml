@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/roll_dice_flip_crop" />
+        app:srcCompat="@drawable/roll_dice" />
 
     <ImageView
         android:id="@+id/imageViewLogo"
