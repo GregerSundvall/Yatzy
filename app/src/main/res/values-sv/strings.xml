@@ -57,4 +57,13 @@
     <string name="highscore">Highscore</string>
     <string name="winner">Vinnare</string>
     <string name="newHighscore">Nytt highscore!</string>
+    <string name="howToPlay">Hur man spelar Yatzy!</string>
+    <string name="instructions1">Det första du gör är att slå alla 5 tärningar genom att trycka på Slå!</string>
+    <string name="instructions2">Du har sen ytterligare två slag där du kan slå en, vissa eller alla tärningar. Välj vilka tärningar du vill slå om genom att nudda dem, tryck sen på Slå.</string>
+    <string name="instructions3">Målet är att få en kombination som ger dig bra poäng på någon av raderna. Du kan göra raderna i valfri ordning så anpassa dig till vad tärningarna visar efter första kastet.</string>
+    <string name="instructions4">Efter dina tre kast har du förhoppningsvis en bra kombination. Tryck på Spara på valfri rad. Du kan ändra dig hur många gånger du vill tills du trycker på Fortsätt.</string>
+    <string name="instructions5">Du får endast poäng för de tärningar som har med vald rad att göra. Yatzy ger 50 poäng oavsett, bara alla tärningar visar samma värde. Chans ger summan av alla tärningar.</string>
+    <string name="instructions6">Om det inte gick som planerat så måste du ändå spara någon rad, även om det blir noll poäng.</string>
+    <string name="instructions7">63 poäng eller mer i den övre sektionen (Ettor - Sexor) ger dig 50 poäng bonus!</string>
+    <string name="tapAnywhere">Nudda skärmen för att gå tillbaka</string>
 </resources>
