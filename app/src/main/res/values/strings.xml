@@ -64,7 +64,7 @@
     <string name="instructions5">Only the dice values that correlate to the row you´re selecting will give you points. Yatzy is 50 points regardless of which value, as long as they´re the same. Chance saves the points of all dice without restrictions.</string>
     <string name="instructions6">If things didn´t go as planned, save any row with 0 points to sacrifice that row.</string>
     <string name="instructions7">Getting 63 or more points in the upper section (ones - sixes) will give you a 50 point bonus!</string>
-    <string name="clickAnywhere">Click anywhere to go back</string>
+    <string name="tapAnywhere">Tap anywhere to return to the game</string>
     <string name="questionMark">\?</string>
 
 </resources>

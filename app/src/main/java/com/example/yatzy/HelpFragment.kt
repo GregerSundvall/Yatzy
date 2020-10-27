@@ -1,5 +1,6 @@
 package com.example.yatzy
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-class GetReadyFragment : Fragment(){
+class HelpFragment : Fragment(){
 
     lateinit var getReadyTextView: TextView
 
@@ -16,11 +17,9 @@ class GetReadyFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_get_ready, container, false)
 
-        getReadyTextView = view.findViewById(R.id.getReadyTextView)
-        getReadyTextView.text = getString(R.string.getReady, ObjectManager.currentPlayer.name)
-        return view
+
+        return inflater.inflate(R.layout.fragment_help, container, false)
     }
 
 

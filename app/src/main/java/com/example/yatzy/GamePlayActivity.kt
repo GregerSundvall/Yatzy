@@ -94,7 +94,7 @@ class GamePlayActivity : AppCompatActivity() {
         removeGetReadyFragment()
     }
 
-    //Rolls dice, applys correct images and makes them visible
+    //Rolls dice, applies correct images and makes them visible
     fun rollDice(view: View){
         findViewById<ImageView>(R.id.rollingDiceImageView).visibility = View.INVISIBLE
         if (ObjectManager.currentPlayer.rolls == 3){
@@ -143,6 +143,25 @@ class GamePlayActivity : AppCompatActivity() {
         if(getReadyFragment != null) {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.remove(getReadyFragment)
+            transaction.commit()
+        }else{
+            Toast.makeText(this, "Fragment not found", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun addHelpFragment(view: View){
+
+        val helpFragment = HelpFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.container, helpFragment, "helpFragment")
+        transaction.commit()
+    }
+
+    fun removeHelpFragment(view: View){
+        val helpFragment = supportFragmentManager.findFragmentByTag("helpFragment")
+        if(helpFragment != null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.remove(helpFragment)
             transaction.commit()
         }else{
             Toast.makeText(this, "Fragment not found", Toast.LENGTH_SHORT).show()
