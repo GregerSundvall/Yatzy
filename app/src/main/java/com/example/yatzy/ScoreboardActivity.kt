@@ -9,16 +9,33 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.room.Room
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
 
-class ScoreboardActivity : AppCompatActivity() {
+class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
 
     var sortedListOfPlayers = listOf<Player>()
     var highscore = 0
     //lateinit var sharedPreference : SharedPreferences
 
+
+    private lateinit var job: Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
+    private lateinit var db: AppDatabase
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
+
+        job= Job()
+        db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "highscores")
+            .fallbackToDestructiveMigration()
+            .build()
 
         summarizePoints()
         createSortedListOfPlayers()
