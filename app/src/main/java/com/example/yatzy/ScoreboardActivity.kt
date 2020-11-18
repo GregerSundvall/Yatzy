@@ -2,17 +2,13 @@ package com.example.yatzy
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.room.Room
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
@@ -20,7 +16,7 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
     var sortedListOfPlayers = listOf<Player>()
     var highscore = 0
     //lateinit var sharedPreference : SharedPreferences
-
+    var listOfPlayers = mutableListOf<Player>()
 
     private lateinit var job: Job
     override val coroutineContext: CoroutineContext
@@ -32,6 +28,8 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)
 
+        listOfPlayers = ObjectManager.listOfPlayers
+
         job= Job()
         db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "highscores")
             .fallbackToDestructiveMigration()
@@ -39,8 +37,8 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
 
         summarizePoints()
         createSortedListOfPlayers()
-        checkHighscore()
-
+        checkSharedPrefsHighscore()
+        addTotalsToRoomHighscores()
         showScores()
     }
 
@@ -61,8 +59,8 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    fun checkHighscore(){
-
+    fun checkSharedPrefsHighscore(){
+        //Highscore to/from sharedpreferences
         var sharedPreference = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
         highscore = sharedPreference.getInt("HIGHSCORE", 0)
         var currentGameHighscore = sortedListOfPlayers[0].scoreSheet[17].points
@@ -74,13 +72,34 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
+    fun addTotalsToRoomHighscores(){
+        for(player in listOfPlayers){
+            val highscore = Highscore(0, player.name, player.scoreSheet[17].points)
+            launch (Dispatchers.IO){
+                db.highscoreDao().insert(highscore)
+            }
+        }
+    }
+
+    fun showHighscore(){
+        getRoomHighscores()
+
+    }
+
+    fun getRoomHighscores(){
+        var highscores  =
+            async (Dispatchers.IO){db.highscoreDao().getTopTen()}
+
+        //findViewById<TextView>(R.id.highscoreValueTextView).text = highscores[0]
+    }
+
         //Displays necessary fields and info
     fun showScores(){
             //Displays winner name
         findViewById<TextView>(R.id.winnerNameTextView).text = sortedListOfPlayers[0].name
 
             //Displays highscore value
-        findViewById<TextView>(R.id.highscoreValueTextView).text = highscore.toString()
+        //findViewById<TextView>(R.id.highscoreValueTextView).text = highscore.toString()
 
             //Displays player 1 data
         val p1 = ObjectManager.listOfPlayers[0]

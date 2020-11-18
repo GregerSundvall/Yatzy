@@ -15,12 +15,13 @@ interface HighscoreDao
     @Delete
     fun delete(highscore: Highscore)
 
-    @Query("SELECT * FROM highscore")
+    @Query("SELECT * FROM highscores")
     fun getAll(): List<Highscore>
 
-    @Query("SELECT * FROM highscore WHERE score LIKE :categoryName")
+    @Query("SELECT * FROM highscores WHERE score LIKE :categoryName")
     fun findByCategory(categoryName: String) : List<Highscore>
 
-
+    @Query("SELECT * /*score, player*/ FROM highscores ORDER BY score DESC LIMIT 10")
+    fun getTopTen() : List<Highscore>
 
 }
