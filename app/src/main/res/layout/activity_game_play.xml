@@ -173,7 +173,7 @@
         app:srcCompat="@drawable/help_button" />
 
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/containerMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

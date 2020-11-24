@@ -1,12 +1,10 @@
 package com.example.yatzy
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.room.Room
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -37,7 +35,7 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
 
         summarizePoints()
         createSortedListOfPlayers()
-        checkSharedPrefsHighscore()
+        //checkSharedPrefsHighscore()
         addTotalsToRoomHighscores()
         showScores()
     }
@@ -46,9 +44,6 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
 
     }
 
-    fun createSortedListOfPlayers(){
-    sortedListOfPlayers = ObjectManager.listOfPlayers.sortedByDescending { it.scoreSheet[17].points }
-    }
 
     //Summarizes every player's bonus and score
     fun summarizePoints(){
@@ -59,6 +54,27 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
+    fun createSortedListOfPlayers(){
+        sortedListOfPlayers = ObjectManager.listOfPlayers.sortedByDescending { it.scoreSheet[17].points }
+    }
+
+
+    fun addTotalsToRoomHighscores(){
+        for(player in listOfPlayers){
+            val highscore = Highscore(0, player.name, player.scoreSheet[17].points)
+            launch (Dispatchers.IO){
+                db.highscoreDao.insert(highscore)
+            }
+        }
+    }
+
+
+    fun getRoomHighscores(){
+        var highscores  =
+            async (Dispatchers.IO){db.highscoreDao.getTopTen()}
+    }
+
+/*
     fun checkSharedPrefsHighscore(){
         //Highscore to/from sharedpreferences
         var sharedPreference = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
@@ -71,27 +87,8 @@ class ScoreboardActivity : AppCompatActivity(), CoroutineScope {
                 Toast.LENGTH_SHORT).show()
         }
     }
+*/
 
-    fun addTotalsToRoomHighscores(){
-        for(player in listOfPlayers){
-            val highscore = Highscore(0, player.name, player.scoreSheet[17].points)
-            launch (Dispatchers.IO){
-                db.highscoreDao().insert(highscore)
-            }
-        }
-    }
-
-    fun showHighscore(){
-        getRoomHighscores()
-
-    }
-
-    fun getRoomHighscores(){
-        var highscores  =
-            async (Dispatchers.IO){db.highscoreDao().getTopTen()}
-
-        //findViewById<TextView>(R.id.highscoreValueTextView).text = highscores[0]
-    }
 
         //Displays necessary fields and info
     fun showScores(){

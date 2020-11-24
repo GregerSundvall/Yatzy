@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 class GamePlayActivity : AppCompatActivity() {
 
     val listOfDieImageViews: MutableList<ImageView> = mutableListOf<ImageView>()
-    val totalRounds = 3
+    val totalRounds = 1
     var currentRound = 1
     var turnsInEveryRound = ObjectManager.listOfPlayers.lastIndex
     var currentPlayerNr = 0
@@ -137,7 +137,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         val getReadyFragment = GetReadyFragment()
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.container, getReadyFragment, "getReadyFragment")
+        transaction.add(R.id.containerMain, getReadyFragment, "getReadyFragment")
         transaction.commit()
     }
 
@@ -156,7 +156,7 @@ class GamePlayActivity : AppCompatActivity() {
 
         val helpFragment = HelpFragment()
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.container, helpFragment, "helpFragment")
+        transaction.add(R.id.containerMain, helpFragment, "helpFragment")
         transaction.commit()
     }
 

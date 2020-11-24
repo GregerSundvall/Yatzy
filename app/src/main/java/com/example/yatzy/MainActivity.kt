@@ -4,16 +4,42 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsetsController
+import androidx.room.Room
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlin.coroutines.CoroutineContext
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
+
+
 
     var nrOfPlayers :Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
     }
+
+    fun addTopTenFragment(view:View){
+        val topTenFragment = TopTenFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.containerMain, topTenFragment, "topTenFragment")
+        transaction.commit()
+    }
+
+    fun removeTopTenFragment(view:View){
+        val topTenFragment = supportFragmentManager.findFragmentByTag("topTenFragment")
+        if(topTenFragment != null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.remove(topTenFragment)
+            transaction.commit()
+        }
+    }
+
 
     fun start1(view:View){
         nrOfPlayers = 1
